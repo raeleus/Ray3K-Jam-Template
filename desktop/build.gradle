@@ -41,26 +41,32 @@ dist.dependsOn classes
 task javaPackager(type: Exec, dependsOn: dist) {
     workingDir project.projectDir
     def commands = [
-        'javapackager',
-        '-deploy',
-        '-nosign',
-        '-outdir', "${buildDir}/distribution",
-        '-srcdir', "${buildDir}/libs",
-        '-native', 'image',
-        '-name', project.appName,
-        '-appclass', project.mainClassName
+        "${project.projectDir}/jpackage/bin/jpackage",
+        'create-image',
+        '--output', "${buildDir}/distribution",
+        '--input', "${buildDir}/libs",
+        '--name', project.appName,
+        '--class', project.mainClassName,
+        '--main-jar', "${project.appName}.jar",
+        '--force'
     ]
     
     def osName = System.getProperty('os.name').toLowerCase(Locale.ROOT)
     if (osName.contains('windows')) {
-        commands << "-Bicon=${project.projectDir}/logo.ico"
-        commands << "-BjvmOptions=-splash:splash.png"
+        commands << '--icon'
+        commands << "${project.projectDir}/logo.ico"
+        commands << '--jvm-args'
+        commands << "-splash:splash.png"
     } else if (osName.contains('linux')) {
-        commands << "-Bicon=${project.projectDir}/logo.png"
-        commands << "-BjvmOptions=-splash:splash.png"
+        commands << '--icon'
+        commands << "${project.projectDir}/logo.png"
+        commands << '--jvm-args'
+        commands << "-splash:splash.png"
     } else if (osName.contains('mac')) {
-        commands << "-Bicon=${project.projectDir}/logo.icns"
-        commands << "-BjvmOptions=-XstartOnFirstThread"
+        commands << '--icon'
+        commands << "${project.projectDir}/logo.icns"
+        commands << '--jvm-args'
+        commands << "-XstartOnFirstThread"
     }
     
     commandLine = commands
