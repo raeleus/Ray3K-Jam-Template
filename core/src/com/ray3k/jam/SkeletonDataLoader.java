@@ -91,7 +91,7 @@ public class SkeletonDataLoader extends AsynchronousAssetLoader<SkeletonData, Sk
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public Array<AssetDescriptor> getDependencies(String fileName, FileHandle file, SkeletonDataLoaderParameter parameter) {
-        Array<AssetDescriptor> deps = new Array<AssetDescriptor>();
+        Array<AssetDescriptor> deps = new Array<>();
         deps.add(new AssetDescriptor(parameter.atlasName, TextureAtlas.class));
         return deps;
     }

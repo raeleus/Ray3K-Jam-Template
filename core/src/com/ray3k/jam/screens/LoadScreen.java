@@ -47,9 +47,12 @@ public class LoadScreen implements Screen {
     private final Skin skin;
     private ProgressBar progressBar;
     private boolean finishedLoading;
+    private Runnable runnable;
 
-    public LoadScreen(Core core) {
+    public LoadScreen(Core core, Runnable runnable) {
         this.core = core;
+        this.runnable = runnable;
+        
         stage = new Stage(new ScreenViewport(), core.batch);
         skin = createSkin();
         finishedLoading = false;
@@ -137,7 +140,7 @@ public class LoadScreen implements Screen {
         root.add(progressBar).growX();
     }
     
-    private static class LoadingCompleteAction extends Action {
+    private class LoadingCompleteAction extends Action {
         private Core core;
 
         public LoadingCompleteAction(Core core) {
@@ -146,7 +149,7 @@ public class LoadScreen implements Screen {
         
         @Override
         public boolean act(float delta) {
-            core.setScreen(new TitleScreen(core));
+            runnable.run();
             return true;
         }
         

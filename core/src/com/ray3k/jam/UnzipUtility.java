@@ -2,8 +2,6 @@ package com.ray3k.jam;
 
 import com.badlogic.gdx.files.FileHandle;
 import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -57,12 +55,12 @@ public class UnzipUtility {
      * @throws IOException
      */
     private void extractFile(ZipInputStream zipIn, FileHandle filePath) throws IOException {
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath.file()));
-        byte[] bytesIn = new byte[BUFFER_SIZE];
-        int read = 0;
-        while ((read = zipIn.read(bytesIn)) != -1) {
-            bos.write(bytesIn, 0, read);
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath.file()))) {
+            byte[] bytesIn = new byte[BUFFER_SIZE];
+            int read;
+            while ((read = zipIn.read(bytesIn)) != -1) {
+                bos.write(bytesIn, 0, read);
+            }
         }
-        bos.close();
     }
 }

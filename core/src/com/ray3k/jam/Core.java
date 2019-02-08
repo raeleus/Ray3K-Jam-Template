@@ -15,6 +15,7 @@ import com.esotericsoftware.spine.SkeletonRenderer;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 import com.ray3k.jam.SkeletonDataLoader.SkeletonDataLoaderParameter;
 import com.ray3k.jam.screens.LoadScreen;
+import com.ray3k.jam.screens.LogoScreen;
 import java.io.IOException;
 import java.net.URL;
 import java.security.CodeSource;
@@ -41,7 +42,9 @@ public class Core extends Game {
         
         addAssets();
         
-        setScreen(new LoadScreen(this));
+        setScreen(new LoadScreen(this, () -> {
+            Core.this.setScreen(new LogoScreen(Core.this));
+        }));
     }
     
     private void addAssets() {
@@ -103,7 +106,9 @@ public class Core extends Game {
                 Gdx.app.error(getClass().getName(), "Error reading assets from JAR", ex);
             } finally {
                 try {
-                    zip.close();
+                    if (zip != null) {
+                        zip.close();
+                    }
                 } catch (IOException ex) {
                     Gdx.app.error(getClass().getName(), "Error reading assets from JAR", ex);
                 }
