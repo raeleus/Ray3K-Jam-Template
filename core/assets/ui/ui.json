@@ -4,4 +4,12 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 		file: font.fnt
 	}
 }
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	default: {
+		font: font
+		up: button-normal
+		down: button-normal-pressed
+		over: button-normal-over
+	}
+}
 }
