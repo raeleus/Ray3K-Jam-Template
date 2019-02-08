@@ -1,0 +1,186 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.8
+sourceSets.main.java.srcDirs = [ "src/" ]
+
+project.ext.mainClassName = "com.ray3k.jam.desktop.DesktopLauncher"
+project.ext.assetsDir = new File("../core/assets");
+
+task run(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true
+}
+
+task debug(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true
+    debug = true
+}
+
+task dist(type: Jar) {
+    archiveName = "${project.appName}.jar";
+    from files(sourceSets.main.output.classesDir)
+    from files(sourceSets.main.output.resourcesDir)
+    from {configurations.compile.collect {zipTree(it)}}
+    from files(project.assetsDir);
+ 
+    manifest {
+        attributes ('Main-Class': project.mainClassName, 'SplashScreen-Image' : 'splash.png')
+    }
+}
+
+dist.dependsOn classes
+
+// creates application bundle (executable + runtime)
+task javaPackager(type: Exec, dependsOn: dist) {
+    workingDir project.projectDir
+    def commands = [
+        'javapackager',
+        '-deploy',
+        '-nosign',
+        '-outdir', "${buildDir}/distribution",
+        '-srcdir', "${buildDir}/libs",
+        '-native', 'image',
+        '-name', project.appName,
+        '-appclass', project.mainClassName
+    ]
+    
+    def osName = System.getProperty('os.name').toLowerCase(Locale.ROOT)
+    if (osName.contains('windows')) {
+        commands << "-Bicon=${project.projectDir}/logo.ico"
+        commands << "-BjvmOptions=-splash:splash.png"
+    } else if (osName.contains('linux')) {
+        commands << "-Bicon=${project.projectDir}/logo.png"
+        commands << "-BjvmOptions=-splash:splash.png"
+    } else if (osName.contains('mac')) {
+        commands << "-Bicon=${project.projectDir}/logo.icns"
+        commands << "-BjvmOptions=-XstartOnFirstThread"
+    }
+    
+    commandLine = commands
+    
+    doLast() {
+        copy {
+            from file("${project.projectDir}/splash.png");
+            into file("${buildDir}/distribution/${project.appName}/app");
+        }
+    }
+}
+
+// removes bloated runtime created by javapackager
+task cleanPackagerRuntime(dependsOn: javaPackager) {
+    doLast() {
+        File runtimeFile = new File("${buildDir}/distribution/${project.appName}/runtime")
+        runtimeFile.deleteDir()
+        delete {
+            delete fileTree("${buildDir}/distribution/${project.appName}").matching {
+                include "api*.dll"
+            }
+        }
+        System.out.println("deleting bloated runtime in " + runtimeFile)
+    }
+}
+
+// creates a replacement runtime via jlink command (much smaller than jpackager)
+task createFinalAppBundle(type: Exec, dependsOn: [cleanPackagerRuntime]) {
+    def jdk = System.getProperty("java.home")
+
+    workingDir project.projectDir
+    commandLine = [
+        'jlink',
+        '-p', "${jdk}/jmods",
+        '--add-modules', 'java.base,java.desktop,jdk.unsupported',
+        '--strip-debug',
+        '--no-header-files',
+        '--no-man-pages',
+        '--strip-native-commands',
+        "--vm=server",
+        "--compress=2",
+        '--output', "${buildDir}/distribution/${project.appName}/runtime"
+    ]
+
+    doLast{
+        System.out.println("Application '${project.appName}' packaged.")
+        System.out.println(" -> location: ${buildDir}/distribution/${project.appName}/")
+    }
+}
+
+task createMacApp(type: Exec, dependsOn: [dist]) {
+    workingDir project.projectDir
+    
+    commandLine = [
+        'java',
+        '-jar', "${project.projectDir}/packr.jar",
+        '--platform', 'mac',
+        '--jdk', '"C:/openjdk/zulu8mac64.zip"',
+        '--executable', project.appName,
+        '--classpath', "${buildDir}/libs/${project.appName}.jar",
+        '--mainclass', project.ext.mainClassName,
+        '--minimizejre', "hard",
+        '--output', "${buildDir}/distribution/${project.appName}.app",
+        '--cachejre', "${project.projectDir}/macjre/",
+        '--icon', "${project.projectDir}/logo.icns"
+    ]
+    
+    doLast{
+        System.out.println("Application '${project.appName}' packaged to Mac.")
+    }
+}
+
+task updateAndCreateZip(type: Zip, dependsOn: [dist]) {
+    doFirst {
+        copy {
+            from "${buildDir}/libs"
+            into "${buildDir}/distribution/${project.appName}/app"
+        }
+        
+        copy {
+            from '../README.md'
+            into "${buildDir}/distribution/${project.appName}"
+        }
+
+        copy {
+            from '../CHANGES.md'
+            into "${buildDir}/distribution/${project.appName}"
+        }
+
+        copy {
+            from '../core/assets/splash.png'
+            into "${buildDir}/distribution/${project.appName}/app"
+        }
+    }
+    
+    archiveName "${project.appName}_${org.gradle.internal.os.OperatingSystem.current().getFamilyName()}.zip"
+    from "${buildDir}/distribution/${project.appName}"
+    destinationDir = file("${buildDir}/distribution/")
+}
+
+task createMacZip(type: Zip, dependsOn: [createMacApp]) {
+    archiveName "${project.appName}_mac.app.zip"
+    from "${buildDir}/distribution/${project.appName}.app"
+    destinationDir = file("${buildDir}/distribution/")
+}
+
+eclipse {
+    project {
+        name = appName + "-desktop"
+        linkedResource name: 'assets', type: '2', location: 'PARENT-1-PROJECT_LOC/core/assets'
+    }
+}
+
+task afterEclipseImport(description: "Post processing after project generation", group: "IDE") {
+  doLast {
+    def classpath = new XmlParser().parse(file(".classpath"))
+    new Node(classpath, "classpathentry", [ kind: 'src', path: 'assets' ]);
+    def writer = new FileWriter(file(".classpath"))
+    def printer = new XmlNodePrinter(new PrintWriter(writer))
+    printer.setPreserveWhitespace(true)
+    printer.print(classpath)
+  }
+}
