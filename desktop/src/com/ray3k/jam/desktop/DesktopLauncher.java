@@ -35,6 +35,7 @@ public class DesktopLauncher implements DesktopWorker {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setWindowedMode(800, 800);
         config.setWindowIcon("icons/icon_16x16.png", "icons/icon_32x32.png", "icons/icon_48x48.png");
+        config.useVsync(true);
         new Lwjgl3Application(new Core(), config);
     }
 
