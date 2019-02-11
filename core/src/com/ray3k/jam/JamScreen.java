@@ -21,56 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.ray3k.jam.screens;
+package com.ray3k.jam;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.ray3k.jam.Core;
-import com.ray3k.jam.JamScreen;
+import com.badlogic.gdx.Screen;
 
 /**
  *
  * @author Raymond
  */
-public class CreditsScreen extends JamScreen {
-
-    public CreditsScreen(Core core) {
-
-    }
-    
+public abstract class JamScreen implements Screen {
     @Override
-    public void show() {
-    }
-
-    @Override
-    public void act(float delta) {
-    }
-
-    @Override
-    public void draw(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    public void render(float delta) {
         
     }
     
-    @Override
-    public void resize(int width, int height) {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
-    public void hide() {
-    }
-
-    @Override
-    public void dispose() {
-    }
-   
+    public abstract void act(float delta);
+    
+    public abstract void draw(float delta);
 }

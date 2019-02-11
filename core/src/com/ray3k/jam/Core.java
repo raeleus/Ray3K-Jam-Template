@@ -10,6 +10,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
@@ -33,8 +34,15 @@ public class Core extends Game {
     public Preferences preferences;
     public DesktopWorker desktopWorker;
     
+    private final static long MS_PER_UPDATE = 10;
+    private long previous;
+    private long lag;
+    
     @Override
     public void create() {
+        previous = TimeUtils.millis();
+        lag = 0;
+            
         batch = new TwoColorPolygonBatch();
         skeletonRenderer = new SkeletonRenderer();
         skeletonRenderer.setPremultipliedAlpha(true);
@@ -120,7 +128,24 @@ public class Core extends Game {
 
     @Override
     public void render() {
-        super.render();
+        if (screen != null) {
+            if (screen instanceof JamScreen) {
+                var jamScreen = (JamScreen) screen;
+                long current = TimeUtils.millis();
+                long elapsed = current - previous;
+                previous = current;
+                lag += elapsed;
+
+                while (lag >= MS_PER_UPDATE) {
+                    jamScreen.act(MS_PER_UPDATE / 1000.0f);
+                    lag -= MS_PER_UPDATE;
+                }
+                
+                jamScreen.draw(lag / MS_PER_UPDATE);
+            } else {
+                screen.render(Gdx.graphics.getDeltaTime());
+            }
+        }
     }
 
     @Override

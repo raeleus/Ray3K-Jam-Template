@@ -24,7 +24,6 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -40,8 +39,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.jam.Core;
+import com.ray3k.jam.JamScreen;
 
-public class LoadScreen implements Screen {
+public class LoadScreen extends JamScreen {
     private final Core core;
     private final Stage stage;
     private final Skin skin;
@@ -65,18 +65,22 @@ public class LoadScreen implements Screen {
     }
 
     @Override
-    public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        
+    public void act(float delta) {
         progressBar.setValue(core.assetManager.getProgress());
-        stage.act();
-        stage.draw();
+        stage.act(delta);
         
         if (!finishedLoading && core.assetManager.update()) {
             finishedLoading = true;
             progressBar.addAction(Actions.sequence(Actions.fadeOut(1f), new LoadingCompleteAction(core)));
         }
+    }
+
+    @Override
+    public void draw(float delta) {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        
+        stage.draw();
     }
 
     @Override

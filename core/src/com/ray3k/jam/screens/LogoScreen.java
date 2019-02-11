@@ -24,7 +24,6 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -32,12 +31,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.jam.Core;
+import com.ray3k.jam.JamScreen;
 
 /**
  *
  * @author Raymond
  */
-public class LogoScreen implements Screen {
+public class LogoScreen extends JamScreen {
     private Stage stage;
     private Skin skin;
 
@@ -60,11 +60,15 @@ public class LogoScreen implements Screen {
     }
 
     @Override
-    public void render(float delta) {
+    public void act(float delta) {
+        stage.act(delta);
+    }
+
+    @Override
+    public void draw(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
-        stage.act();
         stage.draw();
     }
 

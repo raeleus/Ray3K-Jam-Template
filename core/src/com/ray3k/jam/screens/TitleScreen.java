@@ -24,15 +24,15 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.ray3k.jam.Core;
+import com.ray3k.jam.JamScreen;
 
 /**
  *
  * @author Raymond
  */
-public class TitleScreen implements Screen {
+public class TitleScreen extends JamScreen {
 
     public TitleScreen(final Core core) {
     }
@@ -42,9 +42,14 @@ public class TitleScreen implements Screen {
     }
 
     @Override
-    public void render(float delta) {
+    public void act(float delta) {
+    }
+
+    @Override
+    public void draw(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        
     }
 
     @Override
