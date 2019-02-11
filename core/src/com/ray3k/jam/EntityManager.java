@@ -24,7 +24,6 @@
 
 package com.ray3k.jam;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 import java.util.Iterator;
@@ -95,6 +94,7 @@ public class EntityManager {
         clear(false);
     }
     
+    @SuppressWarnings("unchecked")
     public <T extends Entity> T get(Class<T> clazz) {
         for (int i = 0; i < entities.size; i++) {
             Entity entity = entities.get(i);
@@ -106,6 +106,7 @@ public class EntityManager {
         return null;
     }
     
+    @SuppressWarnings("unchecked")
     public <T> Array<T> getAll(Class<T> clazz) {
         Array<T> list = new Array<>();
         

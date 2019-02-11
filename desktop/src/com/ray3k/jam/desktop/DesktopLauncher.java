@@ -23,9 +23,8 @@
  */
 package com.ray3k.jam.desktop;
 
-import com.badlogic.gdx.Files;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.DesktopWorker;
 import java.awt.SplashScreen;
@@ -33,14 +32,10 @@ import java.awt.SplashScreen;
 public class DesktopLauncher implements DesktopWorker {
 
     public static void main(String[] arg) {
-        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.width = 800;
-        config.height = 800;
-        config.addIcon("icons/icon_16x16.png", Files.FileType.Internal);
-        config.addIcon("icons/icon_32x32.png", Files.FileType.Internal);
-        config.addIcon("icons/icon_48x48.png", Files.FileType.Internal);
-        config.allowSoftwareMode = true;
-        new LwjglApplication(new Core(), config);
+        Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+        config.setWindowedMode(800, 800);
+        config.setWindowIcon("icons/icon_16x16.png", "icons/icon_32x32.png", "icons/icon_48x48.png");
+        new Lwjgl3Application(new Core(), config);
     }
 
     @Override
