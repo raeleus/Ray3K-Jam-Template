@@ -57,10 +57,9 @@ public abstract class Entity {
     
     public abstract void destroyEvent();
     
-    public void dispose() {
+    public void destroy() {
         if (!destroyed) {
             destroyed = true;
-            destroyEvent();
         }
     }
 

@@ -45,9 +45,10 @@ public class EntityManager {
     }
     
     public void act(float delta) {
+        //act loop
         var iter = entities.iterator();
         while (iter.hasNext()) {
-            Entity entity = iter.next();
+            var entity = iter.next();
             if (!entity.isDestroyed()) {
                 entity.addXspeed(entity.getGravityX() * delta);
                 entity.addYspeed(entity.getGravityY() * delta);
@@ -61,10 +62,20 @@ public class EntityManager {
             }
         }
         
+        //destroy loop
         iter = entities.iterator();
         while (iter.hasNext()) {
-            Entity entity = iter.next();
-            
+            var entity = iter.next();
+            if (entity.isDestroyed()) {
+                entity.destroyEvent();
+                iter.remove();
+            }
+        }
+        
+        //act end loop
+        iter = entities.iterator();
+        while (iter.hasNext()) {
+            var entity = iter.next();
             entity.actEnd(delta);
         }
     }
@@ -85,7 +96,7 @@ public class EntityManager {
         while(iter.hasNext()) {
             Entity entity = iter.next();
             if (clearPersistent || !entity.isPersistent()) {
-                entity.dispose();
+                entity.destroy();
             }
         }
     }
