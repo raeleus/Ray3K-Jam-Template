@@ -8,6 +8,7 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -68,11 +69,23 @@ public class Core extends Game {
         
         for (FileHandle atlasHandle : getInternalFiles("textures")) {
             if (atlasHandle.extension().toLowerCase(Locale.ROOT).equals("atlas")) {
-                SkeletonDataLoaderParameter parameter = new SkeletonDataLoaderParameter(atlasHandle.path());
-                for (FileHandle fileHandle : getInternalFiles("animations")) {
-                    assetManager.load(fileHandle.path(), SkeletonData.class, parameter);
+                assetManager.load(atlasHandle.path(), TextureAtlas.class);
+            }
+        }
+        
+        for (var pack : getInternalFiles("spine")) {
+            if (pack.isDirectory()) {
+                for (FileHandle atlasHandle : pack.list()) {
+                    if (atlasHandle.extension().toLowerCase(Locale.ROOT).equals("atlas")) {
+                        assetManager.load(atlasHandle.path(), TextureAtlas.class);
+                        
+                        SkeletonDataLoaderParameter parameter = new SkeletonDataLoaderParameter(atlasHandle.path());
+                        for (FileHandle fileHandle : getInternalFiles("animations")) {
+                            assetManager.load(fileHandle.path(), SkeletonData.class, parameter);
+                        }
+                        break;
+                    }
                 }
-                break;
             }
         }
         
