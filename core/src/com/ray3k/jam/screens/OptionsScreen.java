@@ -27,13 +27,17 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.JamScreen;
@@ -42,12 +46,12 @@ import com.ray3k.jam.JamScreen;
  *
  * @author Raymond
  */
-public class MenuScreen extends JamScreen {
+public class OptionsScreen extends JamScreen {
     private Stage stage;
     private Skin skin;
     private Core core;
 
-    public MenuScreen(final Core core) {
+    public OptionsScreen(final Core core) {
         this.core = core;
     }
 
@@ -85,7 +89,7 @@ public class MenuScreen extends JamScreen {
                 root.addAction(Actions.sequence(Actions.fadeOut(.5f), new Action() {
                     @Override
                     public boolean act(float delta) {
-                        core.setScreen(new OptionsScreen(core));
+                        core.setScreen(new CreditsScreen(core));
                         return true;
                     }
                 }));
