@@ -80,8 +80,10 @@ public class Core extends Game {
                         assetManager.load(atlasHandle.path(), TextureAtlas.class);
                         
                         SkeletonDataLoaderParameter parameter = new SkeletonDataLoaderParameter(atlasHandle.path());
-                        for (FileHandle fileHandle : getInternalFiles("animations")) {
-                            assetManager.load(fileHandle.path(), SkeletonData.class, parameter);
+                        for (FileHandle fileHandle : pack.list()) {
+                            if (fileHandle.extension().toLowerCase(Locale.ROOT).equals("json")) {
+                                assetManager.load(fileHandle.path(), SkeletonData.class, parameter);
+                            }
                         }
                         break;
                     }
