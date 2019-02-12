@@ -24,20 +24,18 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.JamScreen;
@@ -69,43 +67,36 @@ public class OptionsScreen extends JamScreen {
         root.setColor(1, 1, 1, 0);
         root.addAction(Actions.fadeIn(.5f));
         
-        var label = new Label("Game Title", skin);
+        var label = new Label("Options", skin);
         root.add(label);
         
         root.row();
         var table = new Table();
         root.add(table);
         
+        table.defaults().expandX().left();
+        var checkBox = new CheckBox("SFX", skin);
+        table.add(checkBox);
+        checkBox.addListener(core.handListener);
+        
+        table.row();
+        checkBox = new CheckBox("BGM", skin);
+        table.add(checkBox);
+        checkBox.addListener(core.handListener);
+        
+        table.row();
+        table.defaults().reset();
         table.defaults().growX();
-        var textButton = new TextButton("PLAY", skin);
+        var textButton = new TextButton("Return to Menu", skin);
         table.add(textButton);
-        
-        table.row();
-        textButton = new TextButton("OPTIONS", skin);
-        table.add(textButton);
+        textButton.addListener(core.handListener);
         textButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
                 root.addAction(Actions.sequence(Actions.fadeOut(.5f), new Action() {
                     @Override
                     public boolean act(float delta) {
-                        core.setScreen(new CreditsScreen(core));
-                        return true;
-                    }
-                }));
-            }
-        });
-        
-        table.row();
-        textButton = new TextButton("CREDITS", skin);
-        table.add(textButton);
-        textButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                root.addAction(Actions.sequence(Actions.fadeOut(.5f), new Action() {
-                    @Override
-                    public boolean act(float delta) {
-                        core.setScreen(new CreditsScreen(core));
+                        core.setScreen(new MenuScreen(core));
                         return true;
                     }
                 }));
@@ -143,6 +134,7 @@ public class OptionsScreen extends JamScreen {
     @Override
     public void hide() {
         stage.dispose();
+        Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
     }
 
     @Override

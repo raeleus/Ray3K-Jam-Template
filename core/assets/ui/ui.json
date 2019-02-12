@@ -4,6 +4,15 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 		file: font.fnt
 	}
 }
+com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
+	default: {
+		checkboxOn: checkbox-selected
+		checkboxOff: checkbox
+		checkboxOnOver: checkbox-selected-over
+		checkboxOver: checkbox-over
+		font: font
+	}
+}
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
 		font: font
