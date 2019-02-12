@@ -1,0 +1,48 @@
+
+textureatlas.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+flash
+  rotate: false
+  xy: 1, 613
+  size: 532, 133
+  orig: 532, 133
+  offset: 0, 0
+  index: -1
+letter_3
+  rotate: false
+  xy: 648, 614
+  size: 98, 132
+  orig: 98, 132
+  offset: 0, 0
+  index: -1
+letter_a
+  rotate: false
+  xy: 536, 613
+  size: 109, 133
+  orig: 109, 133
+  offset: 0, 0
+  index: -1
+letter_k
+  rotate: false
+  xy: 1, 478
+  size: 117, 132
+  orig: 117, 132
+  offset: 0, 0
+  index: -1
+letter_r
+  rotate: false
+  xy: 1, 343
+  size: 110, 132
+  orig: 110, 132
+  offset: 0, 0
+  index: -1
+letter_y
+  rotate: false
+  xy: 121, 478
+  size: 110, 132
+  orig: 110, 132
+  offset: 0, 0
+  index: -1

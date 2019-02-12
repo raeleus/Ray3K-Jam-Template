@@ -24,35 +24,34 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.ray3k.jam.Core;
+import com.ray3k.jam.EntityManager;
 import com.ray3k.jam.JamScreen;
+import com.ray3k.jam.entities.intro.LogoEntity;
 
 /**
  *
  * @author Raymond
  */
 public class LogoScreen extends JamScreen {
-    private Stage stage;
-    private Skin skin;
-
+    private Core core;
+    private EntityManager entityManager;
+    private Viewport viewport;
+    
     public LogoScreen(final Core core) {
-        skin = core.assetManager.get("ui/ui.json", Skin.class);
+        this.core = core;
+        entityManager = new EntityManager();
+        viewport = new ScreenViewport();
+        viewport.update(800, 800, true);
+        viewport.apply();
         
-        stage = new Stage(new ScreenViewport(), core.batch);
-        Gdx.input.setInputProcessor(stage);
-        
-        var root = new Table();
-        root.setFillParent(true);
-        stage.addActor(root);
-        
-        var textButton = new TextButton("Test", skin);
-        root.add(textButton);
+        var logo = new LogoEntity(core);
+        entityManager.addEntity(logo);
     }
 
     @Override
@@ -61,7 +60,7 @@ public class LogoScreen extends JamScreen {
 
     @Override
     public void act(float delta) {
-        stage.act(delta);
+        entityManager.act(delta);
     }
 
     @Override
@@ -69,12 +68,16 @@ public class LogoScreen extends JamScreen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
-        stage.draw();
+        core.batch.setProjectionMatrix(viewport.getCamera().combined);
+        core.batch.begin();
+        core.batch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        entityManager.draw(core.batch, delta);
+        core.batch.end();
     }
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        viewport.update(width, height, true);
     }
 
     @Override
@@ -87,11 +90,15 @@ public class LogoScreen extends JamScreen {
 
     @Override
     public void hide() {
+        core.assetManager.unload("sfx/ray3k intro.mp3");
+        core.assetManager.unload("sfx/shimmer.mp3");
+        core.assetManager.unload("sfx/tick.mp3");
+        core.assetManager.unload("spine/intro/logo.json");
+        core.assetManager.unload("spine/intro/textureatlas.atlas");
     }
 
     @Override
     public void dispose() {
-        stage.dispose();
-        Gdx.input.setInputProcessor(null);
+        
     }
 }

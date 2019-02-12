@@ -36,10 +36,6 @@ public abstract class SpineEntity extends Entity {
     private AnimationState animationState;
     private SkeletonBounds skeletonBounds;
 
-    public SpineEntity(Core core) {
-        super(core);
-    }
-
     public SpineEntity(Core core, String skeletonDataPath, String animation) {
         super(core);
         setSkeletonData(skeletonDataPath, animation);
@@ -74,7 +70,7 @@ public abstract class SpineEntity extends Entity {
 
     @Override
     public void draw(TwoColorPolygonBatch batch, float delta) {
-        if (batch == null && skeleton != null) {
+        if (batch != null && skeleton != null) {
             core.skeletonRenderer.draw(batch, skeleton);
         }
 
