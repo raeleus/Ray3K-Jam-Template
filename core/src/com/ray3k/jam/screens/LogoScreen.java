@@ -24,9 +24,8 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.ray3k.jam.Core;
@@ -56,6 +55,7 @@ public class LogoScreen extends JamScreen {
 
     @Override
     public void show() {
+        Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Hand);
     }
 
     @Override
@@ -96,6 +96,8 @@ public class LogoScreen extends JamScreen {
         core.assetManager.unload("spine/intro/logo.json");
         core.assetManager.unload("spine/intro/textureatlas.atlas");
         Gdx.input.setInputProcessor(null);
+        
+        Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
     }
 
     @Override

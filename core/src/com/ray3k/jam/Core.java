@@ -39,6 +39,9 @@ public class Core extends Game {
     private long previous;
     private long lag;
     
+    public HandListener handListener;
+    public IbeamListener ibeamListener;
+    
     @Override
     public void create() {
         previous = TimeUtils.millis();
@@ -54,6 +57,9 @@ public class Core extends Game {
         setScreen(new LoadScreen(this, () -> {
             Core.this.setScreen(new LogoScreen(Core.this));
         }));
+        
+        handListener = new HandListener();
+        ibeamListener = new IbeamListener();
     }
     
     private void addAssets() {

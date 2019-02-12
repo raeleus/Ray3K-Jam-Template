@@ -24,6 +24,7 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -74,6 +75,8 @@ public class TitleScreen extends JamScreen {
         var label = new Label("Press any key to begin...", skin);
         root.add(label);
 
+        stage.addListener(core.handListener);
+        
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
@@ -130,6 +133,7 @@ public class TitleScreen extends JamScreen {
     @Override
     public void hide() {
         stage.dispose();
+        Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
     }
 
     @Override

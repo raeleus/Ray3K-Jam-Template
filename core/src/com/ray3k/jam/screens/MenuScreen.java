@@ -24,6 +24,7 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -75,10 +76,12 @@ public class MenuScreen extends JamScreen {
         table.defaults().growX();
         var textButton = new TextButton("PLAY", skin);
         table.add(textButton);
+        textButton.addListener(core.handListener);
         
         table.row();
         textButton = new TextButton("OPTIONS", skin);
         table.add(textButton);
+        textButton.addListener(core.handListener);
         textButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
@@ -95,6 +98,7 @@ public class MenuScreen extends JamScreen {
         table.row();
         textButton = new TextButton("CREDITS", skin);
         table.add(textButton);
+        textButton.addListener(core.handListener);
         textButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeListener.ChangeEvent event, Actor actor) {
@@ -139,6 +143,7 @@ public class MenuScreen extends JamScreen {
     @Override
     public void hide() {
         stage.dispose();
+        Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
     }
 
     @Override
