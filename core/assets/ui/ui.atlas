@@ -6,7 +6,7 @@ filter: Linear,Linear
 repeat: none
 button-normal
   rotate: false
-  xy: 44, 415
+  xy: 1, 218
   size: 41, 42
   split: 11, 9, 12, 9
   pad: 9, 9, 7, 8
@@ -15,7 +15,7 @@ button-normal
   index: -1
 button-normal-over
   rotate: false
-  xy: 1, 415
+  xy: 1, 262
   size: 41, 42
   split: 11, 9, 12, 9
   pad: 9, 9, 7, 8
@@ -24,7 +24,7 @@ button-normal-over
   index: -1
 button-normal-pressed
   rotate: false
-  xy: 1, 371
+  xy: 209, 415
   size: 41, 42
   split: 11, 9, 12, 9
   pad: 9, 9, 8, 7
@@ -33,28 +33,28 @@ button-normal-pressed
   index: -1
 checkbox
   rotate: false
-  xy: 1, 325
+  xy: 1, 195
   size: 20, 21
   orig: 20, 21
   offset: 0, 0
   index: -1
 checkbox-over
   rotate: false
-  xy: 1, 348
+  xy: 44, 283
   size: 20, 21
   orig: 20, 21
   offset: 0, 0
   index: -1
 checkbox-selected
   rotate: false
-  xy: 87, 436
+  xy: 252, 436
   size: 20, 21
   orig: 20, 21
   offset: 0, 0
   index: -1
 checkbox-selected-over
   rotate: false
-  xy: 44, 392
+  xy: 209, 392
   size: 20, 21
   orig: 20, 21
   offset: 0, 0
@@ -64,5 +64,12 @@ font
   xy: 1, 459
   size: 504, 44
   orig: 504, 44
+  offset: 0, 0
+  index: -1
+title
+  rotate: false
+  xy: 1, 306
+  size: 206, 151
+  orig: 206, 151
   offset: 0, 0
   index: -1
