@@ -53,6 +53,7 @@ public class SoundFader {
         sound.setVolume(instance, 1f - Interpolation.circleOut.apply(life / duration));
         
         if (MathUtils.isEqual(life, duration) && listener != null) {
+            sound.stop(instance);
             listener.complete();
         }
     }
