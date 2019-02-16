@@ -1,0 +1,69 @@
+
+credits.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+additional support
+  rotate: false
+  xy: 1, 33
+  size: 157, 39
+  orig: 157, 39
+  offset: 0, 0
+  index: -1
+avatar
+  rotate: false
+  xy: 1, 163
+  size: 346, 346
+  orig: 346, 346
+  offset: 0, 0
+  index: -1
+credits
+  rotate: false
+  xy: 1, 1
+  size: 96, 30
+  orig: 96, 30
+  offset: 0, 0
+  index: -1
+game concept
+  rotate: true
+  xy: 371, 210
+  size: 299, 60
+  orig: 299, 60
+  offset: 0, 0
+  index: -1
+libGDX
+  rotate: false
+  xy: 1, 74
+  size: 340, 87
+  orig: 340, 87
+  offset: 0, 0
+  index: -1
+music
+  rotate: true
+  xy: 349, 32
+  size: 477, 20
+  orig: 477, 20
+  offset: 0, 0
+  index: -1
+playtesters
+  rotate: true
+  xy: 433, 414
+  size: 95, 39
+  orig: 95, 39
+  offset: 0, 0
+  index: -1
+sound
+  rotate: false
+  xy: 160, 33
+  size: 52, 39
+  orig: 52, 39
+  offset: 0, 0
+  index: -1
+special thanks
+  rotate: true
+  xy: 371, 85
+  size: 123, 39
+  orig: 123, 39
+  offset: 0, 0
+  index: -1

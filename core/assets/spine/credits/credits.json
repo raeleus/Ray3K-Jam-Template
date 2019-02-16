@@ -1,0 +1,261 @@
+{
+"skeleton": { "hash": "dPntPqXGm/2SJRLBmfG3WbsXlu8", "spine": "3.7.89", "width": 800, "height": 800, "images": "../output/", "audio": "../../Ray3K Jam Template/core/assets/sfx/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "credits", "parent": "root", "length": 189.01, "rotation": 0.61, "x": -4, "y": 160.54 },
+	{ "name": "game concept", "parent": "root", "length": 157.01, "rotation": 0.73, "x": -2, "y": 24.5 },
+	{ "name": "libGDX", "parent": "root", "length": 177, "rotation": -0.32, "x": 188, "y": -228.5 },
+	{ "name": "music", "parent": "root", "length": 230.01, "rotation": 0.5, "x": -1, "y": -137.5 },
+	{ "name": "credits logo", "parent": "root", "length": 129.05, "x": -0.84, "y": 212.4 }
+],
+"slots": [
+	{ "name": "template", "bone": "root", "color": "ffffff4a" },
+	{ "name": "game concept", "bone": "game concept", "attachment": "game concept" },
+	{ "name": "avatar", "bone": "game concept", "attachment": "avatar" },
+	{ "name": "music", "bone": "music", "attachment": "music" },
+	{ "name": "credits", "bone": "credits logo", "attachment": "credits" },
+	{ "name": "libGDX", "bone": "libGDX", "attachment": "libGDX" },
+	{ "name": "clip", "bone": "root", "attachment": "clip" },
+	{ "name": "special thanks", "bone": "credits", "attachment": "special thanks" },
+	{ "name": "additional support", "bone": "credits", "attachment": "additional support" },
+	{ "name": "sound", "bone": "credits", "attachment": "sound" },
+	{ "name": "playtesters", "bone": "credits", "attachment": "playtesters" }
+],
+"skins": {
+	"default": {
+		"additional support": {
+			"additional support": { "x": 269.82, "y": -18.9, "rotation": -0.61, "width": 157, "height": 39 }
+		},
+		"avatar": {
+			"avatar": {
+				"x": -264.27,
+				"y": -19.64,
+				"scaleX": 0.602,
+				"scaleY": 0.602,
+				"rotation": -0.73,
+				"width": 346,
+				"height": 346
+			}
+		},
+		"clip": {
+			"clip": {
+				"type": "clipping",
+				"end": "clip",
+				"vertexCount": 4,
+				"vertices": [ -411.37, 417.65, 414.47, 416.27, 411.7, -410.95, -412.75, -412.33 ],
+				"color": "ce3a3aff"
+			}
+		},
+		"credits": {
+			"credits": { "x": 3.84, "y": -2.9, "width": 96, "height": 30 }
+		},
+		"game concept": {
+			"game concept": { "x": 51.42, "y": -23.66, "rotation": -0.73, "width": 299, "height": 60 }
+		},
+		"libGDX": {
+			"libGDX": { "x": 14.91, "y": 16.08, "rotation": 0.32, "width": 340, "height": 87 }
+		},
+		"music": {
+			"music": { "x": 0.98, "y": -2.01, "rotation": -0.5, "width": 477, "height": 20 }
+		},
+		"playtesters": {
+			"playtesters": { "x": 6.82, "y": -17.12, "rotation": -0.61, "width": 95, "height": 39 }
+		},
+		"sound": {
+			"sound": { "x": -253.17, "y": -14.37, "rotation": -0.61, "width": 52, "height": 39 }
+		},
+		"special thanks": {
+			"special thanks": { "x": 268.77, "y": -117.89, "rotation": -0.61, "width": 123, "height": 39 }
+		}
+	}
+},
+"events": {
+	"credits": { "audio": "credits.mp3" }
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"avatar": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 1.7667, "color": "ffffffff" }
+				]
+			},
+			"game concept": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.9, "color": "ffffffff" }
+				]
+			},
+			"libGDX": {
+				"color": [
+					{ "time": 14.2333, "color": "ffffffff" },
+					{ "time": 15.1333, "color": "ffffff00" }
+				]
+			},
+			"template": {
+				"color": [
+					{ "time": 0, "color": "000000ff" }
+				]
+			}
+		},
+		"bones": {
+			"credits": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -636.89, "curve": "stepped" },
+					{
+						"time": 2.7667,
+						"x": 0,
+						"y": -636.89,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 5.7, "x": 0, "y": 153.14, "curve": "stepped" },
+					{
+						"time": 8.0333,
+						"x": 0,
+						"y": 153.14,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 10.0333, "x": 0, "y": 502.29 }
+				]
+			},
+			"libGDX": {
+				"translate": [
+					{ "time": 0, "x": -35.23, "y": -514.74 },
+					{
+						"time": 8.0333,
+						"x": -35.23,
+						"y": -424.39,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 10.0333, "x": -35.23, "y": -8.84 }
+				]
+			},
+			"music": {
+				"translate": [
+					{ "time": 0, "x": 17.84, "y": -281.36, "curve": "stepped" },
+					{
+						"time": 8.0333,
+						"x": 17.84,
+						"y": -281.36,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 10.0333, "x": 17.84, "y": 134.19, "curve": "stepped" },
+					{
+						"time": 10.9333,
+						"x": 17.84,
+						"y": 134.19,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 13.3667, "x": 17.84, "y": 575.44 }
+				]
+			},
+			"credits logo": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -630.83, "curve": "stepped" },
+					{
+						"time": 2.7667,
+						"x": 0,
+						"y": -630.83,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 5.7, "x": 0, "y": 159.2, "curve": "stepped" },
+					{
+						"time": 10.9333,
+						"x": 0,
+						"y": 159.2,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 13.3667, "x": 0, "y": 600.45 }
+				]
+			},
+			"game concept": {
+				"translate": [
+					{ "time": 0, "x": 91.15, "y": 0, "curve": "stepped" },
+					{
+						"time": 2.7667,
+						"x": 91.15,
+						"y": 0,
+						"curve": [ 0.293, 0.11, 0.75, 1 ]
+					},
+					{ "time": 5.7, "x": 91.15, "y": 790.03 }
+				]
+			}
+		},
+		"deform": {
+			"default": {
+				"clip": {
+					"clip": [
+						{
+							"time": 5.7,
+							"offset": 1,
+							"vertices": [ -77.336, 0, -77.336 ]
+						}
+					]
+				}
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "credits" }
+		]
+	},
+	"exit": {
+		"slots": {
+			"additional support": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"avatar": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"credits": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"game concept": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"libGDX": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"music": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"playtesters": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"sound": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			},
+			"special thanks": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}
