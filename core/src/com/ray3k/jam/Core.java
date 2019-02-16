@@ -173,4 +173,16 @@ public class Core extends Game {
     public void dispose() {
         
     }
+    
+    public long playSound(String name, float volume) {
+        return playSound(name, volume, 1, 1);
+    }
+    
+    public long playSound(String name, float volume, float pitch) {
+        return playSound(name, volume, pitch, 1);
+    }
+    
+    public long playSound(String name, float volume, float pitch, float pan) {
+        return assetManager.get("sfx/" + name, Sound.class).play(volume, pitch, pan);
+    }
 }

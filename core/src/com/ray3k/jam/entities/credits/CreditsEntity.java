@@ -50,7 +50,7 @@ public class CreditsEntity extends SpineEntity {
             public void event(AnimationState.TrackEntry entry, Event event) {
                 var path = event.getData().getAudioPath();
                 if (path != null) {
-                    var id = core.assetManager.get("sfx/" + path, Sound.class).play(event.getVolume());
+                    var id = core.playSound(path, event.getVolume());
                     if (path.equals("credits.mp3")) {
                         songId = id;
                     }
