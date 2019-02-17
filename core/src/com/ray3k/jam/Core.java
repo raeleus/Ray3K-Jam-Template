@@ -2,6 +2,7 @@ package com.ray3k.jam;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -12,6 +13,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonWriter;
+import com.badlogic.gdx.utils.ObjectIntMap;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonRenderer;
@@ -29,6 +33,54 @@ import java.util.zip.ZipInputStream;
 public class Core extends Game {
     public static final String GAME_NAME = "Ray3K Jam";
     public static final String VERSION = "1";
+    public static final String KEY_BINDINGS_SAVE_NAME = "keybindings";
+    public static enum KeyAction {
+        LEFT, RIGHT, UP, DOWN, SHOOT, BOMB, SHIELD;
+        
+        private int defaultKey;
+        private int key = Keys.UNKNOWN;
+        public String displayName;
+        
+        static {
+            LEFT.defaultKey = Keys.LEFT;
+            LEFT.displayName = "Left";
+            
+            RIGHT.defaultKey = Keys.RIGHT;
+            RIGHT.displayName = "Right";
+            
+            UP.defaultKey = Keys.UP;
+            UP.displayName = "Up";
+            
+            DOWN.defaultKey = Keys.DOWN;
+            DOWN.displayName = "Down";
+            
+            SHOOT.defaultKey = Keys.Z;
+            SHOOT.displayName = "Shoot";
+            
+            BOMB.defaultKey = Keys.X;
+            BOMB.displayName = "Bomb";
+            
+            SHIELD.defaultKey = Keys.C;
+            SHIELD.displayName = "Shield";
+        }
+        
+        public int getDefaultKey() {
+            return defaultKey;
+        }
+        
+        public int getKey() {
+            return key == Keys.UNKNOWN ? defaultKey : key;
+        }
+        
+        public void setKey(int key) {
+            this.key = key;
+        }
+
+        @Override
+        public String toString() {
+            return displayName;
+        }
+    }
     
     public TwoColorPolygonBatch batch;
     public AssetManager assetManager;
@@ -54,6 +106,8 @@ public class Core extends Game {
         skeletonRenderer.setPremultipliedAlpha(true);
         preferences = Gdx.app.getPreferences(GAME_NAME);
         
+        loadKeyBindings();
+        
         addAssets();
         
         setScreen(new LoadScreen(this, () -> {
@@ -64,6 +118,17 @@ public class Core extends Game {
         
         handListener = new HandListener();
         ibeamListener = new IbeamListener();
+    }
+    
+    private void loadKeyBindings() {
+        var keyBindingsFile = Gdx.files.local(KEY_BINDINGS_SAVE_NAME);
+        if (keyBindingsFile.exists()) {
+            Json json = new Json(JsonWriter.OutputType.json);
+            ObjectIntMap<KeyAction> keyBindings = json.fromJson(ObjectIntMap.class, KeyAction.class, keyBindingsFile);
+            for (var keyAction : KeyAction.values()) {
+                keyAction.setKey(keyBindings.get(keyAction, Keys.UNKNOWN));
+            }
+        }
     }
     
     private void addAssets() {

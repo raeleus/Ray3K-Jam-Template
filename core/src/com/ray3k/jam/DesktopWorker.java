@@ -29,4 +29,5 @@ package com.ray3k.jam;
  */
 public interface DesktopWorker {
     public void closeSplash();
+    public char getKeyName(int keyCode);
 }

@@ -40,6 +40,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.JamScreen;
+import com.ray3k.jam.dialogs.KeyBindingDialog;
 
 /**
  *
@@ -88,7 +89,19 @@ public class OptionsScreen extends JamScreen {
         table.row();
         table.defaults().reset();
         table.defaults().growX();
-        var textButton = new TextButton("Return to Menu", skin);
+        var textButton = new TextButton("Set key bindings...", skin);
+        table.add(textButton);
+        textButton.addListener(core.handListener);
+        textButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                var dialog = new KeyBindingDialog(core);
+                dialog.show(stage);
+            }
+        });
+        
+        table.row();
+        textButton = new TextButton("Return to Menu", skin);
         table.add(textButton);
         textButton.addListener(core.handListener);
         textButton.addListener(new ChangeListener() {

@@ -25,6 +25,7 @@ package com.ray3k.jam.desktop;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Input;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.DesktopWorker;
 import java.awt.SplashScreen;
@@ -36,7 +37,9 @@ public class DesktopLauncher implements DesktopWorker {
         config.setWindowedMode(800, 800);
         config.setWindowIcon("icons/icon_16x16.png", "icons/icon_32x32.png", "icons/icon_48x48.png");
         config.useVsync(true);
-        new Lwjgl3Application(new Core(), config);
+        Core core = new Core();
+        core.desktopWorker = new DesktopLauncher();
+        new Lwjgl3Application(core, config);
     }
 
     @Override
@@ -44,6 +47,17 @@ public class DesktopLauncher implements DesktopWorker {
         SplashScreen  splashScreen = SplashScreen.getSplashScreen();
         if (splashScreen != null) {
             splashScreen.close();
+        }
+    }
+    
+    @Override
+    public char getKeyName(int keyCode) {
+        int glfwKeyCode = Lwjgl3Input.getGlfwKeyCode(keyCode);
+        try {
+            String output = org.lwjgl.glfw.GLFW.glfwGetKeyName(glfwKeyCode, 0);
+            return (output == null) ? ' ' : output.toLowerCase().charAt(0);
+        } catch (Exception e) {
+            return ' ';
         }
     }
 }
