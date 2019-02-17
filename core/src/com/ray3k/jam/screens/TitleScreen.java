@@ -24,6 +24,7 @@
 package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -106,6 +107,11 @@ public class TitleScreen extends JamScreen {
     @Override
     public void act(float delta) {
         stage.act();
+        
+        if (Gdx.input.isKeyJustPressed(Keys.F5)) {
+            dispose();
+            show();
+        }
     }
 
     @Override
