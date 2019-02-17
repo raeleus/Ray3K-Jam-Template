@@ -38,7 +38,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
-import com.badlogic.gdx.utils.ObjectIntMap;
+import com.badlogic.gdx.utils.ObjectMap;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.Core.KeyAction;
 
@@ -49,14 +49,14 @@ import com.ray3k.jam.Core.KeyAction;
 public class KeyBindingDialog extends Dialog {
     private Skin skin;
     private Core core;
-    private ObjectIntMap<KeyAction> keyBindings;
+    private ObjectMap<KeyAction, Integer> keyBindings;
 
     public KeyBindingDialog(Core core) {
         super("Key Bindings", core.assetManager.get("ui/ui.json", Skin.class));
         skin = getSkin();
         this.core = core;
         
-        keyBindings = new ObjectIntMap<>();
+        keyBindings = new ObjectMap<>();
         copyKeyBindingsFromSource();
         populate();
     }
@@ -167,7 +167,7 @@ public class KeyBindingDialog extends Dialog {
         }
         
         Json json = new Json(JsonWriter.OutputType.json);
-        Gdx.files.local(Core.KEY_BINDINGS_SAVE_NAME).writeString(json.toJson(keyBindings), false);
+        Gdx.files.local(Core.KEY_BINDINGS_SAVE_NAME).writeString(json.prettyPrint(keyBindings), false);
     }
     
     private void removeDuplicates(int keycode) {

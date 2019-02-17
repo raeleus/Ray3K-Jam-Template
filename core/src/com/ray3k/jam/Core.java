@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonWriter;
 import com.badlogic.gdx.utils.ObjectIntMap;
+import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonRenderer;
@@ -120,13 +121,14 @@ public class Core extends Game {
         ibeamListener = new IbeamListener();
     }
     
+    @SuppressWarnings("unchecked")
     private void loadKeyBindings() {
         var keyBindingsFile = Gdx.files.local(KEY_BINDINGS_SAVE_NAME);
         if (keyBindingsFile.exists()) {
             Json json = new Json(JsonWriter.OutputType.json);
-            ObjectIntMap<KeyAction> keyBindings = json.fromJson(ObjectIntMap.class, KeyAction.class, keyBindingsFile);
+            ObjectMap<String, Integer> keyBindings = json.fromJson(ObjectMap.class, Integer.class, keyBindingsFile);
             for (var keyAction : KeyAction.values()) {
-                keyAction.setKey(keyBindings.get(keyAction, Keys.UNKNOWN));
+                keyAction.setKey(keyBindings.get(keyAction.name(), Keys.UNKNOWN));
             }
         }
     }
