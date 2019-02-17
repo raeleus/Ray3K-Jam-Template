@@ -26,19 +26,20 @@ package com.ray3k.jam;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Action;
 
 /**
  *
  * @author Raymond
  */
-public class SoundFader {
+public class SoundFadeAction extends Action {
     private float life;
     private float duration;
     private Sound sound;
     private long instance;
     private SoundFadeListener listener;
 
-    public SoundFader(float duration, Sound sound, long instance, SoundFadeListener listener) {
+    public SoundFadeAction(float duration, Sound sound, long instance, SoundFadeListener listener) {
         this.life = 0.0f;
         this.duration = duration;
         this.sound = sound;
@@ -46,7 +47,8 @@ public class SoundFader {
         this.listener = listener;
     }
     
-    public void update(float delta) {
+    @Override
+    public boolean act(float delta) {
         life += delta;
         life = MathUtils.clamp(life, 0, duration);
         
@@ -56,6 +58,8 @@ public class SoundFader {
             sound.stop(instance);
             listener.complete();
         }
+        
+        return false;
     }
     
     public static interface SoundFadeListener {

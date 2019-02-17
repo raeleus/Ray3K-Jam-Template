@@ -9,6 +9,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -34,6 +35,7 @@ public class Core extends Game {
     public SkeletonRenderer skeletonRenderer;
     public Preferences preferences;
     public DesktopWorker desktopWorker;
+    public Actor actionsManager;
     
     private final static long MS_PER_UPDATE = 10;
     private long previous;
@@ -57,6 +59,8 @@ public class Core extends Game {
         setScreen(new LoadScreen(this, () -> {
             Core.this.setScreen(new LogoScreen(Core.this));
         }));
+        
+        actionsManager = new Actor();
         
         handListener = new HandListener();
         ibeamListener = new IbeamListener();
@@ -149,6 +153,7 @@ public class Core extends Game {
 
     @Override
     public void render() {
+        
         if (screen != null) {
             if (screen instanceof JamScreen) {
                 var jamScreen = (JamScreen) screen;
@@ -158,13 +163,17 @@ public class Core extends Game {
                 lag += elapsed;
 
                 while (lag >= MS_PER_UPDATE) {
-                    jamScreen.act(MS_PER_UPDATE / 1000.0f);
+                    var delta = MS_PER_UPDATE / 1000.0f;
+                    actionsManager.act(delta);
+                    jamScreen.act(delta);
                     lag -= MS_PER_UPDATE;
                 }
                 
                 jamScreen.draw(lag / MS_PER_UPDATE);
             } else {
-                screen.render(Gdx.graphics.getDeltaTime());
+                var delta = Gdx.graphics.getDeltaTime();
+                actionsManager.act(delta);
+                screen.render(delta);
             }
         }
     }

@@ -30,7 +30,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.Event;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 import com.ray3k.jam.Core;
-import com.ray3k.jam.SoundFader;
+import com.ray3k.jam.SoundFadeAction;
 import com.ray3k.jam.SpineEntity;
 import com.ray3k.jam.screens.MenuScreen;
 
@@ -40,7 +40,6 @@ import com.ray3k.jam.screens.MenuScreen;
  */
 public class CreditsEntity extends SpineEntity {
     private long songId;
-    private SoundFader soundFader;
 
     public CreditsEntity(Core core) {
         super(core, "spine/credits/credits.json", "animation");
@@ -84,16 +83,14 @@ public class CreditsEntity extends SpineEntity {
                     getAnimationState().setAnimation(1, "exit", false);
                 }
                 
-                soundFader = new SoundFader(1.0f, core.assetManager.get("sfx/credits.mp3", Sound.class), songId, null);
+                core.actionsManager.addAction(new SoundFadeAction(1.0f, core.assetManager.get("sfx/credits.mp3", Sound.class), songId, null));
             }
         });
     }
 
     @Override
     public void actSub(float delta) {
-        if (soundFader != null) {
-            soundFader.update(delta);
-        }
+        
     }
 
     @Override
