@@ -26,7 +26,7 @@ package com.ray3k.jam.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.EntityManager;
@@ -45,7 +45,7 @@ public class LogoScreen extends JamScreen {
     public LogoScreen(final Core core) {
         this.core = core;
         entityManager = new EntityManager();
-        viewport = new ScreenViewport();
+        viewport = new FitViewport(800, 800);
         viewport.update(800, 800, true);
         viewport.apply();
         
