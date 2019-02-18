@@ -131,6 +131,26 @@ public class SpineMap {
     public Array<ImageNode> getImageNodes() {
         return imageNodes;
     }
+
+    public Array<BboxNode> getBboxNodes() {
+        return bboxNodes;
+    }
+
+    public Array<PointNode> getPointNodes() {
+        return pointNodes;
+    }
+
+    public Array<PathNode> getPathNodes() {
+        return pathNodes;
+    }
+
+    public Array<EventNode> getEventNodes() {
+        return eventNodes;
+    }
+
+    public Array<BoneNode> getBoneNodes() {
+        return boneNodes;
+    }
     
     public static class ImageNode {
         public String name;
