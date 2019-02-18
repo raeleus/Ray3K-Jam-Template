@@ -189,19 +189,17 @@ public class Core extends Game {
         }
         
         for (var pack : getInternalFiles("spine")) {
-            if (pack.isDirectory()) {
-                for (FileHandle atlasHandle : pack.list()) {
-                    if (atlasHandle.extension().toLowerCase(Locale.ROOT).equals("atlas")) {
-                        assetManager.load(atlasHandle.path(), TextureAtlas.class);
-                        
-                        SkeletonDataLoaderParameter parameter = new SkeletonDataLoaderParameter(atlasHandle.path());
-                        for (FileHandle fileHandle : pack.list()) {
-                            if (fileHandle.extension().toLowerCase(Locale.ROOT).equals("json")) {
-                                assetManager.load(fileHandle.path(), SkeletonData.class, parameter);
-                            }
+            for (var atlasHandle : getInternalFiles("spine/" + pack.name())) {
+                if (atlasHandle.extension().toLowerCase(Locale.ROOT).equals("atlas")) {
+                    assetManager.load(atlasHandle.path(), TextureAtlas.class);
+
+                    SkeletonDataLoaderParameter parameter = new SkeletonDataLoaderParameter(atlasHandle.path());
+                    for (FileHandle fileHandle : getInternalFiles("spine/" + pack.name())) {
+                        if (fileHandle.extension().toLowerCase(Locale.ROOT).equals("json")) {
+                            assetManager.load(fileHandle.path(), SkeletonData.class, parameter);
                         }
-                        break;
                     }
+                    break;
                 }
             }
         }
@@ -237,11 +235,9 @@ public class Core extends Game {
                         break;
                     }
                     final java.lang.String name = e.getName();
-                    if (name.matches(internalFolder + "\\/.+")) {
+                    if (name.matches(internalFolder.replace("/", "\\/") + "\\/[^\\/]+\\/?$")) {
                         com.badlogic.gdx.files.FileHandle fileHandle = Gdx.files.internal(name);
                         assetFiles.add(fileHandle);
-                        //internal files don't report if it's a directory, remove parent directories
-                        assetFiles.removeValue(fileHandle.parent(), false);
                     }
                 }
             } catch (IOException ex) {
