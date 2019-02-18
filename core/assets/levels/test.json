@@ -1,0 +1,76 @@
+{
+"skeleton": { "hash": "jNJC+UF9RGiVnmcuMlF/SPKbJDM", "spine": "3.7.89", "width": 300.57, "height": 384.75, "images": "./images/", "audio": "" },
+"bones": [
+	{ "name": "root" },
+	{
+		"name": "bone",
+		"parent": "root",
+		"length": 461.9,
+		"rotation": 53.13,
+		"x": 242,
+		"y": -247.5,
+		"scaleX": 1.305,
+		"scaleY": 0.83,
+		"shearX": 5.7,
+		"shearY": -2.1,
+		"color": "ff0000ff"
+	}
+],
+"slots": [
+	{ "name": "test|property", "bone": "root", "color": "ff0000ff", "attachment": "blue" },
+	{ "name": "red", "bone": "root", "attachment": "red" },
+	{ "name": "white", "bone": "root", "attachment": "white" },
+	{ "name": "pathtest", "bone": "root", "attachment": "pathtest" },
+	{ "name": "bboxtest", "bone": "root", "attachment": "bboxtest" },
+	{ "name": "pointtest", "bone": "root", "attachment": "pointtest" }
+],
+"skins": {
+	"default": {
+		"bboxtest": {
+			"bboxtest": {
+				"type": "boundingbox",
+				"vertexCount": 6,
+				"vertices": [ -148, 22.5, 97, -206.5, 368, 15.5, 465, 391.5, 167, 426.5, 40, 193.5 ],
+				"color": "2e7300ff"
+			}
+		},
+		"pathtest": {
+			"pathtest": {
+				"type": "path",
+				"closed": true,
+				"lengths": [ 570.94, 935.12, 1522.28, 2014.48 ],
+				"vertexCount": 12,
+				"vertices": [ 351.3, -212.1, 216, -121.5, 80.7, -30.9, 515.7, 201.51, 518, 329.5, 520.3, 457.49, 338.36, 496.55, 226, 435.5, 113.64, 374.45, -224.4, 93.2, -93, -2.5, 38.4, -98.2 ],
+				"color": "de750cff"
+			}
+		},
+		"pointtest": {
+			"pointtest": { "type": "point", "color": "f10000ff", "x": 402, "y": 127, "rotation": 80.43 }
+		},
+		"red": {
+			"red": { "x": 179, "y": 212.5, "width": 77, "height": 99 }
+		},
+		"test|property": {
+			"blue": {
+				"color": "1000ffff",
+				"x": 98,
+				"y": 89.5,
+				"scaleX": 1.834,
+				"scaleY": 1.29,
+				"rotation": 64.45,
+				"width": 77,
+				"height": 99
+			}
+		},
+		"white": {
+			"white": { "x": 272, "y": 333.5, "width": 77, "height": 99 }
+		}
+	}
+},
+"events": {
+	"eventexample": { "int": 14, "float": -13.8, "string": "banana" }
+},
+"animations": {
+	"animation": {}
+}
+}
