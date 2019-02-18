@@ -33,6 +33,7 @@ import java.util.zip.ZipInputStream;
 public class Core extends Game {
     public static final String GAME_NAME = "Ray3K Jam";
     public static final String VERSION = "1";
+    public static final String SETTINGS_SAVE_NAME = "settings";
     public static final String KEY_BINDINGS_SAVE_NAME = "keybindings";
     public static enum KeyAction {
         LEFT, RIGHT, UP, DOWN, SHOOT, BOMB, SHIELD;
@@ -85,7 +86,7 @@ public class Core extends Game {
     public TwoColorPolygonBatch batch;
     public AssetManager assetManager;
     public SkeletonRenderer skeletonRenderer;
-    public Preferences preferences;
+    public Settings settings;
     public DesktopWorker desktopWorker;
     public Actor actionsManager;
     
@@ -104,7 +105,8 @@ public class Core extends Game {
         batch = new TwoColorPolygonBatch();
         skeletonRenderer = new SkeletonRenderer();
         skeletonRenderer.setPremultipliedAlpha(true);
-        preferences = Gdx.app.getPreferences(GAME_NAME);
+        settings = new Settings(Gdx.files.local(SETTINGS_SAVE_NAME));
+        fillDefaultSettings();
         
         loadKeyBindings();
         
@@ -118,6 +120,42 @@ public class Core extends Game {
         
         handListener = new HandListener();
         ibeamListener = new IbeamListener();
+    }
+    
+    public void fillDefaultSettings() {
+        fillDefaultSetting("sfx", true);
+        fillDefaultSetting("bgm", true);
+        settings.flush();
+    }
+    
+    private void fillDefaultSetting(String key, boolean value) {
+        if (!settings.contains(key)) {
+            settings.putBoolean(key, value);
+        }
+    }
+    
+    private void fillDefaultSetting(String key, int value) {
+        if (!settings.contains(key)) {
+            settings.putInteger(key, value);
+        }
+    }
+    
+    private void fillDefaultSetting(String key, long value) {
+        if (!settings.contains(key)) {
+            settings.putLong(key, value);
+        }
+    }
+    
+    private void fillDefaultSetting(String key, float value) {
+        if (!settings.contains(key)) {
+            settings.putFloat(key, value);
+        }
+    }
+    
+    private void fillDefaultSetting(String key, String value) {
+        if (!settings.contains(key)) {
+            settings.putString(key, value);
+        }
     }
     
     @SuppressWarnings("unchecked")

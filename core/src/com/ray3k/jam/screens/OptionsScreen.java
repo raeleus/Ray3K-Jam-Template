@@ -78,13 +78,31 @@ public class OptionsScreen extends JamScreen {
         
         table.defaults().expandX().left();
         var checkBox = new CheckBox("SFX", skin);
+        checkBox.setChecked(core.settings.getBoolean("sfx"));
         table.add(checkBox);
         checkBox.addListener(core.handListener);
+        checkBox.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                var checkBox = (CheckBox) actor;
+                core.settings.putBoolean("sfx", checkBox.isChecked());
+                core.settings.flush();
+            }
+        });
         
         table.row();
         checkBox = new CheckBox("BGM", skin);
+        checkBox.setChecked(core.settings.getBoolean("bgm"));
         table.add(checkBox);
         checkBox.addListener(core.handListener);
+        checkBox.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                var checkBox = (CheckBox) actor;
+                core.settings.putBoolean("bgm", checkBox.isChecked());
+                core.settings.flush();
+            }
+        });
         
         table.row();
         table.defaults().reset();
