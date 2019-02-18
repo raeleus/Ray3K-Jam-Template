@@ -135,6 +135,7 @@ public class Core extends Game {
     private void addAssets() {
         assetManager = new AssetManager(new InternalFileHandleResolver());
         assetManager.setLoader(SkeletonData.class, new SkeletonDataLoader(assetManager.getFileHandleResolver()));
+        assetManager.setLoader(SpineMap.class, new SpineMapLoader(assetManager.getFileHandleResolver()));
         
         for (FileHandle fileHandle : getInternalFiles("ui")) {
             if (fileHandle.extension().toLowerCase(Locale.ROOT).equals("json")) {
@@ -173,6 +174,10 @@ public class Core extends Game {
         
         for (FileHandle fileHandle : getInternalFiles("sfx")) {
             assetManager.load(fileHandle.path(), Sound.class);
+        }
+        
+        for (var fileHandle : getInternalFiles("levels")) {
+            assetManager.load(fileHandle.path(), SpineMap.class);
         }
     }
     

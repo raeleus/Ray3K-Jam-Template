@@ -39,6 +39,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.JamScreen;
+import com.ray3k.jam.SpineMap;
 
 /**
  *
@@ -54,7 +55,7 @@ public class MenuScreen extends JamScreen {
     }
 
     @Override
-    public void show() {
+    public void show() {        
         this.skin = core.assetManager.get("ui/ui.json");
         
         stage = new Stage(new ScreenViewport());
