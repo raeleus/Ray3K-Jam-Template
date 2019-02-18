@@ -99,6 +99,8 @@ public class Core extends Game {
     
     @Override
     public void create() {
+        desktopWorker.closeSplash();
+        
         previous = TimeUtils.millis();
         lag = 0;
             
