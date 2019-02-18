@@ -39,7 +39,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.JamScreen;
-import com.ray3k.jam.SpineMap;
 
 /**
  *
@@ -79,6 +78,18 @@ public class MenuScreen extends JamScreen {
         var textButton = new TextButton("PLAY", skin);
         table.add(textButton);
         textButton.addListener(core.handListener);
+        textButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
+                root.addAction(Actions.sequence(Actions.fadeOut(.5f), new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        core.setScreen(new GameScreen(core));
+                        return true;
+                    }
+                }));
+            }
+        });
         
         table.row();
         textButton = new TextButton("OPTIONS", skin);
