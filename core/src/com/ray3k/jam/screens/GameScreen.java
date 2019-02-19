@@ -47,6 +47,7 @@ import com.ray3k.jam.JamScreen;
  * @author Raymond
  */
 public class GameScreen extends JamScreen {
+    public static GameScreen gameScreen;
     private Actor actionsManager;
     private EntityManager entityManager;
     private Stage stage;
@@ -59,6 +60,7 @@ public class GameScreen extends JamScreen {
 
     public GameScreen(Core core) {
         this.core = core;
+        gameScreen = this;
     }
     
     @Override
