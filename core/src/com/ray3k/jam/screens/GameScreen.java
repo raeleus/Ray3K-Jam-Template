@@ -34,11 +34,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.IntArray;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.EntityManager;
+import com.ray3k.jam.GameInputProcessor;
 import com.ray3k.jam.JamScreen;
 
 /**
@@ -54,6 +56,7 @@ public class GameScreen extends JamScreen {
     private OrthographicCamera gameCamera;
     private Viewport gameViewport;
     private InputMultiplexer inputMultiplexer;
+    private GameInputProcessor gameInputProcessor;
 
     public GameScreen(Core core) {
         this.core = core;
@@ -70,9 +73,11 @@ public class GameScreen extends JamScreen {
         gameCamera.position.set(400, 400, 0);
         gameCamera.update();
         inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(stage);
+        gameInputProcessor = new GameInputProcessor();
+        inputMultiplexer.addProcessor(gameInputProcessor);
         
         populateStage();
-        inputMultiplexer.addProcessor(stage);
         Gdx.input.setInputProcessor(inputMultiplexer);
     }
 
@@ -81,11 +86,12 @@ public class GameScreen extends JamScreen {
         actionsManager.act(delta);
         entityManager.act(delta);
         stage.act(delta);
-        
-        if (Gdx.input.isKeyJustPressed(Keys.F5)) {
+
+        if (gameInputProcessor.isKeyJustPressed(Keys.F5)) {
             dispose();
             show();
         }
+        gameInputProcessor.act(delta);
     }
 
     @Override
