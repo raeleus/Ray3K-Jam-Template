@@ -23,14 +23,42 @@
  */
 package com.ray3k.jam;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
+
 /**
  *
  * @author Raymond
  */
 public abstract class ParticleEntity extends Entity {
+    private ParticleEffect particleEffect;
 
-    public ParticleEntity(Core core) {
+    public ParticleEntity(Core core, String particlePath) {
         super(core);
+        
+        particleEffect = core.assetManager.get(particlePath, ParticleEffect.class);
     }
 
+    @Override
+    public void act(float delta) {
+        particleEffect.setPosition(getX(), getY());
+        particleEffect.update(delta);
+        
+        actSub(delta);
+    }
+    
+    public abstract void actSub(float delta);
+
+    @Override
+    public void draw(TwoColorPolygonBatch batch, float delta) {
+        particleEffect.draw(batch, delta);
+        
+        drawSub(batch, delta);
+    }
+    
+    public abstract void drawSub(TwoColorPolygonBatch batch, float delta);
+
+    public ParticleEffect getParticleEffect() {
+        return particleEffect;
+    }
 }

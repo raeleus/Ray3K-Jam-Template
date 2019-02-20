@@ -159,7 +159,7 @@ continuous: true
 aligned: false
 additive: false
 behind: false
-premultipliedAlpha: false
+premultipliedAlpha: true
 spriteMode: single
 - Image Paths -
 /E:/workspace/Particle Park/particles/images/pp_circle1.png

@@ -217,6 +217,21 @@ public class Core extends Game {
         for (var fileHandle : getInternalFiles("levels")) {
             assetManager.load(fileHandle.path(), SpineMap.class);
         }
+        
+        for (var pack : getInternalFiles("particles")) {
+            for (var descriptor : getInternalFiles("particles/" + pack.name())) {
+                if (descriptor.name().equals("descriptor")) {
+                    ParticleEffectParameter parameter = new ParticleEffectParameter();
+                    parameter.atlasFile = descriptor.readString();
+                    for (FileHandle fileHandle : getInternalFiles("particles/" + pack.name())) {
+                        if (fileHandle.extension().toLowerCase(Locale.ROOT).equals("p")) {
+                            assetManager.load(fileHandle.path(), ParticleEffect.class, parameter);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
     }
     
     private Array<FileHandle> getInternalFiles(String internalFolder) {
