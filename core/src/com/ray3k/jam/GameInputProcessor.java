@@ -76,6 +76,8 @@ public class GameInputProcessor implements InputProcessor {
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
+        mouseX = screenX;
+        mouseY = Gdx.graphics.getHeight() - screenY;
         return false;
     }
 
