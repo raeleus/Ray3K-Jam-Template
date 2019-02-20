@@ -94,7 +94,7 @@ public class LogoScreen extends JamScreen {
         core.assetManager.unload("sfx/shimmer.mp3");
         core.assetManager.unload("sfx/tick.mp3");
         core.assetManager.unload("spine/intro/logo.json");
-        core.assetManager.unload("spine/intro/textureatlas.atlas");
+        core.assetManager.unload("textures/logo.atlas");
         Gdx.input.setInputProcessor(null);
         
         Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);

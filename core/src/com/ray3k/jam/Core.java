@@ -3,12 +3,13 @@ package com.ray3k.jam;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.ParticleEffectLoader.ParticleEffectParameter;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -186,16 +187,15 @@ public class Core extends Game {
         
         for (FileHandle atlasHandle : getInternalFiles("textures")) {
             if (atlasHandle.extension().toLowerCase(Locale.ROOT).equals("atlas")) {
+                System.out.append(atlasHandle.path());
                 assetManager.load(atlasHandle.path(), TextureAtlas.class);
             }
         }
         
         for (var pack : getInternalFiles("spine")) {
-            for (var atlasHandle : getInternalFiles("spine/" + pack.name())) {
-                if (atlasHandle.extension().toLowerCase(Locale.ROOT).equals("atlas")) {
-                    assetManager.load(atlasHandle.path(), TextureAtlas.class);
-
-                    SkeletonDataLoaderParameter parameter = new SkeletonDataLoaderParameter(atlasHandle.path());
+            for (var descriptor : getInternalFiles("spine/" + pack.name())) {
+                if (descriptor.name().equals("descriptor")) {
+                    SkeletonDataLoaderParameter parameter = new SkeletonDataLoaderParameter(descriptor.readString());
                     for (FileHandle fileHandle : getInternalFiles("spine/" + pack.name())) {
                         if (fileHandle.extension().toLowerCase(Locale.ROOT).equals("json")) {
                             assetManager.load(fileHandle.path(), SkeletonData.class, parameter);
