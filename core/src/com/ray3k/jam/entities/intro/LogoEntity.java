@@ -114,6 +114,6 @@ public class LogoEntity extends SpineEntity {
     }
 
     @Override
-    public void collision(Collidable other) {
+    public void collisionSub(Collidable other) {
     }
 }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
@@ -90,6 +91,7 @@ public class Core extends Game {
     public Settings settings;
     public DesktopWorker desktopWorker;
     public Actor actionsManager;
+    public EarClippingTriangulator triangulator;
     
     private final static long MS_PER_UPDATE = 10;
     private long previous;
@@ -123,6 +125,7 @@ public class Core extends Game {
         
         handListener = new HandListener();
         ibeamListener = new IbeamListener();
+        triangulator = new EarClippingTriangulator();
     }
     
     public void fillDefaultSettings() {

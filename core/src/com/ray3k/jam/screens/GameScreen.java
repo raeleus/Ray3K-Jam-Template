@@ -43,7 +43,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 import com.ray3k.jam.Collidable;
 import com.ray3k.jam.Core;
-import com.ray3k.jam.EntityCollidable;
 import com.ray3k.jam.EntityManager;
 import com.ray3k.jam.GameInputProcessor;
 import com.ray3k.jam.JamScreen;
@@ -88,126 +87,6 @@ public class GameScreen extends JamScreen {
 
         populateStage();
         Gdx.input.setInputProcessor(inputMultiplexer);
-
-        var entity = new SpineEntity(core, "spine/collision-test/skeleton.json", "animation") {
-            @Override
-            public void create() {
-                setCheckingForCollisions(false);
-            }
-
-            @Override
-            public void actSub(float delta) {
-                setPosition(gameInputProcessor.mouseX, gameInputProcessor.mouseY);
-            }
-
-            @Override
-            public void drawSub(TwoColorPolygonBatch spriteBatch, float delta) {
-            }
-
-            @Override
-            public void actEnd(float delta) {
-            }
-
-            @Override
-            public void destroyEvent() {
-            }
-
-            @Override
-            public void collision(Collidable other) {
-                label.setColor(Color.GREEN);
-            }
-        };
-        entityManager.addEntity(entity);
-
-        for (int i = 0; i < 25; i++) {
-            var entity2 = new SpineEntity(core, "spine/collision-test/skeleton.json", "animation") {
-                @Override
-                public void create() {
-                    setCheckingForCollisions(true);
-                    setPosition(MathUtils.random(Gdx.graphics.getWidth()), MathUtils.random(Gdx.graphics.getHeight()));
-                }
-
-                @Override
-                public void actSub(float delta) {
-
-                }
-
-                @Override
-                public void drawSub(TwoColorPolygonBatch spriteBatch, float delta) {
-                }
-
-                @Override
-                public void actEnd(float delta) {
-                }
-
-                @Override
-                public void destroyEvent() {
-                }
-
-                @Override
-                public void collision(Collidable other) {
-                    
-                }
-            };
-            entityManager.addEntity(entity2);
-        }
-//        for (int i = 0; i < 150; i++) {
-//            var entity2 = new EntityCollidable(core) {
-//                @Override
-//                public void create() {
-//                    setCheckingForCollisions(true);
-//                    setPosition(MathUtils.random(Gdx.graphics.getWidth()), MathUtils.random(Gdx.graphics.getHeight()));
-//                    getAABB().width = 200;
-//                    getAABB().height = 200;
-//                }
-//
-//                @Override
-//                public void actSub(float delta) {
-//                }
-//                
-//                @Override
-//                public void actEnd(float delta) {
-//                }
-//                
-//                @Override
-//                public void draw(TwoColorPolygonBatch batch, float delta) {
-//                }
-//                
-//                @Override
-//                public void destroyEvent() {
-//                }
-//                
-//                @Override
-//                public void collision(Collidable other) {
-//                }
-//            };
-//            entityManager.addEntity(entity2);
-//        }
-//        for (int i = 0; i < 150; i++) {
-//            var entity2 = new Entity(core) {
-//                @Override
-//                public void create() {
-//                    setPosition(MathUtils.random(Gdx.graphics.getWidth()), MathUtils.random(Gdx.graphics.getHeight()));
-//                }
-//
-//                @Override
-//                public void act(float delta) {
-//                }
-//
-//                @Override
-//                public void actEnd(float delta) {
-//                }
-//
-//                @Override
-//                public void draw(TwoColorPolygonBatch batch, float delta) {
-//                }
-//
-//                @Override
-//                public void destroyEvent() {
-//                }
-//            };
-//            entityManager.addEntity(entity2);
-//        }
     }
 
     @Override

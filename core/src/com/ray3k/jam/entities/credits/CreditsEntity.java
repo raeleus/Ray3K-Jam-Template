@@ -112,6 +112,6 @@ public class CreditsEntity extends SpineEntity {
     }
 
     @Override
-    public void collision(Collidable other) {
+    public void collisionSub(Collidable other) {
     }
 }
