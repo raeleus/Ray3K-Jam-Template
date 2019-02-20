@@ -30,8 +30,6 @@ public class UnzipUtility {
         ZipEntry entry = zipIn.getNextEntry();
         // iterates over entries in the zip file
         while (entry != null) {
-            System.out.println(entry.isDirectory() + " " + entry.getName());
-            
             if (entry.getName().replaceAll("\\\\", "/").startsWith(zipFolder.replaceAll("\\\\", "/"))) {
                 String name = entry.getName();
                 name = name.replaceFirst(zipFolder + "(/|\\\\)?", "");
