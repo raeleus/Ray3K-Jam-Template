@@ -25,8 +25,11 @@
 package com.ray3k.jam;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 
 public class Maths {
+    public static Vector2 TEMP = new Vector2();
+    
     public static float approach(float start, float target, float increment) {
         increment = Math.abs(increment);
         if (start < target) {
