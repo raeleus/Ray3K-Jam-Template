@@ -23,6 +23,8 @@
  */
 package com.ray3k.jam;
 
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
 import com.esotericsoftware.spine.Skeleton;
@@ -30,15 +32,21 @@ import com.esotericsoftware.spine.SkeletonBounds;
 import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 
-public abstract class SpineEntity extends Entity {
+public abstract class SpineEntity extends Entity implements Collidable {
 
     private Skeleton skeleton;
     private AnimationState animationState;
     private SkeletonBounds skeletonBounds;
+    private boolean checkingForCollisions;
+    private Rectangle aabb;
+    private Array<Collidable> collidableList;
 
     public SpineEntity(Core core, String skeletonDataPath, String animation) {
         super(core);
         setSkeletonData(skeletonDataPath, animation);
+        checkingForCollisions = false;
+        aabb = new Rectangle();
+        collidableList = new Array<>();
     }
 
     public void setSkeletonData(String skeletonDataPath, String animation) {
@@ -89,5 +97,32 @@ public abstract class SpineEntity extends Entity {
 
     public SkeletonBounds getSkeletonBounds() {
         return skeletonBounds;
+    }
+
+    @Override
+    public boolean isCheckingForCollisions() {
+        return checkingForCollisions;
+    }
+
+    @Override
+    public void setCheckingForCollisions(boolean checkingForCollisions) {
+        this.checkingForCollisions = checkingForCollisions;
+    }
+    
+    @Override
+    public Rectangle getAABB() {
+        aabb.set(skeletonBounds.getMinX(), skeletonBounds.getMinY(), skeletonBounds.getWidth(), skeletonBounds.getHeight());
+        return aabb;
+    }
+
+    @Override
+    public void setCollidableList(Array<Collidable> collidableList) {
+        this.collidableList.clear();
+        this.collidableList.addAll(collidableList);
+    }
+
+    @Override
+    public Array<Collidable> getCollidableList() {
+        return collidableList;
     }
 }

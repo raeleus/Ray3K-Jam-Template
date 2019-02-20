@@ -1,6 +1,6 @@
 
 texture.png
-size: 64,64
+size: 256,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -9,5 +9,12 @@ pp_circle1
   xy: 1, 1
   size: 60, 60
   orig: 60, 60
+  offset: 0, 0
+  index: -1
+white
+  rotate: false
+  xy: 1, 64
+  size: 77, 99
+  orig: 77, 99
   offset: 0, 0
   index: -1

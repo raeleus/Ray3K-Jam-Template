@@ -1,0 +1,27 @@
+{
+"skeleton": { "hash": "oLxtzx/5Wt6pf2UEi10JSn8Wwvc", "spine": "3.7.91", "width": 77, "height": 99, "images": "../levels/images/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "white", "bone": "root", "attachment": "white" },
+	{ "name": "bbox", "bone": "root", "attachment": "bbox" }
+],
+"skins": {
+	"default": {
+		"bbox": {
+			"bbox": {
+				"type": "boundingbox",
+				"vertexCount": 8,
+				"vertices": [ -25.83, -53.39, -25.01, 45.34, 23.4, 44.8, 49.24, 25.49, 48.7, -7.97, 32.38, -21.03, -8.15, -22.66, -9.24, -53.12 ]
+			}
+		},
+		"white": {
+			"white": { "x": 13, "y": -4.5, "width": 77, "height": 99 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

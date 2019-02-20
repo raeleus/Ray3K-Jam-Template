@@ -29,6 +29,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.Event;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
+import com.ray3k.jam.Collidable;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.SoundFadeAction;
 import com.ray3k.jam.SpineEntity;
@@ -110,5 +111,9 @@ public class LogoEntity extends SpineEntity {
 
     @Override
     public void destroyEvent() {
+    }
+
+    @Override
+    public void collision(Collidable other) {
     }
 }

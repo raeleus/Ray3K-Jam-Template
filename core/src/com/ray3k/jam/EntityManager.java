@@ -30,13 +30,19 @@ import java.util.Iterator;
 
 public class EntityManager {
     private final Array<Entity> entities;
+    private final Array<Collidable> collidableList;
     
     public EntityManager() {
         entities = new Array<>();
+        collidableList = new Array<>();
     }
     
     public void addEntity(Entity entity) {
         entities.add(entity);
+        if (entity instanceof Collidable) {
+            collidableList.add((Collidable) entity);
+        }
+        entity.setEntityManager(this);
         entity.create();
     }
     
@@ -59,6 +65,30 @@ public class EntityManager {
                 entity.act(delta);
             } else {
                 iter.remove();
+            }
+        }
+        
+        //update collision lists
+        var collidableIter = collidableList.iterator();
+        while (collidableIter.hasNext()) {
+            var collidable = collidableIter.next();
+            collidable.setCollidableList(collidableList);
+            collidable.getCollidableList().removeValue(collidable, false);
+        }
+        
+        //check collisions
+        collidableIter = collidableList.iterator();
+        while (collidableIter.hasNext()) {
+            var collidable = collidableIter.next();
+            
+            for (var other : collidable.getCollidableList()) {                
+                if (collidable.getAABB().overlaps(other.getAABB())) {
+                    collidable.collision(other);
+                    other.collision(collidable);
+
+                    collidable.getCollidableList().removeValue(other, false);
+                    other.getCollidableList().removeValue(collidable, false);
+                }
             }
         }
         
@@ -130,5 +160,17 @@ public class EntityManager {
         }
         
         return list;
+    }
+    
+    public void addCollidable(Collidable collidable) {
+        collidableList.add(collidable);
+    }
+    
+    public void removeCollidable(Collidable collidable) {
+        collidableList.removeValue(collidable, false);
+    }
+
+    public Array<Collidable> getCollidables() {
+        return collidableList;
     }
 }

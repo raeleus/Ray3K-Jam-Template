@@ -25,11 +25,14 @@ package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -37,16 +40,21 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
+import com.ray3k.jam.Collidable;
 import com.ray3k.jam.Core;
+import com.ray3k.jam.EntityCollidable;
 import com.ray3k.jam.EntityManager;
 import com.ray3k.jam.GameInputProcessor;
 import com.ray3k.jam.JamScreen;
+import com.ray3k.jam.SpineEntity;
 
 /**
  *
  * @author Raymond
  */
 public class GameScreen extends JamScreen {
+
     public static GameScreen gameScreen;
     private Actor actionsManager;
     private EntityManager entityManager;
@@ -62,7 +70,7 @@ public class GameScreen extends JamScreen {
         this.core = core;
         gameScreen = this;
     }
-    
+
     @Override
     public void show() {
         actionsManager = new Actor();
@@ -77,13 +85,136 @@ public class GameScreen extends JamScreen {
         inputMultiplexer.addProcessor(stage);
         gameInputProcessor = new GameInputProcessor();
         inputMultiplexer.addProcessor(gameInputProcessor);
-        
+
         populateStage();
         Gdx.input.setInputProcessor(inputMultiplexer);
+
+        var entity = new SpineEntity(core, "spine/collision-test/skeleton.json", "animation") {
+            @Override
+            public void create() {
+                setCheckingForCollisions(false);
+            }
+
+            @Override
+            public void actSub(float delta) {
+                setPosition(gameInputProcessor.mouseX, gameInputProcessor.mouseY);
+            }
+
+            @Override
+            public void drawSub(TwoColorPolygonBatch spriteBatch, float delta) {
+            }
+
+            @Override
+            public void actEnd(float delta) {
+            }
+
+            @Override
+            public void destroyEvent() {
+            }
+
+            @Override
+            public void collision(Collidable other) {
+                label.setColor(Color.GREEN);
+            }
+        };
+        entityManager.addEntity(entity);
+
+        for (int i = 0; i < 25; i++) {
+            var entity2 = new SpineEntity(core, "spine/collision-test/skeleton.json", "animation") {
+                @Override
+                public void create() {
+                    setCheckingForCollisions(true);
+                    setPosition(MathUtils.random(Gdx.graphics.getWidth()), MathUtils.random(Gdx.graphics.getHeight()));
+                }
+
+                @Override
+                public void actSub(float delta) {
+
+                }
+
+                @Override
+                public void drawSub(TwoColorPolygonBatch spriteBatch, float delta) {
+                }
+
+                @Override
+                public void actEnd(float delta) {
+                }
+
+                @Override
+                public void destroyEvent() {
+                }
+
+                @Override
+                public void collision(Collidable other) {
+                    
+                }
+            };
+            entityManager.addEntity(entity2);
+        }
+//        for (int i = 0; i < 150; i++) {
+//            var entity2 = new EntityCollidable(core) {
+//                @Override
+//                public void create() {
+//                    setCheckingForCollisions(true);
+//                    setPosition(MathUtils.random(Gdx.graphics.getWidth()), MathUtils.random(Gdx.graphics.getHeight()));
+//                    getAABB().width = 200;
+//                    getAABB().height = 200;
+//                }
+//
+//                @Override
+//                public void actSub(float delta) {
+//                }
+//                
+//                @Override
+//                public void actEnd(float delta) {
+//                }
+//                
+//                @Override
+//                public void draw(TwoColorPolygonBatch batch, float delta) {
+//                }
+//                
+//                @Override
+//                public void destroyEvent() {
+//                }
+//                
+//                @Override
+//                public void collision(Collidable other) {
+//                }
+//            };
+//            entityManager.addEntity(entity2);
+//        }
+//        for (int i = 0; i < 150; i++) {
+//            var entity2 = new Entity(core) {
+//                @Override
+//                public void create() {
+//                    setPosition(MathUtils.random(Gdx.graphics.getWidth()), MathUtils.random(Gdx.graphics.getHeight()));
+//                }
+//
+//                @Override
+//                public void act(float delta) {
+//                }
+//
+//                @Override
+//                public void actEnd(float delta) {
+//                }
+//
+//                @Override
+//                public void draw(TwoColorPolygonBatch batch, float delta) {
+//                }
+//
+//                @Override
+//                public void destroyEvent() {
+//                }
+//            };
+//            entityManager.addEntity(entity2);
+//        }
     }
 
     @Override
     public void act(float delta) {
+        label.setText(Integer.toString(Gdx.graphics.getFramesPerSecond()));
+        label.setColor(Color.RED);
+
         actionsManager.act(delta);
         entityManager.act(delta);
         stage.act(delta);
@@ -99,18 +230,18 @@ public class GameScreen extends JamScreen {
     public void draw(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        
+
         core.batch.setProjectionMatrix(gameCamera.combined);
         core.batch.begin();
         gameViewport.apply();
         core.batch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
         entityManager.draw(core.batch, delta);
         core.batch.end();
-        
+
         core.batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         stage.draw();
     }
-    
+
     @Override
     public void resize(int width, int height) {
         gameViewport.update(width, height);
@@ -136,12 +267,14 @@ public class GameScreen extends JamScreen {
     public void dispose() {
         stage.dispose();
     }
-   
+
+    private Label label;
+
     private void populateStage() {
         var root = new Table();
         root.setFillParent(true);
         stage.addActor(root);
-        
+
         var textButton = new TextButton("test", skin);
         root.add(textButton).expand().bottom().right();
         textButton.addListener(core.handListener);
@@ -151,5 +284,9 @@ public class GameScreen extends JamScreen {
                 System.out.println("it works");
             }
         });
+
+        label = new Label("", skin);
+        label.setColor(Color.RED);
+        root.add(label).bottom().pad(100);
     }
 }

@@ -35,6 +35,7 @@ public abstract class Entity {
     private int depth;
     private boolean persistent;
     protected Core core;
+    protected EntityManager entityManager;
 
     public Entity(Core core) {
         this.core = core;
@@ -213,6 +214,12 @@ public abstract class Entity {
         
         return reachedDestination;
     }
-    
-    
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 }
