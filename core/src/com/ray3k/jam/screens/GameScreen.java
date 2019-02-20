@@ -25,14 +25,11 @@ package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -40,13 +37,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
-import com.ray3k.jam.Collidable;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.EntityManager;
 import com.ray3k.jam.GameInputProcessor;
 import com.ray3k.jam.JamScreen;
-import com.ray3k.jam.SpineEntity;
 
 /**
  *
@@ -91,9 +85,6 @@ public class GameScreen extends JamScreen {
 
     @Override
     public void act(float delta) {
-        label.setText(Integer.toString(Gdx.graphics.getFramesPerSecond()));
-        label.setColor(Color.RED);
-
         actionsManager.act(delta);
         entityManager.act(delta);
         stage.act(delta);
@@ -147,8 +138,6 @@ public class GameScreen extends JamScreen {
         stage.dispose();
     }
 
-    private Label label;
-
     private void populateStage() {
         var root = new Table();
         root.setFillParent(true);
@@ -163,9 +152,5 @@ public class GameScreen extends JamScreen {
                 System.out.println("it works");
             }
         });
-
-        label = new Label("", skin);
-        label.setColor(Color.RED);
-        root.add(label).bottom().pad(100);
     }
 }
