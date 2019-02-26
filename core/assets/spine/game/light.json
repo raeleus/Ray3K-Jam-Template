@@ -1,0 +1,19 @@
+{
+"skeleton": { "hash": "N0Ic0R/WWj4Sf7D5op3HVWP0lC8", "spine": "3.7.91", "width": 1299, "height": 1493, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "light", "bone": "root", "attachment": "light" }
+],
+"skins": {
+	"default": {
+		"light": {
+			"light": { "x": -2.47, "y": 194.23, "width": 1299, "height": 1493 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

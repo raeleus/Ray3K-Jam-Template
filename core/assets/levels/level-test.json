@@ -1,0 +1,55 @@
+{
+"skeleton": { "hash": "I+eD+PqRL+Cnvq5Ro2mw8MnCtDg", "spine": "3.7.91", "width": 9244.4, "height": 2657.94, "images": "../map images/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "wall", "bone": "root", "attachment": "wall" },
+	{ "name": "wall2", "bone": "root", "attachment": "wall" },
+	{ "name": "wall3", "bone": "root", "attachment": "wall" },
+	{ "name": "wall4", "bone": "root", "attachment": "wall" },
+	{ "name": "wall5", "bone": "root", "attachment": "wall" },
+	{ "name": "wall6", "bone": "root", "attachment": "wall" },
+	{ "name": "wall7", "bone": "root", "attachment": "wall" },
+	{ "name": "door", "bone": "root", "attachment": "door" },
+	{ "name": "player", "bone": "root", "attachment": "player" },
+	{ "name": "doctor", "bone": "root", "attachment": "doctor" }
+],
+"skins": {
+	"default": {
+		"doctor": {
+			"doctor": { "x": 2347.42, "y": 634.98, "scaleX": -1, "width": 582, "height": 822 }
+		},
+		"door": {
+			"door": { "x": 8353.7, "y": 653.54, "width": 912, "height": 1337 }
+		},
+		"player": {
+			"player": { "x": 1258.42, "y": 616.98, "width": 581, "height": 825 }
+		},
+		"wall": {
+			"wall": { "x": 654.54, "y": 1316.32, "width": 1323, "height": 2624 }
+		},
+		"wall2": {
+			"wall": { "x": 1972.79, "y": 1311.04, "width": 1323, "height": 2624 }
+		},
+		"wall3": {
+			"wall": { "x": 3280.5, "y": 1305.77, "width": 1323, "height": 2624 }
+		},
+		"wall4": {
+			"wall": { "x": 4588.2, "y": 1305.77, "width": 1323, "height": 2624 }
+		},
+		"wall5": {
+			"wall": { "x": 5915.63, "y": 1300.5, "width": 1323, "height": 2624 }
+		},
+		"wall6": {
+			"wall": { "x": 7253.23, "y": 1282.38, "width": 1323, "height": 2624 }
+		},
+		"wall7": {
+			"wall": { "x": 8575.94, "y": 1298.2, "width": 1323, "height": 2624 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

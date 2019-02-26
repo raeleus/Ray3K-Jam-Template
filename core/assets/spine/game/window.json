@@ -1,0 +1,19 @@
+{
+"skeleton": { "hash": "pzA7TNNT83Ycckk/HufBt/4g7rY", "spine": "3.7.91", "width": 2314, "height": 1266, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "window", "bone": "root", "attachment": "window" }
+],
+"skins": {
+	"default": {
+		"window": {
+			"window": { "y": 633, "width": 2314, "height": 1266 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

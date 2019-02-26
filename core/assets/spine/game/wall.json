@@ -1,0 +1,19 @@
+{
+"skeleton": { "hash": "C8YwdlBsMCb5g7wwSl80D4nJzR8", "spine": "3.7.91", "width": 1323, "height": 2624, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "wall", "bone": "root", "attachment": "wall" }
+],
+"skins": {
+	"default": {
+		"wall": {
+			"wall": { "x": 661.5, "y": 1312, "width": 1323, "height": 2624 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

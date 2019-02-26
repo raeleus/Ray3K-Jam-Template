@@ -1,0 +1,19 @@
+{
+"skeleton": { "hash": "yAyVJ2aDG4jSirpK23WryNZCSwM", "spine": "3.7.91", "width": 267, "height": 207, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "shirt", "bone": "root", "attachment": "shirt" }
+],
+"skins": {
+	"default": {
+		"shirt": {
+			"shirt": { "width": 267, "height": 207 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

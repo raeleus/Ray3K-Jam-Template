@@ -1,0 +1,30 @@
+{
+"skeleton": { "hash": "4bRw4asdxo9zqjEreErXG5LNFyQ", "spine": "3.7.91", "width": 912, "height": 1337, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "door", "bone": "root", "attachment": "door" }
+],
+"skins": {
+	"default": {},
+	"blasted": {
+		"door": {
+			"door": { "name": "door-blasted", "y": 667.26, "width": 912, "height": 1337 }
+		}
+	},
+	"door": {
+		"door": {
+			"door": { "y": 667.26, "width": 912, "height": 1337 }
+		}
+	},
+	"open": {
+		"door": {
+			"door": { "name": "door-open", "y": 667.26, "width": 912, "height": 1337 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

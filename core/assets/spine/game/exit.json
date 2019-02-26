@@ -1,0 +1,19 @@
+{
+"skeleton": { "hash": "u6Ly8GAN8EglPxfVbc6/6vWIEno", "spine": "3.7.91", "width": 640, "height": 286, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "exit", "bone": "root", "attachment": "exit" }
+],
+"skins": {
+	"default": {
+		"exit": {
+			"exit": { "width": 640, "height": 286 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

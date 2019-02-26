@@ -1,0 +1,19 @@
+{
+"skeleton": { "hash": "p3I42WpXDjkxLwZhY1XxBPVLCAg", "spine": "3.7.91", "width": 386, "height": 519, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "chair", "bone": "root", "attachment": "chair" }
+],
+"skins": {
+	"default": {
+		"chair": {
+			"chair": { "x": -15.28, "y": 88.04, "width": 386, "height": 519 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

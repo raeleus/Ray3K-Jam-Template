@@ -1,20 +1,461 @@
 
 texture.png
-size: 256,256
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-pp_circle1
+blood
   rotate: false
-  xy: 1, 1
-  size: 60, 60
-  orig: 60, 60
+  xy: 2, 238
+  size: 675, 366
+  orig: 675, 366
   offset: 0, 0
   index: -1
-white
+c4
   rotate: false
-  xy: 1, 64
-  size: 77, 99
-  orig: 77, 99
+  xy: 2891, 1500
+  size: 208, 78
+  orig: 208, 78
+  offset: 0, 0
+  index: -1
+chair
+  rotate: true
+  xy: 2481, 630
+  size: 193, 260
+  orig: 193, 260
+  offset: 0, 0
+  index: -1
+column
+  rotate: false
+  xy: 2, 608
+  size: 598, 1430
+  orig: 598, 1430
+  offset: 0, 0
+  index: -1
+cuff left
+  rotate: false
+  xy: 1969, 708
+  size: 38, 39
+  orig: 38, 39
+  offset: 0, 0
+  index: -1
+cuff right
+  rotate: false
+  xy: 2431, 1414
+  size: 38, 39
+  orig: 38, 39
+  offset: 0, 0
+  index: -1
+doctor-arm-left
+  rotate: false
+  xy: 2906, 1145
+  size: 142, 47
+  orig: 142, 47
+  offset: 0, 0
+  index: -1
+doctor-arm-right
+  rotate: true
+  xy: 4045, 1776
+  size: 116, 47
+  orig: 116, 47
+  offset: 0, 0
+  index: -1
+doctor-body
+  rotate: true
+  xy: 3224, 1481
+  size: 97, 112
+  orig: 97, 112
+  offset: 0, 0
+  index: -1
+doctor-head
+  rotate: false
+  xy: 311, 29
+  size: 272, 205
+  orig: 272, 205
+  offset: 0, 0
+  index: -1
+doctor-leg-left
+  rotate: true
+  xy: 1513, 695
+  size: 52, 118
+  orig: 52, 118
+  offset: 0, 0
+  index: -1
+doctor-leg-right
+  rotate: false
+  xy: 4052, 1513
+  size: 41, 97
+  orig: 41, 97
+  offset: 0, 0
+  index: -1
+door
+  rotate: true
+  xy: 3104, 1582
+  size: 456, 669
+  orig: 456, 669
+  offset: 0, 0
+  index: -1
+door-blasted
+  rotate: false
+  xy: 2021, 732
+  size: 456, 669
+  orig: 456, 669
+  offset: 0, 0
+  index: -1
+door-open
+  rotate: true
+  xy: 2431, 1582
+  size: 456, 669
+  orig: 456, 669
+  offset: 0, 0
+  index: -1
+exit
+  rotate: true
+  xy: 2759, 1133
+  size: 320, 143
+  orig: 320, 143
+  offset: 0, 0
+  index: -1
+eye-left
+  rotate: false
+  xy: 669, 150
+  size: 52, 76
+  orig: 52, 76
+  offset: 0, 0
+  index: -1
+eye-left-blink
+  rotate: false
+  xy: 739, 494
+  size: 52, 76
+  orig: 52, 76
+  offset: 0, 0
+  index: -1
+eye-right
+  rotate: false
+  xy: 681, 230
+  size: 52, 76
+  orig: 52, 76
+  offset: 0, 0
+  index: -1
+eye-right-blink
+  rotate: false
+  xy: 739, 414
+  size: 52, 76
+  orig: 52, 76
+  offset: 0, 0
+  index: -1
+eye-worried-left
+  rotate: false
+  xy: 681, 550
+  size: 54, 76
+  orig: 54, 76
+  offset: 0, 0
+  index: -1
+eye-worried-left-blink
+  rotate: false
+  xy: 681, 390
+  size: 54, 76
+  orig: 54, 76
+  offset: 0, 0
+  index: -1
+eye-worried-right
+  rotate: false
+  xy: 681, 470
+  size: 54, 76
+  orig: 54, 76
+  offset: 0, 0
+  index: -1
+eye-worried-right-blink
+  rotate: false
+  xy: 681, 310
+  size: 54, 76
+  orig: 54, 76
+  offset: 0, 0
+  index: -1
+grenade
+  rotate: false
+  xy: 3686, 1488
+  size: 63, 90
+  orig: 63, 90
+  offset: 0, 0
+  index: -1
+knife
+  rotate: true
+  xy: 587, 44
+  size: 190, 37
+  orig: 190, 37
+  offset: 0, 0
+  index: -1
+light
+  rotate: true
+  xy: 1270, 751
+  size: 650, 747
+  orig: 650, 747
+  offset: 0, 0
+  index: -1
+officer-body
+  rotate: true
+  xy: 3340, 1481
+  size: 97, 112
+  orig: 97, 112
+  offset: 0, 0
+  index: -1
+officer-head
+  rotate: true
+  xy: 3777, 1682
+  size: 356, 264
+  orig: 356, 264
+  offset: 0, 0
+  index: -1
+particle_0
+  rotate: false
+  xy: 2906, 1196
+  size: 148, 148
+  orig: 148, 148
+  offset: 0, 0
+  index: -1
+particle_1
+  rotate: false
+  xy: 755, 574
+  size: 148, 148
+  orig: 148, 148
+  offset: 0, 0
+  index: -1
+particle_2
+  rotate: false
+  xy: 2906, 1348
+  size: 148, 148
+  orig: 148, 148
+  offset: 0, 0
+  index: -1
+particle_3
+  rotate: false
+  xy: 907, 574
+  size: 148, 148
+  orig: 148, 148
+  offset: 0, 0
+  index: -1
+pistol
+  rotate: false
+  xy: 604, 630
+  size: 147, 92
+  orig: 147, 92
+  offset: 0, 0
+  index: -1
+player-arm-left
+  rotate: true
+  xy: 3058, 1354
+  size: 142, 36
+  orig: 142, 36
+  offset: 0, 0
+  index: -1
+player-arm-left-clothed
+  rotate: true
+  xy: 628, 92
+  size: 142, 37
+  orig: 142, 37
+  offset: 0, 0
+  index: -1
+player-arm-right
+  rotate: false
+  xy: 1059, 581
+  size: 116, 33
+  orig: 116, 33
+  offset: 0, 0
+  index: -1
+player-arm-right-clothed
+  rotate: true
+  xy: 3058, 1234
+  size: 116, 34
+  orig: 116, 34
+  offset: 0, 0
+  index: -1
+player-body
+  rotate: true
+  xy: 3571, 1481
+  size: 97, 111
+  orig: 97, 111
+  offset: 0, 0
+  index: -1
+player-body-clothed
+  rotate: false
+  xy: 3098, 1361
+  size: 97, 111
+  orig: 97, 111
+  offset: 0, 0
+  index: -1
+player-bra
+  rotate: false
+  xy: 1270, 678
+  size: 117, 69
+  orig: 117, 69
+  offset: 0, 0
+  index: -1
+player-bra-armor
+  rotate: false
+  xy: 3103, 1476
+  size: 117, 102
+  orig: 117, 102
+  offset: 0, 0
+  index: -1
+player-bra-clothed
+  rotate: true
+  xy: 1197, 605
+  size: 117, 69
+  orig: 117, 69
+  offset: 0, 0
+  index: -1
+player-foot-left
+  rotate: true
+  xy: 795, 421
+  size: 84, 26
+  orig: 84, 26
+  offset: 0, 0
+  index: -1
+player-foot-right
+  rotate: false
+  xy: 311, 3
+  size: 73, 22
+  orig: 73, 22
+  offset: 0, 0
+  index: -1
+player-hair
+  rotate: false
+  xy: 2481, 1131
+  size: 274, 322
+  orig: 274, 322
+  offset: 0, 0
+  index: -1
+player-hand-left
+  rotate: false
+  xy: 795, 509
+  size: 66, 61
+  orig: 66, 61
+  offset: 0, 0
+  index: -1
+player-hand-right
+  rotate: true
+  xy: 4045, 1718
+  size: 54, 49
+  orig: 54, 49
+  offset: 0, 0
+  index: -1
+player-head
+  rotate: false
+  xy: 3777, 1524
+  size: 271, 154
+  orig: 271, 154
+  offset: 0, 0
+  index: -1
+player-leg-left
+  rotate: true
+  xy: 1635, 697
+  size: 50, 119
+  orig: 50, 119
+  offset: 0, 0
+  index: -1
+player-leg-right
+  rotate: false
+  xy: 4052, 1614
+  size: 42, 100
+  orig: 42, 100
+  offset: 0, 0
+  index: -1
+rifle
+  rotate: false
+  xy: 2431, 1457
+  size: 456, 121
+  orig: 456, 121
+  offset: 0, 0
+  index: -1
+shirt
+  rotate: false
+  xy: 1059, 618
+  size: 134, 104
+  orig: 134, 104
+  offset: 0, 0
+  index: -1
+soldier-arm-left
+  rotate: true
+  xy: 4045, 1896
+  size: 142, 47
+  orig: 142, 47
+  offset: 0, 0
+  index: -1
+soldier-arm-right
+  rotate: false
+  xy: 1270, 627
+  size: 116, 47
+  orig: 116, 47
+  offset: 0, 0
+  index: -1
+soldier-body
+  rotate: true
+  xy: 3456, 1481
+  size: 97, 111
+  orig: 97, 111
+  offset: 0, 0
+  index: -1
+soldier-head
+  rotate: false
+  xy: 2, 2
+  size: 305, 232
+  orig: 305, 232
+  offset: 0, 0
+  index: -1
+soldier-leg-left
+  rotate: true
+  xy: 1391, 695
+  size: 52, 118
+  orig: 52, 118
+  offset: 0, 0
+  index: -1
+soldier-leg-right
+  rotate: true
+  xy: 1868, 706
+  size: 41, 97
+  orig: 41, 97
+  offset: 0, 0
+  index: -1
+tape
+  rotate: true
+  xy: 739, 331
+  size: 79, 33
+  orig: 79, 33
+  offset: 0, 0
+  index: -1
+tray
+  rotate: false
+  xy: 2481, 827
+  size: 266, 300
+  orig: 266, 300
+  offset: 0, 0
+  index: -1
+trigger
+  rotate: true
+  xy: 1758, 714
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+wall
+  rotate: false
+  xy: 604, 726
+  size: 662, 1312
+  orig: 662, 1312
+  offset: 0, 0
+  index: -1
+window
+  rotate: false
+  xy: 1270, 1405
+  size: 1157, 633
+  orig: 1157, 633
+  offset: 0, 0
+  index: -1
+wound
+  rotate: true
+  xy: 3753, 1570
+  size: 8, 20
+  orig: 8, 20
   offset: 0, 0
   index: -1

@@ -1,0 +1,19 @@
+{
+"skeleton": { "hash": "h0fVDU7mFlXeSL9k9ZGTSxbhoi0", "spine": "3.7.91", "width": 531, "height": 600, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "tray", "bone": "root", "attachment": "tray" }
+],
+"skins": {
+	"default": {
+		"tray": {
+			"tray": { "x": 26.24, "y": 95.15, "width": 531, "height": 600 }
+		}
+	}
+},
+"animations": {
+	"animation": {}
+}
+}

@@ -1,0 +1,34 @@
+{
+"skeleton": { "hash": "YmS4xEXJ+HTSoBxvDzFezJr3OyE", "spine": "3.7.91", "width": 1350, "height": 731, "images": "../graphics output/", "audio": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "blood", "parent": "root", "length": 578.06, "rotation": 0.65, "x": -26.61, "y": 14.22 }
+],
+"slots": [
+	{ "name": "blood", "bone": "blood", "attachment": "blood" }
+],
+"skins": {
+	"default": {
+		"blood": {
+			"blood": { "x": 26.44, "y": -14.53, "rotation": -0.65, "width": 1350, "height": 731 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"bones": {
+			"blood": {
+				"scale": [
+					{
+						"time": 0,
+						"x": 0,
+						"y": 0,
+						"curve": [ 0.116, 0.31, 0.322, 0.78 ]
+					},
+					{ "time": 5.3333, "x": 1, "y": 1 }
+				]
+			}
+		}
+	}
+}
+}
