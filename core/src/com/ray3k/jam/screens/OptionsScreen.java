@@ -138,7 +138,7 @@ public class OptionsScreen extends JamScreen {
 
     @Override
     public void act(float delta) {
-        stage.act();
+        stage.act(delta);
         
         if (Gdx.input.isKeyJustPressed(Keys.F5)) {
             dispose();
