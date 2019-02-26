@@ -102,7 +102,9 @@ public class Core extends Game {
     
     @Override
     public void create() {
-        desktopWorker.closeSplash();
+        if (Utils.isWindows()) {
+            desktopWorker.closeSplash();
+        }
         
         previous = TimeUtils.millis();
         lag = 0;

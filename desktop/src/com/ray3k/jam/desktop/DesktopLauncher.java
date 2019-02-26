@@ -28,18 +28,24 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Input;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.DesktopWorker;
+import com.ray3k.jam.Utils;
 import java.awt.SplashScreen;
 
 public class DesktopLauncher implements DesktopWorker {
 
     public static void main(String[] arg) {
+        DesktopLauncher desktopLauncher = new DesktopLauncher();
+        if (!Utils.isWindows()) {
+            desktopLauncher.closeSplash();
+        }
+        
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setWindowedMode(800, 800);
         config.setWindowIcon("icons/icon_16x16.png", "icons/icon_32x32.png", "icons/icon_48x48.png");
         config.useVsync(false);
         config.setTitle("Please, Don't Go Back");
         Core core = new Core();
-        core.desktopWorker = new DesktopLauncher();
+        core.desktopWorker = desktopLauncher;
         new Lwjgl3Application(core, config);
     }
 
