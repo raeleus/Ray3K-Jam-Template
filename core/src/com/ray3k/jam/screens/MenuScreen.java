@@ -67,14 +67,14 @@ public class MenuScreen extends JamScreen {
         root.setColor(1, 1, 1, 0);
         root.addAction(Actions.fadeIn(.5f));
         
-        var label = new Label("Game Title", skin);
+        var label = new Label("Please, Don't Go Back", skin, "title");
         root.add(label);
         
         root.row();
         var table = new Table();
         root.add(table);
         
-        table.defaults().growX();
+        table.defaults().growX().space(10);
         var textButton = new TextButton("PLAY", skin);
         table.add(textButton);
         textButton.addListener(core.handListener);
