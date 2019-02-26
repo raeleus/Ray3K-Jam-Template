@@ -141,7 +141,7 @@ task createMacApp(type: Exec, dependsOn: [dist]) {
     }
 }
 
-task updateAndCreateZip(type: Zip, dependsOn: [dist]) {
+task createZip(type: Zip, dependsOn: [dist]) {
     doFirst {
         copy {
             from "${buildDir}/libs"
