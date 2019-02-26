@@ -48,9 +48,9 @@ task javaPackager(type: Exec, dependsOn: dist) {
         '--output', "${buildDir}/distribution",
         '--input', "${buildDir}/libs",
         '--name', project.appName,
-        '--class', project.mainClassName,
+        '--main-class', project.mainClassName,
         '--main-jar', "${project.appName}.jar",
-        '--force'
+        '--overwrite'
     ]
     
     def osName = System.getProperty('os.name').toLowerCase(Locale.ROOT)
