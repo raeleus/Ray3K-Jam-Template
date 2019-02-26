@@ -1,100 +1,82 @@
 
 ui.png
-size: 512,512
+size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-button-normal
+bg
   rotate: false
-  xy: 209, 369
-  size: 41, 42
-  split: 11, 9, 12, 9
-  pad: 9, 9, 7, 8
-  orig: 41, 42
+  xy: 1, 844
+  size: 736, 693
+  orig: 736, 693
   offset: 0, 0
   index: -1
-button-normal-over
+button
   rotate: false
-  xy: 1, 162
-  size: 41, 42
-  split: 11, 9, 12, 9
-  pad: 9, 9, 7, 8
-  orig: 41, 42
+  xy: 739, 1414
+  size: 335, 123
+  split: 45, 61, 45, 61
+  pad: 45, 61, 17, 16
+  orig: 335, 123
   offset: 0, 0
   index: -1
-button-normal-pressed
+button-over
   rotate: false
-  xy: 57, 265
-  size: 41, 42
-  split: 11, 9, 12, 9
-  pad: 9, 9, 8, 7
-  orig: 41, 42
+  xy: 1, 595
+  size: 335, 123
+  split: 45, 61, 45, 61
+  pad: 45, 61, 17, 16
+  orig: 335, 123
   offset: 0, 0
   index: -1
-checkbox
+button-pressed
   rotate: false
-  xy: 100, 286
-  size: 20, 21
-  orig: 20, 21
+  xy: 1, 720
+  size: 335, 122
+  split: 45, 61, 45, 61
+  pad: 45, 61, 17, 16
+  orig: 335, 122
   offset: 0, 0
   index: -1
-checkbox-over
+font-button export
   rotate: false
-  xy: 253, 439
-  size: 20, 21
-  orig: 20, 21
+  xy: 1, 1651
+  size: 1680, 110
+  orig: 1680, 110
   offset: 0, 0
   index: -1
-checkbox-selected
+font-title export
   rotate: false
-  xy: 57, 242
-  size: 20, 21
-  orig: 20, 21
+  xy: 1, 1539
+  size: 1571, 110
+  orig: 1571, 110
   offset: 0, 0
   index: -1
-checkbox-selected-over
+radio
   rotate: false
-  xy: 1, 139
-  size: 20, 21
-  orig: 20, 21
+  xy: 1683, 1693
+  size: 80, 68
+  orig: 80, 68
   offset: 0, 0
   index: -1
-font
+radio-checked
   rotate: false
-  xy: 1, 462
-  size: 504, 44
-  orig: 504, 44
+  xy: 1574, 1581
+  size: 80, 68
+  orig: 80, 68
   offset: 0, 0
   index: -1
-textfield
+radio-checked-over
   rotate: false
-  xy: 209, 413
-  size: 42, 47
-  split: 5, 5, 5, 5
-  pad: 7, 7, 5, 5
-  orig: 42, 47
+  xy: 338, 774
+  size: 80, 68
+  orig: 80, 68
   offset: 0, 0
   index: -1
-title
+radio-over
   rotate: false
-  xy: 1, 309
-  size: 206, 151
-  orig: 206, 151
-  offset: 0, 0
-  index: -1
-white
-  rotate: false
-  xy: 507, 505
-  size: 1, 1
-  orig: 1, 1
-  offset: 0, 0
-  index: -1
-window
-  rotate: false
-  xy: 1, 206
-  size: 54, 101
-  split: 3, 3, 37, 3
-  pad: 3, 3, 39, 3
-  orig: 54, 101
+  xy: 739, 1344
+  size: 80, 68
+  orig: 80, 68
   offset: 0, 0
   index: -1

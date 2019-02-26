@@ -31,6 +31,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -62,18 +63,18 @@ public class TitleScreen extends JamScreen {
         Gdx.input.setInputProcessor(stage);
         
         var root = new Table();
+        root.setTouchable(Touchable.enabled);
         root.setFillParent(true);
         stage.addActor(root);
         
         root.setColor(1, 1, 1, 0);
         root.addAction(Actions.fadeIn(1));
         
-        var image = new Image(skin, "title");
-        image.setScaling(Scaling.fit);
-        root.add(image).grow();
+        var label = new Label("Please, Don't Go Back", skin, "title");
+        root.add(label).expand();
         
         root.row();
-        var label = new Label("Press any key to begin...", skin);
+        label = new Label("Click to begin...", skin);
         root.add(label);
 
         stage.addListener(core.handListener);

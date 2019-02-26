@@ -69,14 +69,14 @@ public class OptionsScreen extends JamScreen {
         root.setColor(1, 1, 1, 0);
         root.addAction(Actions.fadeIn(.5f));
         
-        var label = new Label("Options", skin);
+        var label = new Label("Options", skin, "title");
         root.add(label);
         
         root.row();
         var table = new Table();
         root.add(table);
         
-        table.defaults().expandX().left();
+        table.defaults().expandX().left().space(10);
         var checkBox = new CheckBox("SFX", skin);
         checkBox.setChecked(core.settings.getBoolean("sfx"));
         table.add(checkBox);
@@ -105,21 +105,7 @@ public class OptionsScreen extends JamScreen {
         });
         
         table.row();
-        table.defaults().reset();
-        table.defaults().growX();
-        var textButton = new TextButton("Set key bindings...", skin);
-        table.add(textButton);
-        textButton.addListener(core.handListener);
-        textButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                var dialog = new KeyBindingDialog(core);
-                dialog.show(stage);
-            }
-        });
-        
-        table.row();
-        textButton = new TextButton("Return to Menu", skin);
+        var textButton = new TextButton("Return to Menu", skin);
         table.add(textButton);
         textButton.addListener(core.handListener);
         textButton.addListener(new ChangeListener() {

@@ -1,20 +1,23 @@
 {
 com.badlogic.gdx.graphics.g2d.BitmapFont: {
-	font: {
-		file: font.fnt
+	button: {
+		file: font-button export.fnt
+	}
+	title: {
+		file: font-title export.fnt
 	}
 }
 com.badlogic.gdx.graphics.Color: {
-	black: {
-		r: 0
-		g: 0
-		b: 0
+	dark: {
+		r: 0.26666668
+		g: 0.48235294
+		b: 0.49803922
 		a: 1
 	}
-	selection: {
-		r: 0
-		g: 0.5097225
-		b: 1
+	light: {
+		r: 0.44313726
+		g: 0.8
+		b: 0.84705883
 		a: 1
 	}
 	white: {
@@ -24,45 +27,31 @@ com.badlogic.gdx.graphics.Color: {
 		a: 1
 	}
 }
-com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
-	black: {
-		name: white
-		color: black
-	}
-	selection: {
-		name: white
-		color: selection
-	}
-}
 com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
 	default: {
-		checkboxOn: checkbox-selected
-		checkboxOff: checkbox
-		checkboxOnOver: checkbox-selected-over
-		checkboxOver: checkbox-over
-		font: font
+		checkboxOn: radio-checked
+		checkboxOff: radio
+		checkboxOnOver: radio-checked-over
+		checkboxOver: radio-over
+		font: button
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: {
-		font: font
+		font: button
+	}
+	title: {
+		font: title
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 	default: {
-		font: font
-		up: button-normal
-		down: button-normal-pressed
-		over: button-normal-over
-	}
-}
-com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
-	default: {
-		font: font
+		font: button
 		fontColor: white
-		background: textfield
-		cursor: white
-		selection: selection
+		downFontColor: light
+		up: button
+		down: button-pressed
+		over: button-over
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
@@ -72,12 +61,8 @@ com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
 }
 com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 	default: {
-		background: window
-		titleFont: font
-	}
-	keybinding: {
-		titleFont: font
-		stageBackground: black
+		background: bg
+		titleFont: title
 	}
 }
 }
