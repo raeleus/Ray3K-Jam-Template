@@ -52,7 +52,7 @@ public class SpineMap {
         var json = jsonReader.parse(levelFile);
         
         //attachments
-        for (var value : json.get("skins").get("default").iterator()) {
+        if (json.has("skins")) for (var value : json.get("skins").get("default").iterator()) {
             value = value.child;
                 
             switch(value.getString("type", "image")) {
@@ -99,7 +99,7 @@ public class SpineMap {
         }
         
         //events
-        for (var value : json.get("events").iterator()) {
+        if (json.has("events")) for (var value : json.get("events").iterator()) {
             var eventNode = new EventNode();
             eventNodes.add(eventNode);
             
@@ -110,7 +110,7 @@ public class SpineMap {
         }
         
         //bones
-        for (var value : json.get("events").iterator()) {
+        if (json.has("bones")) for (var value : json.get("bones").iterator()) {
             var boneNode = new BoneNode();
             boneNodes.add(boneNode);
             
