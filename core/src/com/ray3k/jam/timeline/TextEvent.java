@@ -28,4 +28,9 @@ public class TextEvent implements TimelineEvent {
     public void setTime(float time) {
         this.time = time;
     }
+
+    @Override
+    public void execute() {
+        
+    }
 }

@@ -23,29 +23,30 @@
  */
 package com.ray3k.jam.timeline;
 
-import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.ray3k.jam.screens.GameScreen;
 
 /**
  *
  * @author raymond
  */
-public class TimelineEventQueue {
-    private final Array<TimelineEvent> list;
+public class DelayEvent implements TimelineEvent {
+    private float delay;
 
-    public TimelineEventQueue() {
-        list = new Array<>();
+    public DelayEvent(float delay) {
+        this.delay = delay;
     }
-    
-    public void add(TimelineEvent event) {
-        list.add(event);
-    }
-    
-    public TimelineEvent next() {
-        if (list.size > 0) {
-            var event = list.get(0);
-            list.removeIndex(0);
-            event.execute();
-            return event;
-        } else return null;
+
+    @Override
+    public void execute() {
+        var gameScreen = GameScreen.gameScreen;
+        gameScreen.actionsManager.addAction(Actions.delay(delay, new Action() {
+            @Override
+            public boolean act(float delta) {
+                gameScreen.processNextEvent();
+                return true;
+            }
+        }));
     }
 }

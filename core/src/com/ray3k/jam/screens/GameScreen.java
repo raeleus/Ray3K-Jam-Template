@@ -45,6 +45,7 @@ import com.ray3k.jam.Core;
 import com.ray3k.jam.EntityManager;
 import com.ray3k.jam.GameInputProcessor;
 import com.ray3k.jam.JamScreen;
+import com.ray3k.jam.timeline.DelayEvent;
 import com.ray3k.jam.timeline.TextEvent;
 import com.ray3k.jam.timeline.TimelineEventQueue;
 
@@ -55,7 +56,7 @@ import com.ray3k.jam.timeline.TimelineEventQueue;
 public class GameScreen extends JamScreen {
 
     public static GameScreen gameScreen;
-    private Actor actionsManager;
+    public Actor actionsManager;
     private EntityManager entityManager;
     private Stage stage;
     private Skin skin;
@@ -190,6 +191,8 @@ public class GameScreen extends JamScreen {
                         }
                         
                         if (typingLabel.getText().length == messageLabel.getText().length) {
+                            messageLabel.setText("");
+                            typingLabel.setText("");
                             processNextEvent();
                         }
                     } else {
@@ -203,8 +206,11 @@ public class GameScreen extends JamScreen {
     
     public void populateQueue() {
         queue.add(new TextEvent("This is a typing game! Type the text that you see here to win!", 10));
+        queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Fuck up or go too slow: see the consequences...", 10));
+        queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Just keep it together, they don't have anything on you. They can't touch you.", 10));
+        queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Don't say anything. They are just trying to scare you. I believe in you.", 10));
         queue.add(new TextEvent("Just hold it together a little longer and they'll realize that this has been a big mistake. You're innocent.", 10));
         queue.add(new TextEvent("This guy is a prick. Don't let him push you around.", 10));
@@ -236,7 +242,7 @@ public class GameScreen extends JamScreen {
         queue.add(new TextEvent("And for this, I am very sorry. Thank you for playing.", 10));
     }
     
-    private void processNextEvent() {
+    public void processNextEvent() {
         var event = queue.next();
         
         if (event == null) {
@@ -244,7 +250,6 @@ public class GameScreen extends JamScreen {
         } else if (event instanceof TextEvent) {
             var textEvent = (TextEvent) event;
             messageLabel.setText(textEvent.getText());
-            typingLabel.setText("");
         }
     }
 }
