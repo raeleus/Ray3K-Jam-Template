@@ -3,11 +3,20 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	button: {
 		file: font-button export.fnt
 	}
+	mono: {
+		file: AnonymousPro-Regular.fnt
+	}
 	title: {
 		file: font-title export.fnt
 	}
 }
 com.badlogic.gdx.graphics.Color: {
+	black: {
+		r: 0
+		g: 0
+		b: 0
+		a: 1
+	}
 	dark: {
 		r: 0.26666668
 		g: 0.48235294
@@ -27,6 +36,12 @@ com.badlogic.gdx.graphics.Color: {
 		a: 1
 	}
 }
+com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+	black: {
+		name: white
+		color: black
+	}
+}
 com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
 	default: {
 		checkboxOn: radio-checked
@@ -42,6 +57,9 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	}
 	title: {
 		font: title
+	}
+	game: {
+		font: mono
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {

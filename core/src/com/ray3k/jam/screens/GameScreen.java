@@ -25,15 +25,19 @@ package com.ray3k.jam.screens;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -58,6 +62,8 @@ public class GameScreen extends JamScreen {
     private Viewport gameViewport;
     private InputMultiplexer inputMultiplexer;
     private GameInputProcessor gameInputProcessor;
+    private Label messageLabel;
+    private Label typingLabel;
 
     public GameScreen(Core core) {
         this.core = core;
@@ -143,14 +149,39 @@ public class GameScreen extends JamScreen {
         root.setFillParent(true);
         stage.addActor(root);
 
-        var textButton = new TextButton("test", skin);
-        root.add(textButton).expand().bottom().right();
-        textButton.addListener(core.handListener);
-        textButton.addListener(new ChangeListener() {
+        root.pad(10);
+        var table = new Table();
+        table.setBackground(skin.getDrawable("black"));
+        
+        var scrollPane = new ScrollPane(table);
+        scrollPane.setTouchable(Touchable.disabled);
+        root.add(scrollPane).fill(1f, .5f).expand().bottom();
+        
+        messageLabel = new Label("Please type what you see here... Please type what you see here... Please type what you see here... Please type what you see here... Please type what you see here...", skin, "game");
+        messageLabel.setColor(Color.RED);
+        table.add(messageLabel).growX();
+        
+        table.row();
+        typingLabel = new Label("", skin, "game");
+        table.add(typingLabel).growX();
+        
+        stage.addListener(new InputListener() {
             @Override
-            public void changed(ChangeListener.ChangeEvent event, Actor actor) {
-                System.out.println("it works");
-            }
+            public boolean keyTyped(InputEvent event, char character) {
+                var index = typingLabel.getText().length;
+                if (index < messageLabel.getText().length) {
+                    if (character == messageLabel.getText().charAt(index)) {
+                        typingLabel.setText(typingLabel.getText() + Character.toString(character));
+                        if (typingLabel.getGlyphLayout().width > typingLabel.getParent().getParent().getWidth() / 2f) {
+                            messageLabel.setText(messageLabel.getText().substring(1));
+                            typingLabel.setText(typingLabel.getText().substring(1));
+                        }
+                    } else {
+                        //error
+                    }
+                }
+                return super.keyTyped(event, character);
+            }            
         });
     }
 }
