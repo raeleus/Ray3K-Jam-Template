@@ -160,6 +160,7 @@ public class GameScreen extends JamScreen {
         root.pad(10);
         var table = new Table();
         table.setBackground(skin.getDrawable("black"));
+        table.pad(10);
         
         var scrollPane = new ScrollPane(table);
         scrollPane.setTouchable(Touchable.disabled);
@@ -167,11 +168,14 @@ public class GameScreen extends JamScreen {
         
         messageLabel = new Label("", skin, "game");
         messageLabel.setColor(Color.RED);
-        table.add(messageLabel).growX();
+        table.add(messageLabel).growX().colspan(2);
         
         table.row();
         typingLabel = new Label("", skin, "game");
-        table.add(typingLabel).growX();
+        table.add(typingLabel);
+        
+        var label = new Label("<", skin, "game");
+        table.add(label).expandX().left().spaceLeft(10);
         
         stage.addListener(new InputListener() {
             @Override
