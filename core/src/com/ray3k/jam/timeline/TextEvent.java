@@ -10,10 +10,12 @@ import com.ray3k.jam.screens.GameScreen;
 public class TextEvent implements TimelineEvent {
     private String text;
     private float time;
+    private int words;
 
     public TextEvent(String text, float time) {
         this.text = text;
         this.time = time;
+        words = text.split(" ").length;
     }
 
     public String getText() {
@@ -43,6 +45,9 @@ public class TextEvent implements TimelineEvent {
             protected void update(float percent) {
                 gameScreen.progressBar.setAnimateDuration(.1f);
                 gameScreen.progressBar.setValue(1 - percent);
+                gameScreen.time += getTime();
+                gameScreen.score += time -= getTime();
+                gameScreen.words += words;
             }
         });
     }

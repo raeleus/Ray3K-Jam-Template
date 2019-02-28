@@ -71,6 +71,8 @@ public class GameScreen extends JamScreen {
     public Label typingLabel;
     public TimelineEventQueue queue;
     public ProgressBar progressBar;
+    public float score;
+    public int words;
     public float time;
 
     public GameScreen(Core core) {
@@ -101,6 +103,9 @@ public class GameScreen extends JamScreen {
         
         queue.next();
         skin.getDrawable("progress-bar-red").setMinWidth(0);
+        score = 0f;
+        words = 0;
+        time = 0f;
     }
 
     @Override
