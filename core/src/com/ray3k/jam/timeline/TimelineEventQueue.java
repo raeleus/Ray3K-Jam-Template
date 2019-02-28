@@ -57,4 +57,8 @@ public class TimelineEventQueue {
             return event;
         } else return null;
     }
+    
+    public TimelineEvent getCurrent() {
+        return list.first();
+    }
 }

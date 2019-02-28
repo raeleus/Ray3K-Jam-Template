@@ -174,7 +174,7 @@ public class GameScreen extends JamScreen {
         stage.addActor(root);
         root.pad(10);
         
-        progressBar = new ProgressBar(0, 1, .01f, false, skin);
+        progressBar = new ProgressBar(0, 1, .0001f, false, skin);
         root.add(progressBar).expandY().bottom().growX();
         
         root.row();
@@ -215,7 +215,7 @@ public class GameScreen extends JamScreen {
                             queue.next();
                         }
                     } else {
-                        errors++;
+                        ((TextEvent) queue.getCurrent()).error();
                     }
                 }
                 return super.keyTyped(event, character);
@@ -389,7 +389,7 @@ public class GameScreen extends JamScreen {
                 break;
             case 'd':
                 list.addAll("Demeaning", "Demoted", "Demonstrable", "Demonic", "Dumb", "Droopy");
-                label.setColor(Color.CHARTREUSE);
+                label.setColor(Color.BROWN);
                 break;
             case 'f':
                 list.addAll("Failure", "Fucked", "Fumbled", "Facetious", "False", "Fake", "Fallacious", "Fallen", "Farce", "Flagrant", "Flaky", "Floundering", "Forsaken");

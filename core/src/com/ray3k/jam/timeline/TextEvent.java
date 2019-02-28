@@ -1,8 +1,6 @@
 package com.ray3k.jam.timeline;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
-import com.badlogic.gdx.utils.TimeUtils;
 import com.ray3k.jam.screens.GameScreen;
 
 /**
@@ -15,6 +13,7 @@ public class TextEvent implements TimelineEvent {
     private int characters;
     private TemporalAction action;
     public static final float HANDICAP = 4;
+    public static final float ERROR_PUNISHMENT = .25f;
 
     public TextEvent(String text, float time) {
         this.text = text;
@@ -71,5 +70,12 @@ public class TextEvent implements TimelineEvent {
         else if (difference > 1) gameScreen.showAward('d');
         else gameScreen.showAward('f');
         
+    }
+    
+    public void error() {
+        var gameScreen = GameScreen.gameScreen;
+        gameScreen.errors++;
+        
+        action.setTime(action.getTime() + ERROR_PUNISHMENT);
     }
 }
