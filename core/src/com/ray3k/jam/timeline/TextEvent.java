@@ -1,5 +1,6 @@
 package com.ray3k.jam.timeline;
 
+import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
 import com.ray3k.jam.screens.GameScreen;
 
 /**
@@ -35,5 +36,14 @@ public class TextEvent implements TimelineEvent {
     public void execute() {
         var gameScreen = GameScreen.gameScreen;
         gameScreen.messageLabel.setText(text);
+        gameScreen.progressBar.setAnimateDuration(0);
+        gameScreen.progressBar.setValue(1);
+        gameScreen.actionsManager.addAction(new TemporalAction(time) {
+            @Override
+            protected void update(float percent) {
+                gameScreen.progressBar.setAnimateDuration(.1f);
+                gameScreen.progressBar.setValue(1 - percent);
+            }
+        });
     }
 }

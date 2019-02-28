@@ -17,6 +17,12 @@ com.badlogic.gdx.graphics.Color: {
 		b: 0
 		a: 1
 	}
+	clear: {
+		r: 1
+		g: 1
+		b: 1
+		a: 0
+	}
 	dark: {
 		r: 0.26666668
 		g: 0.48235294
@@ -27,6 +33,12 @@ com.badlogic.gdx.graphics.Color: {
 		r: 0.44313726
 		g: 0.8
 		b: 0.84705883
+		a: 1
+	}
+	red: {
+		r: 1
+		g: 0
+		b: 0
 		a: 1
 	}
 	white: {
@@ -40,6 +52,14 @@ com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
 	black: {
 		name: white
 		color: black
+	}
+	progress-bar-red: {
+		name: progress-bar
+		color: red
+	}
+	progress-bar-clear: {
+		name: progress-bar
+		color: clear
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle: {
@@ -60,6 +80,12 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	}
 	game: {
 		font: mono
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
+	default-horizontal: {
+		background: progress-bar-clear
+		knobBefore: progress-bar-red
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {

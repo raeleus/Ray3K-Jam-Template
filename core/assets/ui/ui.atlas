@@ -52,6 +52,13 @@ font-title export
   orig: 1571, 110
   offset: 0, 0
   index: -1
+progress-bar
+  rotate: false
+  xy: 338, 680
+  size: 1, 12
+  orig: 1, 12
+  offset: 0, 0
+  index: -1
 radio
   rotate: false
   xy: 1683, 1693

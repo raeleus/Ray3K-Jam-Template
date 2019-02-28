@@ -35,6 +35,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -69,6 +70,8 @@ public class GameScreen extends JamScreen {
     public Label messageLabel;
     public Label typingLabel;
     public TimelineEventQueue queue;
+    public ProgressBar progressBar;
+    public float time;
 
     public GameScreen(Core core) {
         this.core = core;
@@ -97,6 +100,7 @@ public class GameScreen extends JamScreen {
         Gdx.input.setInputProcessor(inputMultiplexer);
         
         queue.next();
+        skin.getDrawable("progress-bar-red").setMinWidth(0);
     }
 
     @Override
@@ -158,26 +162,30 @@ public class GameScreen extends JamScreen {
         var root = new Table();
         root.setFillParent(true);
         stage.addActor(root);
-
         root.pad(10);
-        var table = new Table();
-        table.setBackground(skin.getDrawable("black"));
-        table.pad(10);
         
-        var scrollPane = new ScrollPane(table);
+        progressBar = new ProgressBar(0, 1, .01f, false, skin);
+        root.add(progressBar).expandY().bottom().growX();
+        
+        root.row();
+        var scrollPaneTable = new Table();
+        scrollPaneTable.setBackground(skin.getDrawable("black"));
+        scrollPaneTable.pad(10);
+        
+        var scrollPane = new ScrollPane(scrollPaneTable);
         scrollPane.setTouchable(Touchable.disabled);
-        root.add(scrollPane).fill(1f, .5f).expand().bottom();
+        root.add(scrollPane).height(200);
         
         messageLabel = new Label("", skin, "game");
         messageLabel.setColor(Color.RED);
-        table.add(messageLabel).growX().colspan(2);
+        scrollPaneTable.add(messageLabel).growX().colspan(2);
         
-        table.row();
+        scrollPaneTable.row();
         typingLabel = new Label("", skin, "game");
-        table.add(typingLabel);
+        scrollPaneTable.add(typingLabel);
         
         var label = new Label("<", skin, "game");
-        table.add(label).expandX().left().spaceLeft(10);
+        scrollPaneTable.add(label).expandX().left().spaceLeft(10);
         
         stage.addListener(new InputListener() {
             @Override
