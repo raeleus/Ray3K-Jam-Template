@@ -40,11 +40,13 @@ public class AudioEvent implements TimelineEvent {
 
     @Override
     public void execute() {
+        var gameScreen = GameScreen.gameScreen;
         music.play();
         music.setOnCompletionListener((Music music1) -> {
-            var gameScreen = GameScreen.gameScreen;
             gameScreen.queue.next();
         });
+        gameScreen.progressBar.setAnimateDuration(0);
+        gameScreen.progressBar.setValue(0);
     }
 
     @Override

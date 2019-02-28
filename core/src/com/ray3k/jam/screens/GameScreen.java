@@ -75,8 +75,9 @@ public class GameScreen extends JamScreen {
     public TimelineEventQueue queue;
     public ProgressBar progressBar;
     public float score;
-    public int words;
+    public int characters;
     public float time;
+    public int errors;
 
     public GameScreen(Core core) {
         this.core = core;
@@ -107,8 +108,9 @@ public class GameScreen extends JamScreen {
         queue.next();
         skin.getDrawable("progress-bar-red").setMinWidth(0);
         score = 0f;
-        words = 0;
+        characters = 0;
         time = 0f;
+        errors = 0;
     }
 
     @Override
@@ -213,7 +215,7 @@ public class GameScreen extends JamScreen {
                             queue.next();
                         }
                     } else {
-                        //error, subtract point
+                        errors++;
                     }
                 }
                 return super.keyTyped(event, character);
@@ -228,6 +230,7 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Just keep it together, they don't have anything on you. They can't touch you.", 13));
         queue.add(new DelayEvent(1));
+        queue.add(new GameEndEvent(core));
         queue.add(new AudioEvent("bgm/01.ogg", core));
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Don't say anything. They are just trying to scare you. I believe in you.", 13));

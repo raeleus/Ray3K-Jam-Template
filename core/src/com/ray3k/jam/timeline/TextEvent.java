@@ -1,6 +1,8 @@
 package com.ray3k.jam.timeline;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.actions.TemporalAction;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.ray3k.jam.screens.GameScreen;
 
 /**
@@ -10,14 +12,14 @@ import com.ray3k.jam.screens.GameScreen;
 public class TextEvent implements TimelineEvent {
     private String text;
     private float time;
-    private int words;
+    private int characters;
     private TemporalAction action;
     public static final float HANDICAP = 4;
 
     public TextEvent(String text, float time) {
         this.text = text;
         this.time = time + HANDICAP;
-        words = text.split(" ").length;
+        characters = text.length();
     }
 
     public String getText() {
@@ -47,9 +49,6 @@ public class TextEvent implements TimelineEvent {
             protected void update(float percent) {
                 gameScreen.progressBar.setAnimateDuration(.1f);
                 gameScreen.progressBar.setValue(1 - percent);
-                gameScreen.time += getTime();
-                gameScreen.score += time - getTime();
-                gameScreen.words += words;
             }
         };
         gameScreen.actionsManager.addAction(action);
@@ -58,6 +57,10 @@ public class TextEvent implements TimelineEvent {
     @Override
     public void end() {
         var gameScreen = GameScreen.gameScreen;
+        gameScreen.time += getTime();
+        gameScreen.score += (time - action.getTime()) * 100;
+        gameScreen.characters += characters;
+        
         gameScreen.actionsManager.removeAction(action);
         
         float difference = time - action.getTime();

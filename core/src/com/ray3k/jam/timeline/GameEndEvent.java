@@ -24,7 +24,8 @@
 package com.ray3k.jam.timeline;
 
 import com.ray3k.jam.Core;
-import com.ray3k.jam.screens.CreditsScreen;
+import com.ray3k.jam.screens.GameScreen;
+import com.ray3k.jam.screens.SummaryScreen;
 
 /**
  *
@@ -39,7 +40,12 @@ public class GameEndEvent implements TimelineEvent {
 
     @Override
     public void execute() {
-        core.setScreen(new CreditsScreen(core));
+        var screen = new SummaryScreen(core);
+        screen.score = GameScreen.gameScreen.score;
+        screen.time = GameScreen.gameScreen.time;
+        screen.characters = GameScreen.gameScreen.characters;
+        screen.errors = GameScreen.gameScreen.errors;
+        core.setScreen(screen);
     }
 
     @Override
