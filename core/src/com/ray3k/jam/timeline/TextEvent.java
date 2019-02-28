@@ -1,5 +1,7 @@
 package com.ray3k.jam.timeline;
 
+import com.ray3k.jam.screens.GameScreen;
+
 /**
  *
  * @author raymond
@@ -31,6 +33,7 @@ public class TextEvent implements TimelineEvent {
 
     @Override
     public void execute() {
-        
+        var gameScreen = GameScreen.gameScreen;
+        gameScreen.messageLabel.setText(text);
     }
 }

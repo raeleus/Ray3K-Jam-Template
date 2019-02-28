@@ -23,30 +23,22 @@
  */
 package com.ray3k.jam.timeline;
 
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.ray3k.jam.screens.GameScreen;
+import com.ray3k.jam.Core;
+import com.ray3k.jam.screens.CreditsScreen;
 
 /**
  *
  * @author raymond
  */
-public class DelayEvent implements TimelineEvent {
-    private float delay;
+public class GameEndEvent implements TimelineEvent {
+    private Core core;
 
-    public DelayEvent(float delay) {
-        this.delay = delay;
+    public GameEndEvent(Core core) {
+        this.core = core;
     }
 
     @Override
     public void execute() {
-        var gameScreen = GameScreen.gameScreen;
-        gameScreen.actionsManager.addAction(Actions.delay(delay, new Action() {
-            @Override
-            public boolean act(float delta) {
-                gameScreen.queue.next();
-                return true;
-            }
-        }));
+        core.setScreen(new CreditsScreen(core));
     }
 }
