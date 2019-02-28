@@ -11,10 +11,12 @@ public class TextEvent implements TimelineEvent {
     private String text;
     private float time;
     private int words;
+    private TemporalAction action;
+    public static final float HANDICAP = 3;
 
     public TextEvent(String text, float time) {
         this.text = text;
-        this.time = time;
+        this.time = time + HANDICAP;
         words = text.split(" ").length;
     }
 
@@ -40,7 +42,7 @@ public class TextEvent implements TimelineEvent {
         gameScreen.messageLabel.setText(text);
         gameScreen.progressBar.setAnimateDuration(0);
         gameScreen.progressBar.setValue(1);
-        gameScreen.actionsManager.addAction(new TemporalAction(time) {
+        action = new TemporalAction(time) {
             @Override
             protected void update(float percent) {
                 gameScreen.progressBar.setAnimateDuration(.1f);
@@ -49,6 +51,13 @@ public class TextEvent implements TimelineEvent {
                 gameScreen.score += time -= getTime();
                 gameScreen.words += words;
             }
-        });
+        };
+        gameScreen.actionsManager.addAction(action);
+    }
+
+    @Override
+    public void end() {
+        var gameScreen = GameScreen.gameScreen;
+        gameScreen.actionsManager.removeAction(action);
     }
 }

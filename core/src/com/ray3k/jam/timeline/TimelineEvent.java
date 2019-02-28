@@ -6,4 +6,5 @@ package com.ray3k.jam.timeline;
  */
 public interface TimelineEvent {
     public void execute();
+    public void end();
 }

@@ -46,4 +46,8 @@ public class AudioEvent implements TimelineEvent {
             gameScreen.queue.next();
         });
     }
+
+    @Override
+    public void end() {
+    }
 }

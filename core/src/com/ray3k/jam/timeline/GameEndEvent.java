@@ -41,4 +41,8 @@ public class GameEndEvent implements TimelineEvent {
     public void execute() {
         core.setScreen(new CreditsScreen(core));
     }
+
+    @Override
+    public void end() {
+    }
 }

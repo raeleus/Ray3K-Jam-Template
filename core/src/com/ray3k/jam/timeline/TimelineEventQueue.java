@@ -31,9 +31,11 @@ import com.badlogic.gdx.utils.Array;
  */
 public class TimelineEventQueue {
     private final Array<TimelineEvent> list;
+    private boolean started;
 
     public TimelineEventQueue() {
         list = new Array<>();
+        started = false;
     }
     
     public void add(TimelineEvent event) {
@@ -43,7 +45,14 @@ public class TimelineEventQueue {
     public TimelineEvent next() {
         if (list.size > 0) {
             var event = list.get(0);
-            list.removeIndex(0);
+            if (!started) {
+                started = true;
+            } else {
+                event.end();
+                list.removeIndex(0);
+                event = list.get(0);
+            }
+            
             event.execute();
             return event;
         } else return null;

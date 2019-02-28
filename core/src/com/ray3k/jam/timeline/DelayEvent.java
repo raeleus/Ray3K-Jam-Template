@@ -49,4 +49,8 @@ public class DelayEvent implements TimelineEvent {
             }
         }));
     }
+
+    @Override
+    public void end() {
+    }
 }
