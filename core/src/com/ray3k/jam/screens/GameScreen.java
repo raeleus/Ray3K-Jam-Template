@@ -128,7 +128,7 @@ public class GameScreen extends JamScreen {
 
     @Override
     public void draw(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClearColor(24 / 255f, 29 / 255f, 40 / 255f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         core.batch.setProjectionMatrix(gameCamera.combined);
@@ -179,12 +179,11 @@ public class GameScreen extends JamScreen {
         
         root.row();
         var scrollPaneTable = new Table();
-        scrollPaneTable.setBackground(skin.getDrawable("black"));
         scrollPaneTable.pad(10);
         
-        var scrollPane = new ScrollPane(scrollPaneTable);
+        var scrollPane = new ScrollPane(scrollPaneTable, skin);
         scrollPane.setTouchable(Touchable.disabled);
-        root.add(scrollPane).height(200);
+        root.add(scrollPane).height(200).growX();
         
         messageLabel = new Label("", skin, "game");
         messageLabel.setColor(Color.RED);

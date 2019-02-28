@@ -3,9 +3,6 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	button: {
 		file: font-button export.fnt
 	}
-	award: {
-		file: font-award export.fnt
-	}
 	mono: {
 		file: AnonymousPro-Regular.fnt
 	}
@@ -92,6 +89,11 @@ com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {
 	default-horizontal: {
 		background: progress-bar-clear
 		knobBefore: progress-bar-red
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
+	default: {
+		background: black
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {

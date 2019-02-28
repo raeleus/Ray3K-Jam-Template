@@ -6,14 +6,14 @@ filter: Linear,Linear
 repeat: none
 bg
   rotate: false
-  xy: 1, 990
+  xy: 1, 844
   size: 736, 693
   orig: 736, 693
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 739, 1560
+  xy: 1, 569
   size: 335, 123
   split: 45, 61, 45, 61
   pad: 45, 61, 17, 16
@@ -22,7 +22,7 @@ button
   index: -1
 button-over
   rotate: false
-  xy: 1, 715
+  xy: 739, 1290
   size: 335, 123
   split: 45, 61, 45, 61
   pad: 45, 61, 17, 16
@@ -31,79 +31,72 @@ button-over
   index: -1
 button-pressed
   rotate: false
-  xy: 1683, 1897
+  xy: 739, 1415
   size: 335, 122
   split: 45, 61, 45, 61
   pad: 45, 61, 17, 16
   orig: 335, 122
   offset: 0, 0
   index: -1
-font-award export
-  rotate: false
-  xy: 1, 1797
-  size: 1680, 110
-  orig: 1680, 110
-  offset: 0, 0
-  index: -1
 font-button export
   rotate: false
-  xy: 1, 1909
+  xy: 1, 1651
   size: 1680, 110
   orig: 1680, 110
   offset: 0, 0
   index: -1
 font-title export
   rotate: false
-  xy: 1, 1685
+  xy: 1, 1539
   size: 1571, 110
   orig: 1571, 110
   offset: 0, 0
   index: -1
 progress-bar
   rotate: false
-  xy: 1076, 1671
+  xy: 338, 680
   size: 1, 12
   orig: 1, 12
   offset: 0, 0
   index: -1
 radio
   rotate: false
-  xy: 1574, 1727
+  xy: 1683, 1693
   size: 80, 68
   orig: 80, 68
   offset: 0, 0
   index: -1
 radio-checked
   rotate: false
-  xy: 509, 920
+  xy: 1574, 1581
   size: 80, 68
   orig: 80, 68
   offset: 0, 0
   index: -1
 radio-checked-over
   rotate: false
-  xy: 1683, 1827
+  xy: 509, 774
   size: 80, 68
   orig: 80, 68
   offset: 0, 0
   index: -1
 radio-over
   rotate: false
-  xy: 739, 1490
+  xy: 1076, 1469
   size: 80, 68
   orig: 80, 68
   offset: 0, 0
   index: -1
 white
   rotate: false
-  xy: 2020, 2018
+  xy: 1, 566
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 AnonymousPro-Regular
   rotate: false
-  xy: 1, 840
+  xy: 1, 694
   size: 506, 148
   orig: 506, 148
   offset: 0, 0
