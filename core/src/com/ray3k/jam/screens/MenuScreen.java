@@ -66,11 +66,7 @@ public class MenuScreen extends JamScreen {
         
         root.setColor(1, 1, 1, 0);
         root.addAction(Actions.fadeIn(.5f));
-        
-        var label = new Label("Please, Don't Go Back", skin, "title");
-        root.add(label);
-        
-        root.row();
+
         var table = new Table();
         root.add(table);
         
