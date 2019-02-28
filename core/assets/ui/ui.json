@@ -3,6 +3,9 @@ com.badlogic.gdx.graphics.g2d.BitmapFont: {
 	button: {
 		file: font-button export.fnt
 	}
+	award: {
+		file: font-award export.fnt
+	}
 	mono: {
 		file: AnonymousPro-Regular.fnt
 	}
@@ -80,6 +83,9 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	}
 	game: {
 		font: mono
+	}
+	award: {
+		font: button
 	}
 }
 com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle: {

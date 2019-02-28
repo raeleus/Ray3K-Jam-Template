@@ -34,11 +34,13 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -284,7 +286,7 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/15.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new TextEvent("JESUS CHRIST! If you don't do it. I will. I'm not going to let you fucking die. Not to this creep.", 22));
+        queue.add(new TextEvent("JESUS CHRIST! If you don't do it, I will. I'm not going to let you fucking die. Not to this creep.", 22));
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/16.ogg", core));
         queue.add(new DelayEvent(1));
@@ -359,5 +361,47 @@ public class GameScreen extends JamScreen {
         queue.add(new TextEvent("And for this, I am very sorry. Thank you for playing.", 10));
         queue.add(new DelayEvent(1));
         queue.add(new GameEndEvent(core));
+    }
+    
+    public void showAward(char grade) {
+        var label = new Label("", skin, "award");
+        
+        var list = new Array<String>();
+        switch (grade) {
+            case 's':
+                list.addAll("Stylish!", "Sexy!", "Super!", "Supreme!", "Saucy!", "Sassy!", "Suprising!", "Sweet!");
+                label.setColor(Color.RED);
+                break;
+            case 'a':
+                list.addAll("Ace!", "Awesome!", "Amazing!", "A+!", "Axel!", "Admirable!", "Authentic!");
+                label.setColor(Color.GREEN);
+                break;
+            case 'b':
+                list.addAll("Baby!", "Bold!", "Bright!", "Bustling!", "Bananas!", "Beautiful!", "Brazen!");
+                label.setColor(Color.BLUE);
+                break;
+            case 'c':
+                list.addAll("Calm", "Casual", "Crazy", "Cookie", "Civilian", "Contrary", "Clumsy");
+                label.setColor(Color.ORANGE);
+                break;
+            case 'd':
+                list.addAll("Demeaning", "Demoted", "Demonstrable", "Demonic", "Dumb", "Droopy");
+                label.setColor(Color.CHARTREUSE);
+                break;
+            case 'f':
+                list.addAll("Failure", "Fucked", "Fumbled", "Facetious", "False", "Fake", "Fallacious", "Fallen", "Farce", "Flagrant", "Flaky", "Floundering", "Forsaken");
+                label.setColor(Color.LIGHT_GRAY);
+                break;
+            default:
+                break;
+        }
+        
+        label.setText(list.random());
+        
+        label.setPosition(0, stage.getHeight());
+        stage.addActor(label);
+        label.pack();
+        
+        label.addAction(Actions.sequence(Actions.moveBy(0, -label.getHeight(), .2f), Actions.delay(1), Actions.moveBy(0, label.getHeight(), .2f), Actions.removeActor()));
     }
 }
