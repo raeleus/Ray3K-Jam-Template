@@ -53,7 +53,9 @@ public class CharacterEntity extends SpineEntity {
     public void actSub(float delta) {
         if (followTarget) {
             if (moveTowards(targetX, targetY, followSpeed * delta)) {
-                targetListener.hit();
+                if (targetListener != null) {
+                    targetListener.hit();
+                }
                 followTarget = false;
                 targetListener = null;
             }

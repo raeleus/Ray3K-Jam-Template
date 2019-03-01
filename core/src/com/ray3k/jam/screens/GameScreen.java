@@ -384,121 +384,123 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/18.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//34
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("There is going to be a sharp pain in your wrist...", 8));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//35
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/19.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//36
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("I have you now you snivelling little shit.", 7));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//37
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/20.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//38
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("End him. He was going to kill you. He deserves it.", 11));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//39
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/21.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//40
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("They all deserve it. They were going to let you be raped and murdered!", 12));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//41
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/22.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//42
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Let's kill all of these stupid bastards.", 7));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//43
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/23.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//44
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/24.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//45
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("They do not know who they are fucking with! Leave none living. Execute every single one of these rapists. These cowards.", 20));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//46
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/25.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//47
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("You wimp. Don't slow down. You must murderize these short-dicked mother fuckers.", 16));
         queue.add(new DelayEvent(1));
+        queue.add(new AnimationEvent(animationIndex++));//48
+        queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/26.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//49
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/27.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//50
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/28.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//51
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("You're nowhere close to being done yet. Every life you take brings you closer to salvation.", 15));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//52
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/29.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//53
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Kill him. He's the one that raped you. He's the one that killed you! Take his mana.", 16));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//54
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/30.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//55
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Yes! Bathe in his blood. Take his power. Let him fill you. Do you feel his energy coursing through your veins?", 20));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//56
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("That's not the way. Go back and kill them. Kill all the men!", 10));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//57
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/31.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//58
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("No, no, NO! There is much killing left to be done. You will kill all of the sad fuckers in this building and you will drink their blood.", 23));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//59
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/32.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//60
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/33.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//61
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("You sorry little bitch. You don't have the balls to do it. You can't do anything without me allowing it. I am in control. There is no such thing as free will.", 25));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//62
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/34.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//63
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("A game by Raeleus.", 4));
         queue.add(new DelayEvent(1));
