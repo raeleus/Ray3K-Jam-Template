@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "u6Ly8GAN8EglPxfVbc6/6vWIEno", "spine": "3.7.91", "width": 640, "height": 286, "images": "../graphics output/", "audio": "" },
+"skeleton": { "hash": "u6Ly8GAN8EglPxfVbc6/6vWIEno", "spine": "3.8.01-beta", "width": 640, "height": 286, "images": "../graphics output/", "audio": "" },
 "bones": [
 	{ "name": "root" }
 ],

@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "YmS4xEXJ+HTSoBxvDzFezJr3OyE", "spine": "3.7.91", "width": 1350, "height": 731, "images": "../graphics output/", "audio": "" },
+"skeleton": { "hash": "YmS4xEXJ+HTSoBxvDzFezJr3OyE", "spine": "3.8.01-beta", "width": 1350, "height": 731, "images": "../graphics output/", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "blood", "parent": "root", "length": 578.06, "rotation": 0.65, "x": -26.61, "y": 14.22 }

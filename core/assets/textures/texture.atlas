@@ -118,14 +118,14 @@ exit
   index: -1
 eye-left
   rotate: false
-  xy: 669, 150
+  xy: 739, 414
   size: 52, 76
   orig: 52, 76
   offset: 0, 0
   index: -1
 eye-left-blink
   rotate: false
-  xy: 739, 494
+  xy: 669, 150
   size: 52, 76
   orig: 52, 76
   offset: 0, 0
@@ -139,7 +139,7 @@ eye-right
   index: -1
 eye-right-blink
   rotate: false
-  xy: 739, 414
+  xy: 739, 494
   size: 52, 76
   orig: 52, 76
   offset: 0, 0
@@ -153,7 +153,7 @@ eye-worried-left
   index: -1
 eye-worried-left-blink
   rotate: false
-  xy: 681, 390
+  xy: 681, 310
   size: 54, 76
   orig: 54, 76
   offset: 0, 0
@@ -167,7 +167,7 @@ eye-worried-right
   index: -1
 eye-worried-right-blink
   rotate: false
-  xy: 681, 310
+  xy: 681, 390
   size: 54, 76
   orig: 54, 76
   offset: 0, 0
@@ -209,21 +209,21 @@ officer-head
   index: -1
 particle_0
   rotate: false
-  xy: 2906, 1196
+  xy: 2906, 1348
   size: 148, 148
   orig: 148, 148
   offset: 0, 0
   index: -1
 particle_1
   rotate: false
-  xy: 755, 574
+  xy: 2906, 1196
   size: 148, 148
   orig: 148, 148
   offset: 0, 0
   index: -1
 particle_2
   rotate: false
-  xy: 2906, 1348
+  xy: 755, 574
   size: 148, 148
   orig: 148, 148
   offset: 0, 0
@@ -285,8 +285,8 @@ player-body-clothed
   offset: 0, 0
   index: -1
 player-bra
-  rotate: false
-  xy: 1270, 678
+  rotate: true
+  xy: 1197, 605
   size: 117, 69
   orig: 117, 69
   offset: 0, 0
@@ -299,8 +299,8 @@ player-bra-armor
   offset: 0, 0
   index: -1
 player-bra-clothed
-  rotate: true
-  xy: 1197, 605
+  rotate: false
+  xy: 1270, 678
   size: 117, 69
   orig: 117, 69
   offset: 0, 0
