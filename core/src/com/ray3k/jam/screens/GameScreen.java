@@ -308,19 +308,19 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/08a.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//15
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("He's distracted, wriggle out of those cuffs. These are a bunch of amateurs.", 12));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//16
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/09.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//17
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/09a.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//18
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("This idiot is going to wish he didn't fuck with us. Get ready. We're almost out of here.", 14));
         queue.add(new DelayEvent(1));

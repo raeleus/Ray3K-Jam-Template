@@ -191,6 +191,48 @@ public class AnimationEvent implements TimelineEvent {
                 character = gameScreen.findCharacter("player");
                 character.getAnimationState().clearTrack(1);
                 break;
+            case 16:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 17:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 18:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 19:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 20:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 21:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTrack(1);
+                
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().setAnimation(0, "push", false);
+                break;
             default:
                 break;
         }
