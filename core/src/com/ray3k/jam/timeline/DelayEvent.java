@@ -35,7 +35,8 @@ public class DelayEvent implements TimelineEvent {
     private float delay;
 
     public DelayEvent(float delay) {
-        this.delay = delay;
+//        this.delay = delay;
+        this.delay = 0;
     }
 
     @Override

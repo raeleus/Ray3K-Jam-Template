@@ -23,7 +23,6 @@
  */
 package com.ray3k.jam.timeline;
 
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.MathUtils;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.entities.game.CharacterEntity;
@@ -40,7 +39,7 @@ public class AnimationEvent implements TimelineEvent {
     private boolean proceedImmediately;
 
     public AnimationEvent(int index) {
-        this(false, index);
+        this(true, index);
     }
     
     public AnimationEvent(boolean proceedImmediately, int index) {
@@ -60,7 +59,7 @@ public class AnimationEvent implements TimelineEvent {
                 gameScreen.entityManager.addEntity(character);
                 character.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
                 character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
-                character.setPosition(700, 250);
+                character.setPosition(700, 265);
                 character.getSkeleton().setSkin("clothed");
                 
                 //doctor
@@ -91,10 +90,107 @@ public class AnimationEvent implements TimelineEvent {
                 //player
                 character = gameScreen.findCharacter("player");
                 character.getAnimationState().setAnimation(0, "walk", true);
-                character.followTarget(429, 250, 100, () -> {
-                    var player = gameScreen.findCharacter("player");
-                    player.getAnimationState().setAnimation(0, "stand", true);
+                character.followTarget(429, character.getY(), 100, () -> {
+                    var person = gameScreen.findCharacter("player");
+                    person.getAnimationState().setAnimation(0, "stand", true);
                 });
+                
+                //soldier
+                character = gameScreen.findCharacter("soldier");
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                character.followTarget(600, character.getY(), 100, () -> {
+                    var person = gameScreen.findCharacter("soldier");
+                    person.getAnimationState().setAnimation(0, "stand", true);
+                });
+                break;
+            case 2:
+                //soldier
+                character = gameScreen.findCharacter("soldier");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 3:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 4:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 5:
+                //soldier
+                character = gameScreen.findCharacter("soldier");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 6:
+                //soldier
+                character = gameScreen.findCharacter("soldier");
+                character.getAnimationState().clearTrack(1);
+                character.getAnimationState().setAnimation(0, "push", false);
+                
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().addAnimation(0, "sit", false, 20/30f);
+                break;
+            case 7:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 8:
+                //soldier
+                character = gameScreen.findCharacter("soldier");
+                character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.followTarget(950, character.getY(), 100, () -> {
+                    var person = gameScreen.findCharacter("soldier");
+                    person.destroy();
+                });
+                break;
+            case 9:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 10:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 11:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 12:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 13:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 14:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                
+                character.getAnimationState().addAnimation(3, "muffled", true, 3);
+                
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().setAnimation(0, "stand", false);
+                character.getAnimationState().addAnimation(0, "push", false, 2.75f);
+                break;
+            case 15:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTrack(1);
+                break;
             default:
                 break;
         }

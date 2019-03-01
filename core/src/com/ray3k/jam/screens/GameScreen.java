@@ -122,11 +122,7 @@ public class GameScreen extends JamScreen {
         actionsManager.act(delta);
         entityManager.act(delta);
         stage.act(delta);
-
-        if (gip.isKeyJustPressed(Keys.F5)) {
-            dispose();
-            show();
-        }
+        
         if (gip.isKeyJustPressed(Keys.ESCAPE)) {
             System.out.println("test");
             core.setScreen(new MenuScreen(core));
@@ -256,7 +252,6 @@ public class GameScreen extends JamScreen {
         queue.add(new TextEvent("Just keep it together, they don't have anything on you. They can't touch you.", 13));
         queue.add(new DelayEvent(1));
         queue.add(new AnimationEvent(animationIndex++));
-        queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/01.ogg", core));
         queue.add(new DelayEvent(1));
         queue.add(new AnimationEvent(animationIndex++));
@@ -275,25 +270,23 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/03.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//6
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("This guy is a prick. Don't let him push you around.", 9));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//7
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/04.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//8
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/05.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//9
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Like I said before, don't say anything.", 7));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
-        queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//10
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/06.ogg", core));
         queue.add(new DelayEvent(1));
@@ -312,8 +305,6 @@ public class GameScreen extends JamScreen {
         queue.add(new AnimationEvent(animationIndex++));
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/08.ogg", core));
-        queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/08a.ogg", core));
         queue.add(new DelayEvent(1));

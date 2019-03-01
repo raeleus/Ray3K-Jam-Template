@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "7JSbBqCqrvFF3usus6BvfRLkJmo", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "" },
+"skeleton": { "hash": "fFZiRRTY8yqDMc7a67TNpsm1lIw", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -19.99, "y": 192.5 },
@@ -44,7 +44,8 @@
 	{ "name": "hand-left", "bone": "hand-left", "attachment": "player-hand-left" },
 	{ "name": "cuff left", "bone": "arm-left2" },
 	{ "name": "hair", "bone": "hair", "attachment": "player-hair" },
-	{ "name": "flash", "bone": "flash", "attachment": "flash" }
+	{ "name": "flash", "bone": "flash", "attachment": "flash" },
+	{ "name": "tape", "bone": "hair" }
 ],
 "ik": [
 	{
@@ -149,6 +150,9 @@
 		},
 		"player-head": {
 			"player-head": { "x": 132.59, "y": 16.62, "rotation": -87.77, "width": 542, "height": 308 }
+		},
+		"tape": {
+			"tape": { "x": 21.11, "y": -36, "rotation": -87.77, "width": 158, "height": 66 }
 		},
 		"weapon": {
 			"c4": { "x": 101.73, "y": 48.45, "rotation": 71.71, "width": 416, "height": 155 },
@@ -457,6 +461,16 @@
 			]
 		}
 	},
+	"muffled": {
+		"slots": {
+			"tape": {
+				"attachment": [
+					{ "time": 0, "name": "tape" },
+					{ "time": 0.1667, "name": "tape" }
+				]
+			}
+		}
+	},
 	"run": {
 		"bones": {
 			"ik-arm-left": {
@@ -731,7 +745,7 @@
 		]
 	},
 	"stand": {},
-	"talk": {
+	"talking": {
 		"bones": {
 			"hair": {
 				"rotate": [
