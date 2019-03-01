@@ -24,6 +24,8 @@
 package com.ray3k.jam.timeline;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.entities.game.CharacterEntity;
 import com.ray3k.jam.screens.GameScreen;
@@ -232,6 +234,73 @@ public class AnimationEvent implements TimelineEvent {
                 //doctor
                 character = gameScreen.findCharacter("doctor");
                 character.getAnimationState().setAnimation(0, "push", false);
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 22:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().setAnimation(1, "talking", false);
+                
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 23:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 24:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                break;
+            case 25:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 26:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                character.getAnimationState().setAnimation(0, "push", false);
+                
+                gameScreen.actionsManager.addAction(Actions.delay(.25f, new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        //player
+                        var character = gameScreen.findCharacter("player");
+                        character.getSkeleton().setSkin("nude");
+                        return true;
+                    }
+                }));
+                break;
+            case 27:
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                break;
+            case 28:
+                proceedImmediately = false;
+                //doctor
+                character = gameScreen.findCharacter("doctor");
+                character.getAnimationState().clearTrack(1);
+                character.getAnimationState().setAnimation(0, "aim-knife", false);
+                character.getAnimationState().addAnimation(0, "shoot-knife", false, 1);
+                
+                gameScreen.actionsManager.addAction(Actions.delay(1.25f, new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        System.out.println("hit");
+                        //player
+                        var character = gameScreen.findCharacter("player");
+                        character.getAnimationState().setAnimation(3, "unmuffled", false);
+                        
+                        gameScreen.queue.next();
+                        return true;
+                    }
+                }));
                 break;
             default:
                 break;

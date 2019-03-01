@@ -324,63 +324,63 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("This idiot is going to wish he didn't fuck with us. Get ready. We're almost out of here.", 14));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//19
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/10.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//20
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/10a.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//21
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/11.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//22
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("This is a pathetic man. He couldn't stand up to you in a fair fight. Let's get you flat on your feet and you'll show him. Any time now... Hurry!", 24));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//23
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/12.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//24
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("God dammit, can you take any fucking longer? This guy is seriously on one. Take him out and head for the exit!", 20));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//25
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/13.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//26
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("That's fucking it. You're worthless. He's going to fucking rape you and you're just going to let it happen.", 19));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//27
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/14.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//28
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/15.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//29
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("JESUS CHRIST! If you don't do it, I will. I'm not going to let you fucking die. Not to this creep.", 22));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//30
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/16.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//31
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/17.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//32
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Calling for help is pointless. I'm in control now.", 9));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//33
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/18.ogg", core));
         queue.add(new DelayEvent(1));

@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "fFZiRRTY8yqDMc7a67TNpsm1lIw", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "" },
+"skeleton": { "hash": "qQoNtpDa6gY73vd4CSa464bqn8A", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -19.99, "y": 192.5 },
@@ -756,6 +756,7 @@
 			}
 		}
 	},
+	"unmuffled": {},
 	"walk": {
 		"bones": {
 			"ik-leg-right": {
