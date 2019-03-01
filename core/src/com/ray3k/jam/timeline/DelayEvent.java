@@ -53,4 +53,8 @@ public class DelayEvent implements TimelineEvent {
     @Override
     public void end() {
     }
+    
+    @Override
+    public void step(float delta) {
+    }
 }

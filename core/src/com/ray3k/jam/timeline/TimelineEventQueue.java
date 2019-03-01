@@ -61,4 +61,11 @@ public class TimelineEventQueue {
     public TimelineEvent getCurrent() {
         return list.first();
     }
+    
+    public void step(float delta) {
+        if (list.size > 0) {
+            var event = list.get(0);
+            event.step(delta);
+        }
+    }
 }

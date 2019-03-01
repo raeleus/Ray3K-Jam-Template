@@ -78,4 +78,8 @@ public class TextEvent implements TimelineEvent {
         
         action.setTime(action.getTime() + ERROR_PUNISHMENT);
     }
+
+    @Override
+    public void step(float delta) {
+    }
 }

@@ -23,6 +23,8 @@
  */
 package com.ray3k.jam.timeline;
 
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.math.MathUtils;
 import com.ray3k.jam.Core;
 import com.ray3k.jam.entities.game.CharacterEntity;
 import com.ray3k.jam.screens.GameScreen;
@@ -38,7 +40,7 @@ public class AnimationEvent implements TimelineEvent {
     private boolean proceedImmediately;
 
     public AnimationEvent(int index) {
-        this(true, index);
+        this(false, index);
     }
     
     public AnimationEvent(boolean proceedImmediately, int index) {
@@ -55,7 +57,7 @@ public class AnimationEvent implements TimelineEvent {
                 //player
                 var character = new CharacterEntity(core, "player", "stand");
                 gameScreen.entityManager.addEntity(character);
-                character.getAnimationState().setAnimation(2, "blink", true);
+                character.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
                 character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
                 character.setPosition(700, 250);
                 character.getSkeleton().setSkin("clothed");
@@ -63,17 +65,22 @@ public class AnimationEvent implements TimelineEvent {
                 //doctor
                 character = new CharacterEntity(core, "soldier", "stand");
                 gameScreen.entityManager.addEntity(character);
-                character.getAnimationState().setAnimation(2, "blink", true);
+                character.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
                 character.setPosition(125, 250);
                 character.getSkeleton().setSkin("doctor");
                 
                 //soldier
                 character = new CharacterEntity(core, "soldier", "stand");
                 gameScreen.entityManager.addEntity(character);
-                character.getAnimationState().setAnimation(2, "blink", true);
+                character.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
                 character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
                 character.setPosition(950, 250);
                 character.getSkeleton().setSkin("soldier");
+                
+                //chair
+                character = new CharacterEntity(core, "chair", "animation");
+                gameScreen.entityManager.addEntity(character);
+                character.setPosition(450, 300);
                 
                 break;
             default:
@@ -83,6 +90,11 @@ public class AnimationEvent implements TimelineEvent {
         if (proceedImmediately) {
             gameScreen.queue.next();
         }
+    }
+    
+    @Override
+    public void step(float delta) {
+        
     }
 
     @Override

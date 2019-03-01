@@ -71,7 +71,7 @@ public class GameScreen extends JamScreen {
     private OrthographicCamera gameCamera;
     private Viewport gameViewport;
     private InputMultiplexer inputMultiplexer;
-    private GameInputProcessor gip;
+    public GameInputProcessor gip;
     public Label messageLabel;
     public Label typingLabel;
     public TimelineEventQueue queue;
@@ -131,9 +131,14 @@ public class GameScreen extends JamScreen {
             core.setScreen(new MenuScreen(core));
         }
         debugLabel.setText(gip.mouseX + " " + gip.mouseY);
+        
+        queue.step(delta);
+        
+        if (gameScreen.gip.isKeyJustPressed(Keys.F6)) {
+            queue.next();
+        }
+        
         gip.act(delta);
-        
-        
     }
 
     @Override
