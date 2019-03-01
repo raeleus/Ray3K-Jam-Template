@@ -33,6 +33,8 @@ import com.ray3k.jam.SpineEntity;
  * @author raymond
  */
 public class CharacterEntity extends SpineEntity {
+    private float targetX, targetY;
+    private boolean followTarget;
 
     public CharacterEntity(Core core, String skeletonPath, String animation) {
         super(core, "spine/game/" + skeletonPath + ".json", animation);
@@ -56,8 +58,6 @@ public class CharacterEntity extends SpineEntity {
     public void collisionSub(Collidable other) {
     }
 
-    
-
     @Override
     public void actEnd(float delta) {
     }
@@ -66,4 +66,11 @@ public class CharacterEntity extends SpineEntity {
     public void destroyEvent() {
     }
     
+    public void followTarget(float targetX, float targetY) {
+        
+    }
+    
+    public void stopFollowing() {
+        followTarget = false;
+    }
 }

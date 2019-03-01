@@ -51,6 +51,7 @@ public class AudioEvent implements TimelineEvent {
 
     @Override
     public void end() {
+        music.stop();
     }
     
     @Override
