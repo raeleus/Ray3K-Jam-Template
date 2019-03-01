@@ -49,6 +49,7 @@ import com.ray3k.jam.Core;
 import com.ray3k.jam.EntityManager;
 import com.ray3k.jam.GameInputProcessor;
 import com.ray3k.jam.JamScreen;
+import com.ray3k.jam.entities.game.CharacterEntity;
 import com.ray3k.jam.timeline.AnimationEvent;
 import com.ray3k.jam.timeline.AudioEvent;
 import com.ray3k.jam.timeline.DelayEvent;
@@ -557,5 +558,20 @@ public class GameScreen extends JamScreen {
         label.pack();
         
         label.addAction(Actions.sequence(Actions.moveBy(0, -label.getHeight(), .2f), Actions.delay(1), Actions.moveBy(0, label.getHeight(), .2f), Actions.removeActor()));
+    }
+    
+    public CharacterEntity findCharacter(String name) {
+        for (int i = 0; i < entityManager.getEntities().size; i++) {
+            var entity = entityManager.getEntities().get(i);
+            
+            if (!entity.isDestroyed() && entity instanceof CharacterEntity) {
+                var character = (CharacterEntity) entity;
+                if (character.getName().equals(name)) {
+                    return character;
+                }
+            }
+        }
+        
+        return null;
     }
 }

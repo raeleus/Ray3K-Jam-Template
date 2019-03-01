@@ -35,6 +35,9 @@ import com.ray3k.jam.SpineEntity;
 public class CharacterEntity extends SpineEntity {
     private float targetX, targetY;
     private boolean followTarget;
+    private float followSpeed;
+    private String name;
+    private TargetListener targetListener;
 
     public CharacterEntity(Core core, String skeletonPath, String animation) {
         super(core, "spine/game/" + skeletonPath + ".json", animation);
@@ -48,6 +51,13 @@ public class CharacterEntity extends SpineEntity {
 
     @Override
     public void actSub(float delta) {
+        if (followTarget) {
+            if (moveTowards(targetX, targetY, followSpeed * delta)) {
+                targetListener.hit();
+                followTarget = false;
+                targetListener = null;
+            }
+        }
     }
 
     @Override
@@ -66,11 +76,32 @@ public class CharacterEntity extends SpineEntity {
     public void destroyEvent() {
     }
     
-    public void followTarget(float targetX, float targetY) {
-        
+    public void followTarget(float targetX, float targetY, float followSpeed) {
+        followTarget(targetX, targetY, followSpeed, null);
+    }
+    
+    public void followTarget(float targetX, float targetY, float followSpeed, TargetListener targetListener) {
+        followTarget = true;
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.followSpeed = followSpeed;
+        this.targetListener = targetListener;
     }
     
     public void stopFollowing() {
         followTarget = false;
+        targetListener = null;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public static interface TargetListener {
+        public void hit();
     }
 }

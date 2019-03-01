@@ -56,6 +56,7 @@ public class AnimationEvent implements TimelineEvent {
             case 0:
                 //player
                 var character = new CharacterEntity(core, "player", "stand");
+                character.setName("player");
                 gameScreen.entityManager.addEntity(character);
                 character.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
                 character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
@@ -64,6 +65,7 @@ public class AnimationEvent implements TimelineEvent {
                 
                 //doctor
                 character = new CharacterEntity(core, "soldier", "stand");
+                character.setName("doctor");
                 gameScreen.entityManager.addEntity(character);
                 character.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
                 character.setPosition(125, 250);
@@ -71,6 +73,7 @@ public class AnimationEvent implements TimelineEvent {
                 
                 //soldier
                 character = new CharacterEntity(core, "soldier", "stand");
+                character.setName("soldier");
                 gameScreen.entityManager.addEntity(character);
                 character.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
                 character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
@@ -79,10 +82,19 @@ public class AnimationEvent implements TimelineEvent {
                 
                 //chair
                 character = new CharacterEntity(core, "chair", "animation");
+                character.setName("chair");
                 gameScreen.entityManager.addEntity(character);
                 character.setPosition(450, 300);
-                
+                character.setDepth(100);
                 break;
+            case 1:
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.followTarget(429, 250, 100, () -> {
+                    var player = gameScreen.findCharacter("player");
+                    player.getAnimationState().setAnimation(0, "stand", true);
+                });
             default:
                 break;
         }

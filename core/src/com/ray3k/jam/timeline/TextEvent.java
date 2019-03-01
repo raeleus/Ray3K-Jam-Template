@@ -70,6 +70,8 @@ public class TextEvent implements TimelineEvent {
         else if (difference > 1) gameScreen.showAward('d');
         else gameScreen.showAward('f');
         
+        gameScreen.messageLabel.setText("");
+        gameScreen.typingLabel.setText("");
     }
     
     public void error() {
