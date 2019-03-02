@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "dPntPqXGm/2SJRLBmfG3WbsXlu8", "spine": "3.7.89", "width": 800, "height": 800, "images": "../output/", "audio": "../../Ray3K Jam Template/core/assets/sfx/" },
+"skeleton": { "hash": "X99aKNGcao+1EXcZCQRotGcuGTI", "spine": "3.8.01-beta", "width": 800, "height": 800, "images": "../output/", "audio": "F:/workspace/Ray3K Jam Credits/work/../../Ray3K Jam Template/core/assets/sfx" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "credits", "parent": "root", "length": 189.01, "rotation": 0.61, "x": -4, "y": 160.54 },
@@ -62,7 +62,7 @@
 			"playtesters": { "x": 6.82, "y": -17.12, "rotation": -0.61, "width": 95, "height": 39 }
 		},
 		"sound": {
-			"sound": { "x": -253.17, "y": -14.37, "rotation": -0.61, "width": 52, "height": 39 }
+			"sound": { "x": -253.17, "y": -14.37, "rotation": -0.61, "width": 52, "height": 69 }
 		},
 		"special thanks": {
 			"special thanks": { "x": 268.77, "y": -117.89, "rotation": -0.61, "width": 123, "height": 39 }
