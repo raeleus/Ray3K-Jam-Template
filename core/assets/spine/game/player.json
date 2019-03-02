@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "dN5TgLdRtnYL7U149FvCaEujWTw", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "../../../core/assets/sfx/" },
+"skeleton": { "hash": "3Djw7ytAwZ7M0CQDDY7itiL8buM", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "../../../core/assets/sfx/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -19.99, "y": 192.5 },
@@ -233,7 +233,8 @@
 	"pistol": { "audio": "pistol.ogg" },
 	"pistol-1911": { "audio": "pistol-1911.ogg" },
 	"pistol-single": { "audio": "pistol-single.ogg" },
-	"rifle-burst": { "audio": "rifle-burst.ogg" }
+	"rifle-burst": { "audio": "rifle-burst.ogg" },
+	"slash": { "audio": "slash.ogg" }
 },
 "animations": {
 	"aim-c4": {
@@ -1013,7 +1014,10 @@
 					{ "time": 0.1, "x": 87.78, "y": 129.98 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "slash" }
+		]
 	},
 	"shoot-pistol": {
 		"slots": {

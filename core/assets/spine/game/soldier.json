@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "gvCrEce7aYgnuTHepXmWdmozjro", "spine": "3.8.01-beta", "width": 610, "height": 889.76, "images": "../output/", "audio": "" },
+"skeleton": { "hash": "9hxJHHbzKN1vIKJjb+QZF0TkVwI", "spine": "3.8.01-beta", "width": 610, "height": 889.76, "images": "../output/", "audio": "../../../core/assets/sfx/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -31.79, "y": 201.15 },
@@ -199,6 +199,10 @@
 			}
 		}
 	}
+},
+"events": {
+	"slash": { "audio": "slash.ogg" },
+	"stab": { "audio": "stab.ogg" }
 },
 "animations": {
 	"aim-knife": {
@@ -493,7 +497,10 @@
 					{ "time": 0.3333, "x": 0, "y": 0 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "stab" }
+		]
 	},
 	"run": {
 		"bones": {
@@ -596,7 +603,10 @@
 					{ "time": 0.3, "x": -108.38, "y": 66.42 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "slash" }
+		]
 	},
 	"shoot-pistol": {
 		"slots": {
@@ -736,7 +746,10 @@
 					{ "time": 0.3333, "x": 0, "y": 0 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "stab" }
+		]
 	},
 	"stand": {},
 	"talking": {

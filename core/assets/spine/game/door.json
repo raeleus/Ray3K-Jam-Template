@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "brwjjDd9KShSAexFZUWVx8PyBtw", "spine": "3.8.01-beta", "width": 912, "height": 1653.16, "images": "../output/", "audio": "" },
+"skeleton": { "hash": "kaLWV33ZeVy8cZms0jRH3xiZDMU", "spine": "3.8.01-beta", "width": 1506.02, "height": 1337, "images": "../output/", "audio": "../../../core/assets/sfx/" },
 "bones": [
 	{ "name": "root" }
 ],
@@ -32,9 +32,12 @@
 			"door": { "name": "door-open", "y": 667.26, "width": 912, "height": 1337 }
 		},
 		"sign": {
-			"exit": { "y": 1508.92, "width": 640, "height": 286 }
+			"exit": { "x": -730.02, "y": 720.24, "width": 640, "height": 286 }
 		}
 	}
+},
+"events": {
+	"explosion": { "audio": "explosion.ogg" }
 },
 "animations": {
 	"animation": {},
@@ -54,7 +57,10 @@
 					{ "time": 0, "name": "door-blasted" }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "explosion" }
+		]
 	}
 }
 }
