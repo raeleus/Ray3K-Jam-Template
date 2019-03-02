@@ -1,19 +1,23 @@
 {
-"skeleton": { "hash": "jzyx/cV+z9yYEexGa5yENCdqQNA", "spine": "3.8.01-beta", "width": 912, "height": 1337, "images": "../output/", "audio": "" },
+"skeleton": { "hash": "brwjjDd9KShSAexFZUWVx8PyBtw", "spine": "3.8.01-beta", "width": 912, "height": 1653.16, "images": "../output/", "audio": "" },
 "bones": [
 	{ "name": "root" }
 ],
 "slots": [
 	{ "name": "door", "bone": "root", "attachment": "door" },
-	{ "name": "c4", "bone": "root" }
+	{ "name": "c4", "bone": "root" },
+	{ "name": "sign", "bone": "root", "attachment": "exit" }
 ],
 "skins": {
 	"default": {
 		"c4": {
 			"c4": { "x": 48.78, "y": 633.65, "width": 416, "height": 155 }
+		},
+		"door": {
+			"door-blasted": { "y": 667.26, "width": 912, "height": 1337 }
 		}
 	},
-	"blasted": {
+	"blased": {
 		"door": {
 			"door": { "name": "door-blasted", "y": 667.26, "width": 912, "height": 1337 }
 		}
@@ -26,6 +30,9 @@
 	"open": {
 		"door": {
 			"door": { "name": "door-open", "y": 667.26, "width": 912, "height": 1337 }
+		},
+		"sign": {
+			"exit": { "y": 1508.92, "width": 640, "height": 286 }
 		}
 	}
 },
@@ -36,6 +43,15 @@
 			"c4": {
 				"attachment": [
 					{ "time": 0, "name": "c4" }
+				]
+			}
+		}
+	},
+	"explode": {
+		"slots": {
+			"door": {
+				"attachment": [
+					{ "time": 0, "name": "door-blasted" }
 				]
 			}
 		}

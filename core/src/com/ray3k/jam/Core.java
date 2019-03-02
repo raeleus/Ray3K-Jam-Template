@@ -311,11 +311,11 @@ public class Core extends Game {
     }
     
     public long playSound(String name, float volume) {
-        return playSound(name, volume, 1, 1);
+        return playSound(name, volume, 1, 0);
     }
     
     public long playSound(String name, float volume, float pitch) {
-        return playSound(name, volume, pitch, 1);
+        return playSound(name, volume, pitch, 0);
     }
     
     public long playSound(String name, float volume, float pitch, float pan) {

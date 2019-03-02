@@ -124,7 +124,6 @@ public class GameScreen extends JamScreen {
         stage.act(delta);
         
         if (gip.isKeyJustPressed(Keys.ESCAPE)) {
-            System.out.println("test");
             core.setScreen(new MenuScreen(core));
         }
         debugLabel.setText(gip.mouseX + " " + gip.mouseY);

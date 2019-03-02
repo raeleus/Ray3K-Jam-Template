@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "9baRBG/j0yeNjgF9/bxAgUL/6Xw", "spine": "3.8.01-beta", "width": 886.77, "height": 765.3, "images": "../output/", "audio": "" },
+"skeleton": { "hash": "dN5TgLdRtnYL7U149FvCaEujWTw", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "../../../core/assets/sfx/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -19.99, "y": 192.5 },
@@ -228,6 +228,12 @@
 			"bra": { "name": "player-bra", "x": 134.24, "y": -36.17, "rotation": -89.71, "width": 234, "height": 137 }
 		}
 	}
+},
+"events": {
+	"pistol": { "audio": "pistol.ogg" },
+	"pistol-1911": { "audio": "pistol-1911.ogg" },
+	"pistol-single": { "audio": "pistol-single.ogg" },
+	"rifle-burst": { "audio": "rifle-burst.ogg" }
 },
 "animations": {
 	"aim-c4": {
@@ -459,6 +465,340 @@
 			"suicide-flash": [
 				{ "time": 0, "scaleMix": 0, "shearMix": 0 }
 			]
+		},
+		"events": [
+			{ "time": 0, "name": "pistol-1911" }
+		]
+	},
+	"disarm-pistol": {
+		"bones": {
+			"ik-arm-right": {
+				"translate": [
+					{ "time": 0, "x": -13.97, "y": -43.33 }
+				]
+			}
+		}
+	},
+	"disarm-rifle": {
+		"slots": {
+			"weapon": {
+				"attachment": [
+					{ "time": 0, "name": "rifle" },
+					{ "time": 0.1667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"hand-right": {
+				"rotate": [
+					{ "time": 0, "angle": -25.73 }
+				]
+			},
+			"ik-arm-right": {
+				"translate": [
+					{ "time": 0, "x": 25.32, "y": 50.64 },
+					{ "time": 0.1667, "x": -49.74, "y": -43.64 },
+					{ "time": 0.3333, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"door-enter": {
+		"slots": {
+			"arm-left": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"arm-right": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"body": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"bra": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"cuff left": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"cuff right": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"eye-left": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"eye-right": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"flash": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"foot-right": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"hair": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"hand-left": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"hand-right": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"hand-suicide": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"leg-left": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"leg-right": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"player-foot-left": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"player-head": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"tape": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"weapon": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			},
+			"wound": {
+				"color": [
+					{ "time": 0, "color": "000000ff" },
+					{ "time": 0.6667, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"hip": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 93.87 },
+					{ "time": 0.6667, "x": 0, "y": 0 }
+				]
+			}
+		}
+	},
+	"door-exit": {
+		"slots": {
+			"arm-left": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"arm-right": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"body": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"bra": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"cuff left": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"cuff right": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"eye-left": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"eye-right": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"flash": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"foot-right": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"hair": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"hand-left": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"hand-right": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"hand-suicide": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"leg-left": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"leg-right": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"player-foot-left": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"player-head": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"tape": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"weapon": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			},
+			"wound": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.6667, "color": "000000ff" }
+				]
+			}
+		},
+		"bones": {
+			"hip": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.6667, "x": 0, "y": 93.87 }
+				]
+			}
+		}
+	},
+	"idle-pistol": {
+		"slots": {
+			"weapon": {
+				"attachment": [
+					{ "time": 0, "name": "pistol" }
+				]
+			}
+		},
+		"bones": {
+			"hand-right": {
+				"rotate": [
+					{ "time": 0, "angle": -27.04 }
+				]
+			},
+			"ik-arm-right": {
+				"translate": [
+					{ "time": 0, "x": 183.94, "y": 162.86 },
+					{ "time": 0.3333, "x": -13.97, "y": -43.33 }
+				]
+			}
 		}
 	},
 	"lie": {
@@ -693,7 +1033,8 @@
 				"translate": [
 					{ "time": 0, "x": 183.94, "y": 162.86 },
 					{ "time": 0.1, "x": 69.15, "y": 156.11 },
-					{ "time": 0.2, "x": 183.94, "y": 162.86 }
+					{ "time": 0.2, "x": 183.94, "y": 162.86, "curve": "stepped" },
+					{ "time": 0.8333, "x": 183.94, "y": 162.86 }
 				]
 			},
 			"flash": {
@@ -704,7 +1045,10 @@
 					{ "time": 0, "x": 248.35, "y": 158.16 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "pistol-single" }
+		]
 	},
 	"shoot-rifle": {
 		"slots": {
@@ -724,7 +1068,28 @@
 				"translate": [
 					{ "time": 0, "x": 25.32, "y": 50.64 },
 					{ "time": 0.0333, "x": -1.69, "y": 54.02 },
-					{ "time": 0.0667, "x": 25.32, "y": 50.64 }
+					{ "time": 0.1, "x": 25.32, "y": 50.64 },
+					{ "time": 0.1333, "x": -1.69, "y": 54.02 },
+					{ "time": 0.1667, "x": 25.32, "y": 50.64 },
+					{ "time": 0.2, "x": -1.69, "y": 54.02 },
+					{ "time": 0.2667, "x": 25.32, "y": 50.64 },
+					{ "time": 0.3, "x": -1.69, "y": 54.02 },
+					{ "time": 0.3333, "x": 25.32, "y": 50.64 },
+					{ "time": 0.3667, "x": -1.69, "y": 54.02 },
+					{ "time": 0.4333, "x": 25.32, "y": 50.64 },
+					{ "time": 0.4667, "x": -1.69, "y": 54.02 },
+					{ "time": 0.5, "x": 25.32, "y": 50.64 },
+					{ "time": 0.5333, "x": -1.69, "y": 54.02 },
+					{ "time": 0.6, "x": 25.32, "y": 50.64 },
+					{ "time": 0.6333, "x": -1.69, "y": 54.02 },
+					{ "time": 0.6667, "x": 25.32, "y": 50.64 },
+					{ "time": 0.7, "x": -1.69, "y": 54.02 },
+					{ "time": 0.7667, "x": 25.32, "y": 50.64 },
+					{ "time": 0.8, "x": -1.69, "y": 54.02 },
+					{ "time": 0.8333, "x": 25.32, "y": 50.64 },
+					{ "time": 0.8667, "x": -1.69, "y": 54.02 },
+					{ "time": 0.9, "x": 25.32, "y": 50.64, "curve": "stepped" },
+					{ "time": 1.6667, "x": 25.32, "y": 50.64 }
 				]
 			},
 			"flash": {
@@ -735,7 +1100,10 @@
 					{ "time": 0, "x": 677.68, "y": 302.62 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "rifle-burst" }
+		]
 	},
 	"shoot-trigger": {
 		"slots": {

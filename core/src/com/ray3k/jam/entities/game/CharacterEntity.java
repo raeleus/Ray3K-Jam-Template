@@ -23,6 +23,8 @@
  */
 package com.ray3k.jam.entities.game;
 
+import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.Event;
 import com.esotericsoftware.spine.utils.TwoColorPolygonBatch;
 import com.ray3k.jam.Collidable;
 import com.ray3k.jam.Core;
@@ -42,6 +44,14 @@ public class CharacterEntity extends SpineEntity {
     public CharacterEntity(Core core, String skeletonPath, String animation) {
         super(core, "spine/game/" + skeletonPath + ".json", animation);
         getSkeleton().setScale(.5f, .5f);
+        getAnimationState().addListener(new AnimationState.AnimationStateAdapter() {
+            @Override
+            public void event(AnimationState.TrackEntry entry, Event event) {
+                if (event.getData().getAudioPath() != null) {
+                    core.playSound(event.getData().getAudioPath(), event.getVolume());
+                }
+            }
+        });
     }
     
     @Override
@@ -53,11 +63,10 @@ public class CharacterEntity extends SpineEntity {
     public void actSub(float delta) {
         if (followTarget) {
             if (moveTowards(targetX, targetY, followSpeed * delta)) {
+                followTarget = false;
                 if (targetListener != null) {
                     targetListener.hit();
                 }
-                followTarget = false;
-                targetListener = null;
             }
         }
     }

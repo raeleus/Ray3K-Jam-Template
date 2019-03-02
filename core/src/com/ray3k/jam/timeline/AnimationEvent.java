@@ -341,7 +341,6 @@ public class AnimationEvent implements TimelineEvent {
                     gameScreen.actionsManager.addAction(Actions.delay(1.25f, new Action() {
                         @Override
                         public boolean act(float delta) {
-                            System.out.println("hit");
                             //player
                             var character = gameScreen.findCharacter("player");
                             character.getAnimationState().setAnimation(3, "unmuffled", false);
@@ -455,7 +454,6 @@ public class AnimationEvent implements TimelineEvent {
                 character = gameScreen.findCharacter("player");
                 character.getAnimationState().setAnimation(0, "run", true);
                 character.followTarget(-150, character.getY(), 200, () -> {
-                    System.out.println("first");
                     gameScreen.queue.next();
                 });
                 break;
@@ -491,6 +489,7 @@ public class AnimationEvent implements TimelineEvent {
                     character1.getAnimationState().setAnimation(0, "stand", true);
                     character1.getAnimationState().clearTrack(3);
                     character1.getAnimationState().addAnimation(0, "shoot-c4", false, 1.5f);
+                    
                     gameScreen.actionsManager.addAction(Actions.delay(2, new Action() {
                         @Override
                         public boolean act(float delta) {
@@ -498,12 +497,223 @@ public class AnimationEvent implements TimelineEvent {
                             character2.getSkeleton().setScale(-character2.getSkeleton().getScaleX(), character2.getSkeleton().getScaleY());
                             character2.getAnimationState().setAnimation(0, "run", true);
                             character2.followTarget(-150, character2.getY(), 200);
+                            
+                            var character3 = gameScreen.findCharacter("door");
+                            character3.getAnimationState().setAnimation(0, "c4", false);
+                            
                             gameScreen.queue.next();
                             return true;
                         }
                     }));
                 });
+                
+                character = new CharacterEntity(core, "door", "animation");
+                character.setName("door");
+                gameScreen.entityManager.addEntity(character);
+                character.getSkeleton().setSkin("door");
+                character.getSkeleton().setScale(.35f, .35f);
+                character.setPosition(400, 300);
+                character.setDepth(100);
 
+                break;
+            case 42:
+                break;
+            case 43:
+                break;
+            case 44:
+                proceedImmediately = false;
+                
+                character = gameScreen.findCharacter("door");
+                character.getAnimationState().setAnimation(0, "explode", false);
+                
+                //player
+                character = gameScreen.findCharacter("player");
+                character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
+                character.getAnimationState().setAnimation(0, "run", true);
+                character.followTarget(400, character.getY(), 200, () -> {
+                    var character2 = gameScreen.findCharacter("player");
+                    character2.getAnimationState().setAnimation(0, "stand", true);
+                    character2.getAnimationState().setAnimation(1, "aim-rifle", false);
+                    character2.getAnimationState().addAnimation(0, "run", true, 2);
+                    character2.getAnimationState().addAnimation(3, "door-exit", false, 2);
+                    
+                    gameScreen.actionsManager.addAction(Actions.delay(4, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            var character2 = gameScreen.findCharacter("door");
+                            character2.setX(200);
+                            character2.followTarget(-200, character2.getY(), 200);
+                            
+                            //soldier
+                            character2 = new CharacterEntity(core, "soldier", "dead");
+                            character2.setName("soldier");
+                            gameScreen.entityManager.addEntity(character2);
+                            character2.getSkeleton().setScaleX(-character2.getSkeleton().getScaleX());
+                            character2.setPosition(300, 250);
+                            character2.getSkeleton().setSkin("soldier");
+                            character2.followTarget(-400, character2.getY(), 200);
+                            
+                            character2 = gameScreen.findCharacter("player");
+                            character2.setX(200);
+                            character2.getAnimationState().setAnimation(3, "door-enter", false);
+                            
+                            gameScreen.queue.next();
+                            return true;
+                        }
+                    }));
+                });
+                break;
+            case 45:
+                character = gameScreen.findCharacter("door");
+                character.destroy();
+                
+                character = gameScreen.findCharacter("soldier");
+                character.destroy();
+                break;
+            case 46:
+                break;
+            case 47:
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().setAnimation(3, "shoot-rifle", true);
+                break;
+            case 48:
+                break;
+            case 49:
+                break;
+            case 51:
+                break;
+            case 52:
+                proceedImmediately = false;
+                
+                //officer
+                character = new CharacterEntity(core, "soldier", "crawling");
+                character.setName("officer");
+                gameScreen.entityManager.addEntity(character);
+                character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
+                character.setPosition(950, 200);
+                character.getSkeleton().setSkin("officer");
+                character.followTarget(500, character.getY(), 250, () -> {
+                    var character2 = gameScreen.findCharacter("officer");
+                    character2.getAnimationState().setAnimation(0, "crawling-die", false);
+                    character2.followTarget(-250, character2.getY(), 200, () -> {
+                        var character3 = gameScreen.findCharacter("officer");
+                        character3.destroy();
+                        
+                        character3 = gameScreen.findCharacter("player");
+                        character3.getAnimationState().setAnimation(0, "stand", true);
+                        character3.getAnimationState().setAnimation(3, "disarm-rifle", false);
+                        
+                        //soldier
+                        character3 = new CharacterEntity(core, "soldier", "run");
+                        character3.setName("soldier");
+                        gameScreen.entityManager.addEntity(character3);
+                        character3.getAnimationState().addAnimation(2, "blink", true, MathUtils.random(2));
+                        character3.getSkeleton().setScaleX(-character3.getSkeleton().getScaleX());
+                        character3.setPosition(950, 250);
+                        character3.getSkeleton().setSkin("soldier");
+                        character3.followTarget(650, character3.getY(), 100, () -> {
+                            var character4 = gameScreen.findCharacter("soldier");
+                            character4.getAnimationState().setAnimation(0, "stand", true);
+                            character4.getAnimationState().setAnimation(1, "talking", true);
+                            gameScreen.queue.next();
+                            
+                            character4 = gameScreen.findCharacter("player");
+                            character4.getAnimationState().setAnimation(3, "aim-pistol", true);
+                        });
+                    });
+                });
+                
+                break;
+            case 53:
+                character = gameScreen.findCharacter("soldier");
+                character.getAnimationState().clearTrack(1);
+                
+                break;
+            case 54:
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().setAnimation(1, "talking", true);
+                
+                break;
+            case 55:
+                proceedImmediately = false;
+                
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTrack(1);
+                character.getAnimationState().setAnimation(3, "shoot-pistol", false);
+                
+                character = gameScreen.findCharacter("soldier");
+                character.getAnimationState().clearTracks();
+                character.getAnimationState().setAnimation(0, "die", false);
+                
+                gameScreen.actionsManager.addAction(Actions.delay(2, new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        var character = gameScreen.findCharacter("player");
+                        character.getAnimationState().setAnimation(0, "run", true);
+                        
+                        character = gameScreen.findCharacter("soldier");
+                        character.followTarget(-400, character.getY(), 200);
+                        gameScreen.queue.next();
+                        return true;
+                    }
+                }));
+                
+                break;
+            case 56:
+                proceedImmediately = false;
+                character = gameScreen.findCharacter("player");
+                character.followTarget(400, character.getY(), 50, () -> {
+                    var character2 = gameScreen.findCharacter("player");
+                    character2.getAnimationState().setAnimation(0, "stand", true);
+                    character2.getAnimationState().setAnimation(3, "idle-pistol", false);
+                    gameScreen.queue.next();
+                });
+                
+                character = new CharacterEntity(core, "door", "animation");
+                character.setName("door");
+                gameScreen.entityManager.addEntity(character);
+                character.getSkeleton().setSkin("open");
+                character.getSkeleton().setScale(.35f, .35f);
+                character.setPosition(1000, 300);
+                character.setDepth(100);
+                character.followTarget(400, character.getY(), 150);
+                break;
+            case 57:
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().setAnimation(1, "talking", true);
+                break;
+            case 58:
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTrack(1);
+                character.getAnimationState().setAnimation(3, "disarm-pistol", false);
+                break;
+            case 59:
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().setAnimation(1, "talking", true);
+                break;
+            case 60:
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTrack(1);
+                character.getAnimationState().setAnimation(0, "aim-suicide", false);
+                break;
+            case 61:
+                break;
+            case 62:
+                break;
+            case 63:
+                proceedImmediately = false;
+                
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().clearTracks();
+                character.getAnimationState().setAnimation(0, "die", false);
+                
+                gameScreen.actionsManager.addAction(Actions.delay(3, new Action() {
+                    @Override
+                    public boolean act(float delta) {
+                        gameScreen.queue.next();
+                        return true;
+                    }
+                }));
                 break;
             default:
                 break;
