@@ -202,6 +202,7 @@ public abstract class Entity {
         temp.rotate(dir);
         
         setPosition(getX() + temp.x, getY() + temp.y);
+        System.out.println(temp.x + " " + temp.y);
         
         temp.set(targetX, targetY);
         temp.sub(getX(), getY());

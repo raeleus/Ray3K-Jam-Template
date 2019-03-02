@@ -243,30 +243,29 @@ public class GameScreen extends JamScreen {
     public void populateQueue() {
         int animationIndex = 0;
         
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//0
         queue.add(new TextEvent("This is a typing game! Type the text that you see here to win!", 11));
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Fuck up or go too slow: see the consequences...", 10));
         queue.add(new DelayEvent(1));
-        queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Just keep it together, they don't have anything on you. They can't touch you.", 13));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//1
         queue.add(new AudioEvent("bgm/01.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//2
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Don't say anything. They are just trying to scare you. I believe in you.", 13));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//3
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/02.ogg", core));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//4
         queue.add(new DelayEvent(1));
         queue.add(new TextEvent("Just hold it together a little longer and they'll realize that this has been a big mistake. You're innocent.", 17));
         queue.add(new DelayEvent(1));
-        queue.add(new AnimationEvent(animationIndex++));
+        queue.add(new AnimationEvent(animationIndex++));//5
         queue.add(new DelayEvent(1));
         queue.add(new AudioEvent("bgm/03.ogg", core));
         queue.add(new DelayEvent(1));
@@ -394,7 +393,7 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new AnimationEvent(animationIndex++));//36
         queue.add(new DelayEvent(1));
-        queue.add(new TextEvent("I have you now you snivelling little shit.", 7));
+        queue.add(new TextEvent("I have you now, you snivelling little shit.", 7));
         queue.add(new DelayEvent(1));
         queue.add(new AnimationEvent(animationIndex++));//37
         queue.add(new DelayEvent(1));
@@ -402,7 +401,7 @@ public class GameScreen extends JamScreen {
         queue.add(new DelayEvent(1));
         queue.add(new AnimationEvent(animationIndex++));//38
         queue.add(new DelayEvent(1));
-        queue.add(new TextEvent("End him. He was going to kill you. He deserves it.", 11));
+        queue.add(new TextEvent("He deserved it. He was going to kill you.", 11));
         queue.add(new DelayEvent(1));
         queue.add(new AnimationEvent(animationIndex++));//39
         queue.add(new DelayEvent(1));

@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "qQoNtpDa6gY73vd4CSa464bqn8A", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "" },
+"skeleton": { "hash": "9baRBG/j0yeNjgF9/bxAgUL/6Xw", "spine": "3.8.01-beta", "width": 886.77, "height": 765.3, "images": "../output/", "audio": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -19.99, "y": 192.5 },
@@ -459,6 +459,65 @@
 			"suicide-flash": [
 				{ "time": 0, "scaleMix": 0, "shearMix": 0 }
 			]
+		}
+	},
+	"lie": {
+		"bones": {
+			"hip": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": 86.19 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.3333, "x": 0, "y": -184.99 }
+				]
+			},
+			"hair": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.3333, "angle": -20.62 }
+				]
+			},
+			"ik-arm-left": {
+				"translate": [
+					{ "time": 0, "x": 18.24, "y": 29.18 }
+				]
+			},
+			"ik-arm-right": {
+				"translate": [
+					{ "time": 0, "x": -144.1, "y": -31.01 }
+				]
+			}
+		}
+	},
+	"lie-punch": {
+		"bones": {
+			"hip": {
+				"rotate": [
+					{ "time": 0, "angle": 86.19 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": -184.99 }
+				]
+			},
+			"hair": {
+				"rotate": [
+					{ "time": 0, "angle": -20.62 }
+				]
+			},
+			"ik-arm-right": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": 188.43, "y": -87.06 }
+				]
+			},
+			"ik-arm-left": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1667, "x": 261.72, "y": 58.95 }
+				]
+			}
 		}
 	},
 	"muffled": {

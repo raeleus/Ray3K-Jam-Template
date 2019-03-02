@@ -181,12 +181,28 @@ public class AnimationEvent implements TimelineEvent {
                 character = gameScreen.findCharacter("player");
                 character.getAnimationState().addAnimation(1, "talking", true, 0);
                 
-                character.getAnimationState().addAnimation(3, "muffled", true, 3);
-                
                 //doctor
                 character = gameScreen.findCharacter("doctor");
-                character.getAnimationState().setAnimation(0, "stand", false);
-                character.getAnimationState().addAnimation(0, "push", false, 2.75f);
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.followTarget(character.getX() + 100, character.getY(), 40, () -> {
+                    //doctor
+                    var doctor = gameScreen.findCharacter("doctor");
+                    doctor.getAnimationState().setAnimation(0, "push", false);
+                    gameScreen.actionsManager.addAction(Actions.delay(1, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            doctor.getAnimationState().setAnimation(0, "walk", true);
+                            doctor.followTarget(doctor.getX() - 50, doctor.getY(), 50, () -> {
+                                doctor.getAnimationState().setAnimation(0, "stand", true);
+                            });
+                            return true;
+                        }
+                    }));
+                    
+                    //player
+                    var player = gameScreen.findCharacter("player");
+                    player.getAnimationState().setAnimation(3, "muffled", false);
+                });
                 break;
             case 15:
                 //player
@@ -233,7 +249,7 @@ public class AnimationEvent implements TimelineEvent {
                 
                 //doctor
                 character = gameScreen.findCharacter("doctor");
-                character.getAnimationState().setAnimation(0, "push", false);
+                character.getAnimationState().setAnimation(0, "slap", false);
                 character.getAnimationState().addAnimation(1, "talking", true, 0);
                 break;
             case 22:
@@ -261,20 +277,39 @@ public class AnimationEvent implements TimelineEvent {
                 character.getAnimationState().addAnimation(1, "talking", true, 0);
                 break;
             case 26:
+                proceedImmediately = false;
+                
                 //doctor
                 character = gameScreen.findCharacter("doctor");
                 character.getAnimationState().clearTrack(1);
-                character.getAnimationState().setAnimation(0, "push", false);
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.followTarget(character.getX() + 50, character.getY(), 60, () -> {
+                    //doctor
+                    var doctor = gameScreen.findCharacter("doctor");
+                    doctor.getAnimationState().setAnimation(0, "push", false);
+                    gameScreen.actionsManager.addAction(Actions.delay(1, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            doctor.getAnimationState().setAnimation(0, "walk", true);
+                            doctor.followTarget(doctor.getX() - 50, doctor.getY(), 50, () -> {
+                                doctor.getAnimationState().setAnimation(0, "stand", true);
+                            });
+                            return true;
+                        }
+                    }));
+                    
+                    gameScreen.actionsManager.addAction(Actions.delay(.25f, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            //player
+                            var character = gameScreen.findCharacter("player");
+                            character.getSkeleton().setSkin("nude");
+                            gameScreen.queue.next();
+                            return true;
+                        }
+                    }));
+                });
                 
-                gameScreen.actionsManager.addAction(Actions.delay(.25f, new Action() {
-                    @Override
-                    public boolean act(float delta) {
-                        //player
-                        var character = gameScreen.findCharacter("player");
-                        character.getSkeleton().setSkin("nude");
-                        return true;
-                    }
-                }));
                 break;
             case 27:
                 //doctor
@@ -286,21 +321,36 @@ public class AnimationEvent implements TimelineEvent {
                 //doctor
                 character = gameScreen.findCharacter("doctor");
                 character.getAnimationState().clearTrack(1);
-                character.getAnimationState().setAnimation(0, "aim-knife", false);
-                character.getAnimationState().addAnimation(0, "shoot-knife", false, 1);
-                
-                gameScreen.actionsManager.addAction(Actions.delay(1.25f, new Action() {
-                    @Override
-                    public boolean act(float delta) {
-                        System.out.println("hit");
-                        //player
-                        var character = gameScreen.findCharacter("player");
-                        character.getAnimationState().setAnimation(3, "unmuffled", false);
-                        
-                        gameScreen.queue.next();
-                        return true;
-                    }
-                }));
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.followTarget(character.getX() + 50, character.getY(), 60, () -> {
+                    //doctor
+                    var doctor = gameScreen.findCharacter("doctor");
+                    doctor.getAnimationState().setAnimation(0, "aim-knife", false);
+                    doctor.getAnimationState().addAnimation(0, "shoot-knife", false, 1);
+                    gameScreen.actionsManager.addAction(Actions.delay(3, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            doctor.getAnimationState().setAnimation(0, "walk", true);
+                            doctor.followTarget(doctor.getX() - 50, doctor.getY(), 50, () -> {
+                                doctor.getAnimationState().setAnimation(0, "stand", true);
+                            });
+                            return true;
+                        }
+                    }));
+
+                    gameScreen.actionsManager.addAction(Actions.delay(1.25f, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            System.out.println("hit");
+                            //player
+                            var character = gameScreen.findCharacter("player");
+                            character.getAnimationState().setAnimation(3, "unmuffled", false);
+
+                            gameScreen.queue.next();
+                            return true;
+                        }
+                    }));
+                });
                 break;
             case 29:
                 break;
@@ -328,11 +378,26 @@ public class AnimationEvent implements TimelineEvent {
                 //doctor
                 character = gameScreen.findCharacter("doctor");
                 character.getAnimationState().addAnimation(1, "talking", true, 0);
-                character.getAnimationState().setAnimation(0, "push", false);
-                
-                character = gameScreen.findCharacter("player");
-                character.getAnimationState().clearTrack(3);
-                character.getAnimationState().addAnimation(3, "muffled", true, .25f);
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.followTarget(character.getX() + 50, character.getY(), 60, () -> {
+                    //doctor
+                    var doctor = gameScreen.findCharacter("doctor");
+                    doctor.getAnimationState().setAnimation(0, "push", false);
+                    gameScreen.actionsManager.addAction(Actions.delay(1, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            doctor.getAnimationState().setAnimation(0, "walk", true);
+                            doctor.followTarget(doctor.getX() - 50, doctor.getY(), 50, () -> {
+                                doctor.getAnimationState().setAnimation(0, "stand", true);
+                            });
+                            return true;
+                        }
+                    }));
+                    
+                    //player
+                    var player = gameScreen.findCharacter("player");
+                    player.getAnimationState().setAnimation(3, "muffled", false);
+                });
                 break;
             case 34:
                 //doctor
@@ -340,9 +405,19 @@ public class AnimationEvent implements TimelineEvent {
                 character.getAnimationState().clearTrack(1);
                 break;
             case 35:
+                proceedImmediately = false;
                 //doctor
                 character = gameScreen.findCharacter("doctor");
-                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                character.getAnimationState().setAnimation(0, "walk", true);
+                character.followTarget(412, character.getY(), 100, () -> {
+                    var doctor = gameScreen.findCharacter("doctor");
+                    doctor.getAnimationState().setAnimation(0, "lie", false);
+                    doctor.getAnimationState().addAnimation(1, "talking", true, 10 / 30);
+                    gameScreen.queue.next();
+                    
+                    var player = gameScreen.findCharacter("player");
+                    player.getAnimationState().setAnimation(0, "lie", false);
+                });
                 break;
             case 36:
                 //doctor
@@ -350,30 +425,54 @@ public class AnimationEvent implements TimelineEvent {
                 character.getAnimationState().clearTrack(1);
                 break;
             case 37:
+                proceedImmediately = false;
+                character = gameScreen.findCharacter("player");
+                character.getAnimationState().setAnimation(0, "lie-punch", false);
+                character.getAnimationState().addAnimation(0, "stand", false, 0);
+                character.getAnimationState().addAnimation(0, "aim-knife", false, .25f);
+                character.getAnimationState().addAnimation(0, "shoot-knife", false, .7f);
+                
                 //doctor
                 character = gameScreen.findCharacter("doctor");
-                character.getAnimationState().addAnimation(1, "talking", true, 0);
+                character.getAnimationState().setAnimation(0, "stand", false);
+                character.followTarget(200, character.getY(), 200, () -> {
+                    var doctor = gameScreen.findCharacter("doctor");
+                    doctor.getAnimationState().addAnimation(1, "talking", true, 1);
+                    
+                    gameScreen.queue.next();
+                });
                 break;
             case 38:
                 //doctor
                 character = gameScreen.findCharacter("doctor");
-                character.getAnimationState().clearTrack(1);
+                character.getAnimationState().clearTracks();
+                character.getAnimationState().setAnimation(0, "die", false);
                 break;
             case 39:
+                proceedImmediately = false;
+                
                 //player
                 character = gameScreen.findCharacter("player");
                 character.getAnimationState().setAnimation(0, "run", true);
-                character.followTarget(-150, character.getY(), 200);
+                character.followTarget(-150, character.getY(), 200, () -> {
+                    System.out.println("first");
+                    gameScreen.queue.next();
+                });
+                break;
             case 40:
                 //player
                 character = gameScreen.findCharacter("player");
                 character.getSkeleton().setSkin("bodyarmor");
-                character.followTarget(950, character.getY(), 200, new CharacterEntity.TargetListener() {
-                    @Override
-                    public void hit() {
-                        var character = gameScreen.findCharacter("player");
-                        character.destroy();
-                    }
+                character.getSkeleton().setScaleX(-character.getSkeleton().getScaleX());
+                character.followTarget(950, character.getY(), 200, () -> {
+                    var entity = gameScreen.findCharacter("player");
+                    entity.destroy();
+                    
+                    entity = gameScreen.findCharacter("chair");
+                    entity.destroy();
+                    
+                    entity = gameScreen.findCharacter("doctor");
+                    entity.destroy();
                 });
                 break;
             case 41:
@@ -387,27 +486,24 @@ public class AnimationEvent implements TimelineEvent {
                 character.getAnimationState().setAnimation(3, "aim-c4", true);
                 character.setPosition(-150, 265);
                 character.getSkeleton().setSkin("bodyarmor");
-                character.followTarget(350, character.getY(), 200, new CharacterEntity.TargetListener() {
-                    @Override
-                    public void hit() {
-                        var character = gameScreen.findCharacter("player");
-                        character.getAnimationState().setAnimation(0, "stand", true);
-                        character.getAnimationState().clearTrack(3);
-                        character.getAnimationState().addAnimation(0, "shoot-c4", false, 1.5f);
-                        gameScreen.actionsManager.addAction(Actions.delay(2, new Action() {
-                            @Override
-                            public boolean act(float delta) {
-                                var character = gameScreen.findCharacter("player");
-                                character.getSkeleton().setScale(-character.getSkeleton().getScaleX(), character.getSkeleton().getScaleY());
-                                character.getAnimationState().setAnimation(0, "run", true);
-                                character.followTarget(-150, character.getY(), 200);
-                                gameScreen.queue.next();
-                                return true;
-                            }
-                        }));
-                    }
+                character.followTarget(350, character.getY(), 200, () -> {
+                    var character1 = gameScreen.findCharacter("player");
+                    character1.getAnimationState().setAnimation(0, "stand", true);
+                    character1.getAnimationState().clearTrack(3);
+                    character1.getAnimationState().addAnimation(0, "shoot-c4", false, 1.5f);
+                    gameScreen.actionsManager.addAction(Actions.delay(2, new Action() {
+                        @Override
+                        public boolean act(float delta) {
+                            var character2 = gameScreen.findCharacter("player");
+                            character2.getSkeleton().setScale(-character2.getSkeleton().getScaleX(), character2.getSkeleton().getScaleY());
+                            character2.getAnimationState().setAnimation(0, "run", true);
+                            character2.followTarget(-150, character2.getY(), 200);
+                            gameScreen.queue.next();
+                            return true;
+                        }
+                    }));
                 });
-                
+
                 break;
             default:
                 break;
