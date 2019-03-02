@@ -246,6 +246,7 @@ public class AnimationEvent implements TimelineEvent {
                 //player
                 character = gameScreen.findCharacter("player");
                 character.getAnimationState().clearTrack(1);
+                character.getAnimationState().setAnimation(0, "sit-hurt", false);
                 
                 //doctor
                 character = gameScreen.findCharacter("doctor");
@@ -344,6 +345,7 @@ public class AnimationEvent implements TimelineEvent {
                             //player
                             var character = gameScreen.findCharacter("player");
                             character.getAnimationState().setAnimation(3, "unmuffled", false);
+                            character.getAnimationState().setAnimation(0, "sit-hurt", false);
 
                             gameScreen.queue.next();
                             return true;
@@ -405,6 +407,9 @@ public class AnimationEvent implements TimelineEvent {
                 break;
             case 35:
                 proceedImmediately = false;
+                
+                core.playSound("crack.ogg", 1);
+                
                 //doctor
                 character = gameScreen.findCharacter("doctor");
                 character.getAnimationState().setAnimation(0, "walk", true);
@@ -454,6 +459,11 @@ public class AnimationEvent implements TimelineEvent {
                 character = gameScreen.findCharacter("player");
                 character.getAnimationState().setAnimation(0, "run", true);
                 character.followTarget(-150, character.getY(), 200, () -> {
+                    var player = gameScreen.findCharacter("player");
+                    player.getAnimationState().setAnimation(3, "unmuffled", false);
+                    
+                    core.playSound("reload.ogg", index);
+                    
                     gameScreen.queue.next();
                 });
                 break;

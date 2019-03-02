@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "9hxJHHbzKN1vIKJjb+QZF0TkVwI", "spine": "3.8.01-beta", "width": 610, "height": 889.76, "images": "../output/", "audio": "../../../core/assets/sfx/" },
+"skeleton": { "hash": "HihBNL0jlEFlh0UgZufxClLqdhY", "spine": "3.8.01-beta", "width": 610, "height": 889.76, "images": "../output/", "audio": "../../../core/assets/sfx/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -31.79, "y": 201.15 },
@@ -201,6 +201,7 @@
 	}
 },
 "events": {
+	"death 01": { "audio": "death 01.ogg" },
 	"slash": { "audio": "slash.ogg" },
 	"stab": { "audio": "stab.ogg" }
 },
@@ -375,7 +376,10 @@
 					{ "time": 0.0333, "x": -38.53, "y": 24.17 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0, "name": "death 01" }
+		]
 	},
 	"dead": {
 		"slots": {

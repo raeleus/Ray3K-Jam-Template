@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "3Djw7ytAwZ7M0CQDDY7itiL8buM", "spine": "3.8.01-beta", "width": 548, "height": 798.32, "images": "../output/", "audio": "../../../core/assets/sfx/" },
+"skeleton": { "hash": "AbqERQHu/RiOmI3XU5ko6DF8ae8", "spine": "3.8.01-beta", "width": 548, "height": 751.8, "images": "../output/", "audio": "../../../core/assets/sfx/" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "hip", "parent": "root", "x": -19.99, "y": 192.5 },
@@ -152,7 +152,7 @@
 			"player-head": { "x": 132.59, "y": 16.62, "rotation": -87.77, "width": 542, "height": 308 }
 		},
 		"tape": {
-			"tape": { "x": 21.11, "y": -36, "rotation": -87.77, "width": 158, "height": 66 }
+			"tape": { "x": 21.11, "y": -36, "rotation": -87.77, "width": 214, "height": 112 }
 		},
 		"weapon": {
 			"c4": { "x": 101.73, "y": 48.45, "rotation": 71.71, "width": 416, "height": 155 },
@@ -1161,6 +1161,67 @@
 			"ik-arm-right": {
 				"translate": [
 					{ "time": 0, "x": -144.1, "y": -31.01 }
+				]
+			}
+		},
+		"drawOrder": [
+			{
+				"time": 0,
+				"offsets": [
+					{ "slot": "arm-left", "offset": -6 },
+					{ "slot": "hand-left", "offset": -11 },
+					{ "slot": "cuff left", "offset": -11 }
+				]
+			}
+		]
+	},
+	"sit-hurt": {
+		"slots": {
+			"cuff left": {
+				"attachment": [
+					{ "time": 0, "name": "cuff left" }
+				]
+			},
+			"cuff right": {
+				"attachment": [
+					{ "time": 0, "name": "cuff right" }
+				]
+			}
+		},
+		"bones": {
+			"ik-leg-right": {
+				"translate": [
+					{ "time": 0, "x": 72.96, "y": 54.72 }
+				]
+			},
+			"ik-leg-left": {
+				"translate": [
+					{ "time": 0, "x": 109.44, "y": 45.6 }
+				]
+			},
+			"ik-arm-left": {
+				"translate": [
+					{ "time": 0, "x": 18.24, "y": 29.18 }
+				]
+			},
+			"ik-arm-right": {
+				"translate": [
+					{ "time": 0, "x": -144.1, "y": -31.01 }
+				]
+			},
+			"body": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.2333, "angle": 19.23 },
+					{ "time": 0.3333, "angle": 0 }
+				]
+			},
+			"hair": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1, "angle": -16.18 },
+					{ "time": 0.2333, "angle": 9.7 },
+					{ "time": 0.3333, "angle": 0 }
 				]
 			}
 		},
