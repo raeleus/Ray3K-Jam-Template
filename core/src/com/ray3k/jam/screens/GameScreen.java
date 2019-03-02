@@ -115,6 +115,8 @@ public class GameScreen extends JamScreen {
         characters = 0;
         time = 0f;
         errors = 0;
+        
+        core.playSound("complete.ogg", 1);
     }
 
     @Override
@@ -222,6 +224,7 @@ public class GameScreen extends JamScreen {
                         }
                     } else {
                         ((TextEvent) queue.getCurrent()).error();
+                        core.playSound("error.ogg", 1);
                     }
                 }
                 return super.keyTyped(event, character);
