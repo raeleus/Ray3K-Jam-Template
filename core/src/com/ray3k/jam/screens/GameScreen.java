@@ -130,10 +130,6 @@ public class GameScreen extends JamScreen {
         
         queue.step(delta);
         
-        if (gameScreen.gip.isKeyJustPressed(Keys.F6)) {
-            queue.next();
-        }
-        
         gip.act(delta);
     }
 
